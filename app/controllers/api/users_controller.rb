@@ -3,7 +3,7 @@ class Api::UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.save
       sign_in(@user)
-      render 'api/users/show'
+      render json: ['SUCCESSFUL SIGNUP!']
     else
       render json: @user.errors.full_messages, status: 422
     end
