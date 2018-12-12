@@ -6,7 +6,7 @@ class Api::SessionsController < ApplicationController
     )
     if @user
       sign_in(@user)
-      render json: ['SUCCESSFUL SIGNIN!']
+      render 'api/users/show'
     else
       render json: ['Unable to log in with provided credentials.'], status: 401
     end
@@ -15,9 +15,9 @@ class Api::SessionsController < ApplicationController
   def destroy
     if current_user
       sign_out
-      render json: ['BOO, YOU SIGNED OUT!']
+      render json: {}
     else
-      render json: ['ALREADY LOGGED OUT!'], status: 404
+      render json: {}, status: 404
     end
   end
 
