@@ -44,7 +44,6 @@ class SessionForm extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <p>Hello, this is a form!</p>
           <br/>
           {nameFields()}
           <label>Email:

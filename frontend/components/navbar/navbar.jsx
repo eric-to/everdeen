@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = ({ currentUser, signOut }) => {
   const sessionLinks = () => (
-    <div>
+    <div class="session-links">
       <Link to="/signin">Sign In</Link>
       <br></br>
       <Link to="/signup">Sign up!</Link>
