@@ -115,3 +115,29 @@
     width: 155px;
   }
 }
+
+.signin-form-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+}
+
+input[type=submit]:hover {
+  border: 1px solid transparent;
+}
+
+.session-errors {
+  color: $black;
+  display: flex;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+  line-height: 19px;
+  padding: 23px 0;
+
+  img {
+    padding-right: 5px;
+  }
+}
