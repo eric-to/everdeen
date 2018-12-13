@@ -5,3 +5,12 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+a {
+  color: $green;
+  text-decoration: none;
+}
+
+a:active, a:hover {
+  outline: 0;
+}

@@ -3,10 +3,17 @@ import { Link } from 'react-router-dom';
 
 const Navbar = ({ currentUser, signOut }) => {
   const sessionLinks = () => (
-    <div class="session-links">
-      <Link to="/signin">Sign In</Link>
-      <br></br>
-      <Link to="/signup">Sign up!</Link>
+    <div className="navbar">
+      <img className= "main-logo" src="https://static1.squarespace.com/static/53fe4a70e4b0a2293ab0e42a/t/53fe4b7ce4b03ae33c17c7d2/1543455129039/"></img>
+
+      <div className="navbar-links">
+        <div>
+          <Link to="/signin">Log In</Link>
+        </div>
+        <div>
+          <Link to="/signup">Sign up</Link>
+        </div>
+      </div>
     </div>
   );
 
