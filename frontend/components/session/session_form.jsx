@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -13,16 +14,16 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  update(field) {
-    return e => this.setState({
-      [field]: e.currentTarget.value
-    });
-  }
-
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
+  }
+
+  update(field) {
+    return e => this.setState({
+      [field]: e.currentTarget.value
+    });
   }
 
   render() {
@@ -42,25 +43,26 @@ class SessionForm extends React.Component {
     };
 
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <br/>
-          {nameFields()}
-          <label>Email:
+      <div className="login-container">
+        <div className="login-image"></div>
+        <div className="login-form">
+          <h2>Welcome to Everdeen</h2>
+          <form onSubmit={this.handleSubmit}>
+            {nameFields()}
+            <div className="login-label">Email or Username</div>
             <input type="text" onChange={this.update('email')} />
-          </label>
-          <label>Password:
+            <div className="login-label">Password</div>
             <input type="password" onChange={this.update('password')} />
-          </label>
-
-          <input type="submit" value={this.props.formType} />
-        </form>
-
-        <div>
-          {this.props.navLink}
+            <div>
+              {this.props.navLink}
+            </div>
+            <input type="submit" value={this.props.formType} />
+          </form>
         </div>
       </div>
     );
+
+
   }
 }
 

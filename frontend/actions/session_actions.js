@@ -25,8 +25,8 @@ export const signUp = user => dispatch => (
     .then(user => dispatch(receiveCurrentUser(user)))
 );
 
-export const signIn = user => dispatch => (
-  SessionAPIUtils.signIn(user)
+export const logIn = user => dispatch => (
+  SessionAPIUtils.logIn(user)
     .then(user => dispatch(receiveCurrentUser(user)))
 );
 
