@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import NavbarContainer from './navbar/navbar_container';
+import SignInFormContainer from './session/signin_form_container';
 import SignUpFormContainer from './session/signup_form_container';
-import SignInFormContainer from './session/signIn_form_container';
 import Splash from './splash/splash';
 import { AuthRoute } from '../util/route_util';
 
