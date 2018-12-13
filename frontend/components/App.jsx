@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import NavbarContainer from './navbar/navbar_container';
 import SignUpFormContainer from './session/signup_form_container';
@@ -11,11 +11,16 @@ const App = () => (
   <div>
     {/* Home navbar */}
     <Route exact path="/" component={NavbarContainer} />
-    {/* Splash page */}
-    <Route exact path="/" component={Splash} />
-    {/* Login and Sign Up forms */}
-    <AuthRoute path="/login" component={SignInFormContainer} />
-    <AuthRoute path="/signup" component={SignUpFormContainer} />
+
+    <Switch>
+      {/* Login and Sign Up forms */}
+      <AuthRoute path="/login" component={SignInFormContainer} />
+      <AuthRoute path="/signup" component={SignUpFormContainer} />
+      {/* Splash page */}
+      <Route exact path="/" component={Splash} />
+      {/* Redirect to home page if link doesn't exist */}
+      <Redirect to="/" />
+    </Switch>
   </div>
 );
 
