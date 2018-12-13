@@ -16,7 +16,7 @@ const App = () => (
       <NavbarContainer />
     </div>
 
-    <AuthRoute path="/signin" component={LoginForm} />
+    <AuthRoute path="/login" component={LoginForm} />
     <AuthRoute path="/signup" component={SignUpForm} />
 
     <Route exact path="/" component={Splash} />

@@ -1,7 +1,7 @@
 import * as SessionAPIUtils from '../util/session_api_util';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
-export const SIGN_OUT_CURRENT_USER = 'SIGN_OUT_CURRENT_USER';
+export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 
 // normal action creators
@@ -11,7 +11,7 @@ const receiveCurrentUser = currentUser => ({
 });
 
 const signOutCurrentUser = () => ({
-  type: SIGN_OUT_CURRENT_USER
+  type: LOGOUT_CURRENT_USER
 });
 
 const receiveSessionErrors = errors => ({

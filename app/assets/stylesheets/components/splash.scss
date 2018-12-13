@@ -1,8 +1,20 @@
 @import "colors";
 
+.splash {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 70px 52px;
+}
+
+.splash-text {
+  margin-top: 43px;
+  margin-left: 49px;
+}
+
 .splash h1 {
-  font-size: 55px;
-  font-weight: 700;
+  font-size: 53px;
+  font-weight: 600;
   letter-spacing: -1px;
   line-height: 58px;
 }
@@ -12,12 +24,14 @@
   font-family: sans-serif;
   font-weight: lighter;
   line-height: 24px;
+  margin-top: -15px;
 }
 
 .splash button {
   cursor: pointer;
   color: white;
-  background: #21ce99;
+  background: $green;
+  border: 1px solid $green;
   margin: 0;
   padding: 14px 21px;
   font-weight: normal;
@@ -27,17 +41,9 @@
 }
 
 .splash img {
-  height: auto;
-  max-width: 100%;
-  width: 452px;
-  object-fit: contain;
-}
-
-.splash {
-  align-items: center;
-  display: flex;
-  // height: calc(100vh - 104px);
-  justify-content: center;
+  margin-top: -60px;
+  margin-right: 4px;
+  height: 675.5px;
 }
 
 .step-1, .step-2, .step-3, .step-4, .step-5 {

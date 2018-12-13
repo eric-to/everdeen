@@ -1,7 +1,8 @@
 @import "colors";
 
-.main-logo {
-  height: 60px;
+.navbar-logo {
+  height: 56px;
+  margin-top: 2px;
   width: auto;
 }
 
@@ -10,20 +11,22 @@
   display: flex;
   justify-content: space-between;
   height: 61px;
-  padding-left: 60px;
+  padding-left: 49.5px;
+  padding-right: 70px;
 }
 
 .navbar-links {
+  cursor: pointer;
   display: grid;
   font-family: "DIN Web", "Hiragino Sans GB", STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", sans-serif;
-  font-size: 13px;
-  font-weight: 900;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
+  font-size: 13.5px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 40px;
   padding-top: 20.5px;
   padding-bottom: 20.5px;
+  font-weight: 600;
 }
 
 .navbar a:hover {
-  color: #1ae9aa;
+  color: $light-green;
 }
