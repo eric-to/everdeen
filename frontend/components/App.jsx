@@ -20,7 +20,6 @@ const App = () => (
     <AuthRoute path="/signup" component={SignUpForm} />
 
     <Route exact path="/" component={Splash} />
-    <SocialLinks />
   </div>
 );
 
