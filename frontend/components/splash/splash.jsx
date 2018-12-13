@@ -19,7 +19,7 @@ class Splash extends React.Component {
             <div className="step-2">Now for the rest of us.</div>
           </h1>
           <h4 className="step-3">
-            Everdeen lets you invest in the stock market<br/>for free, directly from your desktop.
+            Everdeen lets you invest in the stock market<br/>for free. The odds are in your favor!
           </h4>
           <Link class="step-5" to="/signup">Sign Up</Link>
         </div>
