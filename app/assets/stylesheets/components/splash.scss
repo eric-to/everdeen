@@ -26,16 +26,17 @@
   border-radius: 4px;
 }
 
-.splash video {
+.splash img {
   height: auto;
   max-width: 100%;
   width: 452px;
+  object-fit: contain;
 }
 
 .splash {
   align-items: center;
   display: flex;
-  height: calc(100vh - 124px);
+  // height: calc(100vh - 104px);
   justify-content: center;
 }
 

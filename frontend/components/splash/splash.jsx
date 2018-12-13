@@ -22,9 +22,9 @@ class Splash extends React.Component {
           </h4>
           <button class="step-5">Demo</button>
         </div>
-        <video className="step-4">
-          <source src="https://d2ue93q3u507c2.cloudfront.net/assets/marketing/images/home_redesign/iPhone_header.webm" />
-        </video>
+        <div>
+          <img className="step-4" src="https://d2ue93q3u507c2.cloudfront.net/assets/marketing/images/home_redesign/iPhoneHome_still%402x.png" alt="iPhone" />
+        </div>
       </section>
     );
   }

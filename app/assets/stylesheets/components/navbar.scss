@@ -1,23 +1,25 @@
 @import "colors";
 
 .main-logo {
-  height: 45px;
-  width: 60px;
+  height: 60px;
+  width: auto;
 }
 
-.navbar {
+.navbar-container {
   color: $green;
   display: flex;
   justify-content: space-between;
   height: 61px;
+  padding-left: 60px;
 }
 
 .navbar-links {
   display: grid;
   font-family: "DIN Web", "Hiragino Sans GB", STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", sans-serif;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 900;
   grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
   padding-top: 20.5px;
   padding-bottom: 20.5px;
 }

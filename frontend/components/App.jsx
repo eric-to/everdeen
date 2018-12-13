@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 
 import LoginForm from './login_form/login_form';
 import NavbarContainer from './navbar/navbar_container';
+import SignUpForm from './signup_form/signup_form';
 import SignUpFormContainer from './session_form/signup_form_container';
 import SignInFormContainer from './session_form/signin_form_container';
 import SocialLinks from './social_links/social_links';
@@ -16,7 +17,7 @@ const App = () => (
     </div>
 
     <AuthRoute path="/signin" component={LoginForm} />
-    <AuthRoute path="/signup" component={SignUpFormContainer} />
+    <AuthRoute path="/signup" component={SignUpForm} />
 
     <Route exact path="/" component={Splash} />
     <SocialLinks />
