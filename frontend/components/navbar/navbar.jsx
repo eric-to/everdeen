@@ -11,6 +11,14 @@ const Navbar = ({ currentUser, signOut }) => {
       </div>
 
       <div className="navbar-links">
+        <div class="fa-links">
+          <a href="https://www.linkedin.com/in/ertoo" target="_blank">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com/eric-to" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
         <div>
           <Link to="/login">Log In</Link>
         </div>

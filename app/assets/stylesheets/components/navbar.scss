@@ -20,13 +20,21 @@
   display: grid;
   font-family: "DIN Web", "Hiragino Sans GB", STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", sans-serif;
   font-size: 13.5px;
-  grid-template-columns: repeat(3, 1fr);
+  font-weight: 600;
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 40px;
   padding-top: 20.5px;
   padding-bottom: 20.5px;
-  font-weight: 600;
+  text-align: center;
 }
 
 .navbar-links a:hover {
   color: $light-green;
+}
+
+.fa-links {
+  display: flex;
+  justify-content: space-around;
+  font-size: 25px;
+  margin-top: -7px;
 }

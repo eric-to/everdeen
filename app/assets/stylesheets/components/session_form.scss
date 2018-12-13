@@ -1,6 +1,6 @@
 @import "colors";
 
-.login-container > div {
+.session-container > div {
   margin: 0;
   position: fixed;
   top: 0;
@@ -8,8 +8,8 @@
   width: 50%;
 }
 
-.login-container h2 {
-  color: #171718;
+.session-container h2 {
+  color: black;
   font-family: "DIN Pro", -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 26px;
   font-weight: 500;
@@ -18,7 +18,7 @@
   margin: 0 0 16px;
 }
 
-.login-image {
+.session-image {
   background-image: url(https://d2ue93q3u507c2.cloudfront.net/assets/generated_assets/94977d34f99015525dcd0fc9987fcbe6.png);
   background-position: 50%;
   background-size: cover;
@@ -26,7 +26,7 @@
   left: 0;
 }
 
-.login-form {
+.session-form {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -36,28 +36,28 @@
   right: 0;
 }
 
-.login-label {
-  color: #171718;
+.session-label {
+  color: black;
   font-family: "DIN Pro", -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: 0.25px;
   line-height: 19px;
   padding: 9px 0;
 }
 
-.login-form input {
-margin: 10px 0;
-    width: 372px;
-    height: 28px;
-    border: 1px solid #fafafa;
-    border-radius: 4px;
-    padding: 10px 20px;
-    font-size: 13px;
-    background: #fafafa;
+.session-form input {
+  background: $almost-white;
+  border: 1px solid $almost-white;
+  border-radius: 4px;
+  font-size: 13px;
+  height: 28px;
+  margin: 10px 0;
+  padding: 10px 20px;
+  width: 372px;
 }
 
-.login-form a {
+.session-form a {
   color: $green;
   cursor: pointer;
   font-family: inherit;
@@ -67,10 +67,15 @@ margin: 10px 0;
   line-height: 19px;
 }
 
-.login-form button {
-  background: #21ce99;
-  border-color: #21ce99;
+.session-form a:hover {
+  color: $light-green;
+}
+
+.session-form input[type=submit] {
+  background: $green;
+  border-color: $green;
   border-radius: 4px;
+  border: 1px solid transparent;
   color: white;
   cursor: pointer;
   font-family: inherit;
@@ -80,5 +85,24 @@ margin: 10px 0;
   letter-spacing: 0.25px;
   line-height: 19px;
   margin: 0;
+  margin-top: 70px;
   padding: 0 48px;
+  width: 139.7px;
+}
+
+.session-form input:hover {
+  background-color: white;
+  border: 1px solid $gray;
+}
+
+.session-form input[type=submit]:hover {
+  background-color: $light-green;
+}
+
+#email-label, #password-label {
+  margin-bottom: -7px;
+}
+
+#password-label {
+  margin-top: -7px;
 }
