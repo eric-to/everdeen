@@ -19,6 +19,10 @@ class SessionForm extends React.Component {
     this.props.clearErrors();
   }
 
+  submitDemoLogin() {
+    setTimeout(() => this.props.processForm(this.state).then(() => this.props.history.push("/")), 450);
+  }
+
   demoLogin(e) {
     e.preventDefault();
     const demoCredentials = { email: '', password: '' };
@@ -29,9 +33,10 @@ class SessionForm extends React.Component {
       let lettersTypedSoFar = this.state[field] + demoCredentials[field].shift();
       this.setState({ [field]: lettersTypedSoFar }, () => {
         if (demoCredentials[field].length > 0) {
-          setTimeout(() => enterCredentials(field), 15);
+          setTimeout(() => enterCredentials(field), 16);
         } else {
           if (field === 'password') {
+            this.submitDemoLogin();
           }
         }
       });
@@ -40,10 +45,6 @@ class SessionForm extends React.Component {
     // TODO: refactor this
     enterCredentials('email');
     enterCredentials('password');
-    const demoUser = { email: 'peeta@bread.com', password: 'mtobeiyf' };
-    this.setState({});
-    this.setState(demoUser);
-    setTimeout(() => this.props.processForm(demoUser).then(() => this.props.history.push("/")), 450);
   }
 
   handleSubmit(e) {
