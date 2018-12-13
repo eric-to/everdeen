@@ -27,7 +27,7 @@
   margin-top: -15px;
 }
 
-.splash button {
+.splash a {
   cursor: pointer;
   color: white;
   background: $green;
@@ -94,6 +94,6 @@
   opacity: 0;
   filter: alpha(opacity=0);
   transform: translate(0, 10px);
-  transition-delay: 1200ms;
+  transition-delay: 1300ms;
   transition-duration: 500ms;
 }

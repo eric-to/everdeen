@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Splash extends React.Component {
   componentDidMount() {
@@ -20,7 +21,7 @@ class Splash extends React.Component {
           <h4 className="step-3">
             Everdeen lets you invest in the stock market<br/>for free, directly from your desktop.
           </h4>
-          <button class="step-5">Demo</button>
+          <Link class="step-5" to="/signup">Demo</Link>
         </div>
 
         <img className="step-4" src="https://d2ue93q3u507c2.cloudfront.net/assets/marketing/images/home_redesign/iPhoneHome_still%402x.png" />

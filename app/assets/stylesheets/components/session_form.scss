@@ -16,6 +16,7 @@
   letter-spacing: -0.14px;
   line-height: 30px;
   margin: 0 0 16px;
+  margin-bottom: 30px;
 }
 
 .session-image {
@@ -100,9 +101,17 @@
 }
 
 #email-label, #password-label {
-  margin-bottom: -7px;
+  margin-top: -10px;
+  margin-bottom: -10px;
 }
 
-#password-label {
-  margin-top: -7px;
+.signup-inputs {
+  display: flex;
+  justify-content: space-between;
+  width: 414px;
+
+  input {
+    margin-top: -1px;
+    width: 155px;
+  }
 }
