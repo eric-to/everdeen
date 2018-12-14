@@ -16,12 +16,9 @@
 @import "components/*";
 
 html, body {
-  // They use PF Din Text Arabic Medium, which is a paid font
   font-family: "DIN Pro", "DIN Web", "Roboto", sans-serif;
-  height: 100vh;
   margin: 0;
-  max-width: 1500px;
-  min-width: 1220px;
+  min-width: 1000px;
   overflow: hidden;
 }
 
