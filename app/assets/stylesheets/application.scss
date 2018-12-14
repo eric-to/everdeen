@@ -17,9 +17,11 @@
 
 html, body {
   font-family: "DIN Pro", "DIN Web", "Roboto", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.25px;
   margin: 0;
   min-width: 1000px;
-  overflow: hidden;
+  text-align: left;
 }
 
 a {
@@ -36,4 +38,8 @@ ul, ul li {
   margin: 0;
   padding: 0;
   text-indent: 0;
+}
+
+header {
+  position: fixed;
 }

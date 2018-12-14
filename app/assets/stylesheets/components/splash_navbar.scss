@@ -1,12 +1,12 @@
 @import "colors";
 
-.navbar-logo {
+.splash-navbar-logo {
   height: 56px;
   margin-top: 2px;
   width: auto;
 }
 
-.navbar-container {
+.splash-navbar-container {
   color: $green;
   display: flex;
   justify-content: space-between;
@@ -15,7 +15,7 @@
   padding-right: 70px;
 }
 
-.navbar-links {
+.splash-navbar-links {
   cursor: pointer;
   display: grid;
   font-family: "DIN Web", "Hiragino Sans GB", STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", sans-serif;
@@ -28,7 +28,7 @@
   text-align: center;
 }
 
-.navbar-links a:hover {
+.splash-navbar-links a:hover {
   color: $light-green;
 }
 
@@ -69,20 +69,4 @@ nav {
       margin-right: 0;
     }
   }
-  // position: absolute;
-  // right: 48px;
-  // top: 0;
-  // ul {
-  //   display: flex;
-  //   line-height: 64px;
-  //   list-style: none;
-  //   margin: 0;
-  //   padding: 0;
-  //   li {
-  //     margin-right: 33px;
-  //   }
-  //   li:last-child {
-  //     margin-right: 0;
-  //   }
-  // }
 }

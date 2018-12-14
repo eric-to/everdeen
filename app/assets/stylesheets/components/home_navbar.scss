@@ -1,0 +1,40 @@
+@import "colors";
+
+.navLogoStar {
+  display: none;
+}
+
+header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  width: 275.77px;
+
+  a, button {
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  a {
+    color: black;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+  }
+
+  .searchbar {
+    border-color: 1px solid black;
+    &:hover, &.focus {
+      border-color: white;
+      box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.01), 0 3px 24px rgba(48,51,51,.09);
+    }
+  }
+}
