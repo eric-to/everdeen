@@ -34,7 +34,7 @@ class SessionForm extends React.Component {
       let lettersTypedSoFar = this.state[field] + demoCredentials[field].shift();
       this.setState({ [field]: lettersTypedSoFar }, () => {
         if (demoCredentials[field].length > 0) {
-          setTimeout(() => enterCredentials(field), 16);
+          setTimeout(() => enterCredentials(field), 19);
         } else {
           if (field === 'password') {
             this.submitDemoLogin();

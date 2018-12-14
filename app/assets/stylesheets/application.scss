@@ -18,8 +18,11 @@
 html, body {
   // They use PF Din Text Arabic Medium, which is a paid font
   font-family: "DIN Pro", "DIN Web", "Roboto", sans-serif;
+  height: 100vh;
   margin: 0;
-  padding: 0;
+  max-width: 1500px;
+  min-width: 1220px;
+  overflow: hidden;
 }
 
 a {
@@ -29,4 +32,11 @@ a {
 
 a:active, a:focus, input:focus, button:focus {
   outline: 0;
+}
+
+ul, ul li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
 }
