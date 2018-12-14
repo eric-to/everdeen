@@ -1,24 +1,21 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import NavbarContainer from './navbar/navbar_container';
+import HomeContainer from './home/home_container';
 import SignInFormContainer from './session/signin_form_container';
 import SignUpFormContainer from './session/signup_form_container';
-import Splash from './splash/splash';
 import { AuthRoute } from '../util/route_util';
 
 const App = () => (
   <div>
-    {/* Home navbar */}
-    <Route exact path="/" component={NavbarContainer} />
-
     <Switch>
-      {/* Login and Sign Up forms */}
+      {/* Home page */}
+      <Route exact path="/" component={HomeContainer} />
+      {/* Login form */}
       <AuthRoute path="/login" component={SignInFormContainer} />
+      {/* Sign up form */}
       <AuthRoute path="/signup" component={SignUpFormContainer} />
-      {/* Splash page */}
-      <Route exact path="/" component={Splash} />
-      {/* Redirect to home page if link doesn't exist */}
+      {/* Page doesn't exist */}
       <Redirect to="/" />
     </Switch>
   </div>

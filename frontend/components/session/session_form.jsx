@@ -25,6 +25,7 @@ class SessionForm extends React.Component {
 
   demoLogin(e) {
     e.preventDefault();
+
     const demoCredentials = { email: '', password: '' };
     demoCredentials['email'] = 'peeta@bread.com'.split('');
     demoCredentials['password'] = 'mtobeiyf'.split('');
@@ -42,7 +43,7 @@ class SessionForm extends React.Component {
       });
     };
 
-    // TODO: refactor this
+
     enterCredentials('email');
     enterCredentials('password');
   }
