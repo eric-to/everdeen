@@ -1,0 +1,60 @@
+@import "colors";
+
+.newsfeed {
+  margin-top: 72px;
+  margin-bottom: 94px; // TODO: find better value
+  margin-left: -30px;
+}
+
+.newsfeed-header {
+  border-color: $dark-border;
+  border-bottom: 1px solid $dark-border;
+  font-family: "Roboto", sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.14px;
+  line-height: 30px;
+  margin-left: 158px;
+  padding-bottom: 16px;
+  width: 678.66px;
+}
+
+.news-item-container {
+  border-radius: 4px;
+  display: flex;
+  height: 134px;
+  margin-left: 128px;
+  padding: 30px;
+  width: 678.66px;
+
+  &:hover {
+    background-color: $almost-white;
+  }
+}
+
+.news-item-image {
+  background-position: center;
+  background-size: cover;
+  border-radius: 4px;
+  height: 134px;
+  width: 196px;
+}
+
+.news-item-title, .news-item-description {
+  color: $black;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 22px;
+  margin: 0;
+  margin-left: 25px;
+}
+
+.news-item-title {
+  margin-bottom: 2px;
+}
+
+.news-item-description {
+  font-weight: 300;
+}

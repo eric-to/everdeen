@@ -5,20 +5,6 @@ import NavLogoSVG from '../logo/nav_logo_svg';
 import SearchSVG from '../logo/search_svg';
 
 const Navbar = ({ currentUser, signOut }) => {
-  const homeLinks = () => (
-    <div>
-      <div className="personal-links">
-        <Link to="/">Home</Link>
-      </div>
-      <div>
-        <button onClick={signOut}>Log Out</button>
-      </div>
-      <div>
-        <Link to="/">Dark Mode</Link>
-      </div>
-    </div>
-  );
-
   const splashNavbar = () => {
     return (
       <div>
@@ -56,8 +42,8 @@ const Navbar = ({ currentUser, signOut }) => {
     return (
       <header>
         <Link className="nav-logo" to="/"><NavLogoSVG /></Link>
+        <div className="nav-logo-search">
 
-        <div>
           <div className="searchbar-container">
             <div className="searchbar">
               <input type="text" placeholder="Search" />

@@ -1,11 +1,16 @@
 import React from 'react';
 
+import NewsfeedContainer from './newsfeed_container';
+
 class Dashboard extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div className="dashboard-container">
-        <div className="portfolio-graph">
-        </div>
+        <NewsfeedContainer />
         <div className="sidebar-container">
           <div className="sidebar">
           </div>
