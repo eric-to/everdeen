@@ -29,4 +29,3 @@
 # Ignore webpack output
 bundle.js
 bundle.js.map
-.env
