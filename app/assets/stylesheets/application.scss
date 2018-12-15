@@ -15,13 +15,13 @@
 @import "colors";
 @import "components/*";
 
-@font-face {
-  font-family: "DINPro-Medium";
-  src: url(../fonts/DINPro-Medium_13936.ttf) format("truetype");
-}
+// @font-face {
+//   font-family: "DINPro-Medium";
+//   src: url(../fonts/DINPro-Medium_13936.ttf) format("truetype");
+// }
 
 html, body {
-  font-family: "DINPro-Medium", "DIN Web", "Roboto", sans-serif;
+  font-family: "DIN Pro", "DIN Web", "Roboto", sans-serif;
   font-size: 13px;
   letter-spacing: 0.25px;
   margin: 0;
