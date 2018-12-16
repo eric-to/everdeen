@@ -23,7 +23,8 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    # redirect_to somewhere else unless logged in
+    # redirect or render something else
+    # if the user is not logged in
   end
 
 end

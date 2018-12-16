@@ -1,6 +1,12 @@
 import React from 'react';
 
 const NewsItem = ({ newsItem }) => {
+  const description = () => {
+    if (newsItem.description !== null) {
+      return newsItem.description.slice(0, 120);
+    }
+  };
+
   return (
     <li>
       <a className="news-item-container" href={newsItem.url} target="_blank">
@@ -9,7 +15,7 @@ const NewsItem = ({ newsItem }) => {
         </a>
         <div className="news-item-info">
           <h3 className="news-item-title">{newsItem.title}</h3>
-          <h3 className="news-item-description">{newsItem.description.slice(0, 120)}</h3>
+          <h3 className="news-item-description">{description()}</h3>
         </div>
       </a>
     </li>

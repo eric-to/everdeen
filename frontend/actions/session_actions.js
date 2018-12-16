@@ -11,7 +11,7 @@ const receiveCurrentUser = currentUser => ({
   currentUser
 });
 
-const signOutCurrentUser = () => ({
+const logOutCurrentUser = () => ({
   type: LOGOUT_CURRENT_USER
 });
 
@@ -39,8 +39,8 @@ export const logIn = user => dispatch => (
           err => dispatch(receiveSessionErrors(err.responseJSON)))
 );
 
-export const signOut = () => dispatch => (
-  SessionAPIUtils.signOut()
-    .then(() => dispatch(signOutCurrentUser()),
+export const logOut = () => dispatch => (
+  SessionAPIUtils.logOut()
+    .then(() => dispatch(logOutCurrentUser()),
           err => dispatch(receiveSessionErrors(err.responseJSON)))
 );

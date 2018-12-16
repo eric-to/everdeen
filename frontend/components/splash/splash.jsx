@@ -24,7 +24,11 @@ class Splash extends React.Component {
           <Link class="step-5" to="/signup">Sign Up</Link>
         </div>
 
-        <img className="step-4" src="https://d2ue93q3u507c2.cloudfront.net/assets/marketing/images/home_redesign/iPhoneHome_still%402x.png" />
+        {/* <img className="step-4" src="https://d2ue93q3u507c2.cloudfront.net/assets/marketing/images/home_redesign/iPhoneHome_still%402x.png" /> */}
+
+        <video className="step-4" autoPlay loop muted>
+          <source src="http://sparrow-app.herokuapp.com/assets/phone_1-aa43dfecfbf3cfffd8613a65f01fa3eae946475a23e4cbf039f70b2b11ffafae.webm" />
+        </video>
       </section>
     );
   }

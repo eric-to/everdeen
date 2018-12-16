@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import NavLogoSVG from '../logo/nav_logo_svg';
 import SearchSVG from '../logo/search_svg';
 
-const Navbar = ({ currentUser, signOut }) => {
+const Navbar = ({ currentUser, logOut }) => {
   const splashNavbar = () => {
     return (
       <div>
@@ -55,7 +55,7 @@ const Navbar = ({ currentUser, signOut }) => {
           <div></div>
           <div><Link to="/">Home</Link></div>
           <div><Link to="/">Dark Mode</Link></div>
-          <div><Link to="/" onClick={signOut}>Log Out</Link></div>
+          <div><Link to="/" onClick={logOut}>Log Out</Link></div>
         </div>
 
       </header>
