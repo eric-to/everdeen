@@ -21,6 +21,11 @@ class User < ApplicationRecord
   attr_reader :password
   after_initialize :ensure_session_token
 
+  has_many :deposits
+  has_many :transactions
+
+  ########## auth-related methods ##########
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
@@ -41,10 +46,25 @@ class User < ApplicationRecord
     self.session_token
   end
 
-  private
-
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64
+  end
+
+  ########## portfolio and stock-related methods ##########
+  
+  def buying_power
+    net_amount = 0
+    self.deposits.each do |deposit|
+      net_amount += deposit.amount
+    end
+    self.transactions.each do |transaction|
+      if transaction.transaction_type == 'buy'
+        net_amount -= transaction.amount
+      else
+        net_amount += transaction.amount
+      end
+    end
+    net_amount
   end
 
 end
