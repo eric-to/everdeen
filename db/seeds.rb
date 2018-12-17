@@ -14,51 +14,44 @@ User.create!(
   password: "mtobeiyf"
 )
 
-User.create!(
-  first_name: "Eric",
-  last_name: "To",
-  email: "erto@berkeley.edu",
-  password: "password"
-)
-
 Deposit.create!(
   user_id: User.first.id,
-  amount: 100.22,
-  deposit_date: 2.months.ago
+  amount: 4906.22,
+  deposit_date: 18.months.ago
 )
 
 Transaction.create!(
   user_id: User.first.id,
-  ticker: "GPRO",
-  num_shares: 5,
-  transaction_date: 4.weeks.ago,
+  ticker: "AAPL",
+  num_shares: 16,
+  transaction_date: 13.months.ago,
   transaction_type: "buy",
-  amount: 23.50
+  amount: 2650.72
 )
 
 Transaction.create!(
   user_id: User.first.id,
-  ticker: "FIT",
+  ticker: "AAPL",
   num_shares: 5,
   transaction_date: 2.weeks.ago,
-  transaction_type: "buy",
-  amount: 24.50
-)
-
-Transaction.create!(
-  user_id: User.first.id,
-  ticker: "FIT",
-  num_shares: 4,
-  transaction_date: 2.days.ago,
   transaction_type: "sell",
-  amount: 22.00
+  amount: 828.35
 )
 
 Transaction.create!(
-  user_id: User.last.id,
-  ticker: "SIRI",
+  user_id: User.first.id,
+  ticker: "AMZN",
   num_shares: 1,
-  transaction_date: 2.weeks.ago,
+  transaction_date: 1.week.ago,
   transaction_type: "buy",
-  amount: 0
+  amount: 366.20
+)
+
+Transaction.create!(
+  user_id: User.first.id,
+  ticker: "FB",
+  num_shares: 1,
+  transaction_date: Time.now,
+  transaction_type: "buy",
+  amount: 144.62
 )

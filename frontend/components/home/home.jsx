@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Dashboard from '../dashboard/dashboard';
+import DashboardContainer from '../dashboard/dashboard_container';
 import NavbarContainer from '../navbar/navbar_container';
 import Splash from '../splash/splash';
 
@@ -11,7 +11,7 @@ class Home extends React.Component {
         <div>
           {/* Logged in */}
           <NavbarContainer />
-          <Dashboard />
+          <DashboardContainer />
         </div>
       );
     } else {

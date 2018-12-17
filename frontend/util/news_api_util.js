@@ -4,5 +4,5 @@ export const fetchNews = () => {
   // let sources = 'sources=cnbc,the-wall-street-journal';
   // let pageSize = '&pageSize=30';
   // url = url + sources + pageSize + `&apiKey=${window.newsAPIKey}`;
-  return $.ajax('http://newsapi.org/v2/everything?sources=the-wall-street-journal&pageSize=30&apiKey=a8591a0bdd2945bea9a91fb46d21dfda');
+  return $.ajax('http://newsapi.org/v2/everything?sources=the-wall-street-journal,business-insider&pageSize=30&apiKey=a8591a0bdd2945bea9a91fb46d21dfda');
 };

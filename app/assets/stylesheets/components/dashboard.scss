@@ -1,3 +1,5 @@
+@import "colors";
+
 .dashboard-container {
   display: flex;
   justify-content: space-between;
@@ -7,6 +9,27 @@
     margin-left: 128px;
     // margin-top: 200px;
     margin-top: 140px;
+  }
+}
+
+.portfolio-value {
+  font-family: "DINPro-Medium";
+  font-size: 36px;
+  font-weight: 500;
+  margin-top: 99px;
+  margin-left: 129px;
+}
+
+.chart-ranges {
+  border-bottom: 1px solid #f4f4f5;
+  color: $black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 676px;
+
+  &.a {
+    color: $black;
   }
 }
 
@@ -30,7 +53,7 @@
   border-bottom: 1px solid #eee;
   display: flex;
   align-items: center;
-  font-family: "Roboto", sans-serif;
+  font-family: "DINPro-Medium";
   height: 43px;
   padding: 4px 21px 0;
 

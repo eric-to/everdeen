@@ -52,17 +52,17 @@ class User < ApplicationRecord
 
   ########## Portfolio-related Methods ##########
 
-  def buying_power
-    total = 0
-    self.deposits.each { |deposit| total += deposit.amount }
+  def buying_power_available
+    total_amount = 0
+    self.deposits.each { |deposit| total_amount += deposit.amount }
     self.transactions.each do |transaction|
       if transaction.transaction_type == "buy"
-        total -= transaction.amount
+        total_amount -= transaction.amount
       else
-        total += transaction.amount
+        total_amount += transaction.amount
       end
     end
-    total.round(2)
+    total_amount.round(2)
   end
 
   def shares_owned
@@ -77,15 +77,92 @@ class User < ApplicationRecord
     stocks
   end
 
-  def one_day_data
-    open_balance = buying_power
-    url = "https://api.iextrading.com/1.0/stock/market/batch?types=chart&range=1d&symbols="
-    self.transactions.select(:ticker).distinct.each do |transaction|
-      url += "#{transaction.ticker},"
+  def total_market_value
+    stocks = shares_owned
+    total_amount = buying_power_available
+
+    url = 'https://api.iextrading.com/1.0/stock/market/batch?types=quote&range=1d&last=5&symbols='
+    stocks.each do |ticker, _|
+      url += "#{ticker},"
     end
-    response = JSON.parse(open(url).read)
-    p response["GPRO"]
-    
+    uri = Net::HTTP.get(URI(url))
+    response = JSON.parse(uri)
+
+    stocks.each do |ticker, num_shares|
+      total_amount += response[ticker]['quote']['latestPrice'].to_f.round(2) * num_shares
+    end
+
+    total_amount.round(2)
+  end
+
+  def opening_balance(currentDate)
+    cash_balance = 0
+    self.deposits.each { |deposit| cash_balance += deposit.amount }
+
+    stocks = Hash.new(0)
+    self.transactions.each do |transaction|
+      if transaction.transaction_date <= 1.day.ago
+        if transaction.transaction_type == "buy"
+          stocks[transaction.ticker] += transaction.num_shares
+          cash_balance -= transaction.amount
+        else
+          stocks[transaction.ticker] -= transaction.num_shares
+          cash_balance += transaction.amount
+        end
+      end
+    end
+
+    total_balance = cash_balance.round(2)
+
+    last_trading_day = 1.day.ago.wday
+    if [6, 0].include?(last_trading_day)
+      if last_trading_day == 6
+        last_trading_day = 2.days.ago
+      else
+        last_trading_day = 3.days.ago
+      end
+    end
+
+    url = 'https://api.iextrading.com/1.0/stock/market/batch?types=quote,chart&range=1m&symbols='
+    stocks.each do |ticker, _|
+      url += "#{ticker},"
+    end
+    uri = Net::HTTP.get(URI(url))
+    response = JSON.parse(uri)
+
+    stocks.each do |ticker, num_shares|
+      last_closing_price = response[ticker]['chart'].last
+      last_closing_price = last_closing_price["close"]
+      total_balance += last_closing_price * num_shares
+    end
+
+    total_balance
+  end
+
+  def intraday_data
+    data = []
+    data.push({ time: '09:30 AM ET', balance: opening_balance(Time.now) })
+    stocks = shares_owned
+
+    url = 'https://api.iextrading.com/1.0/stock/market/batch?types=chart&chartInterval=5&range=1d&symbols='
+    stocks.each do |ticker, _|
+      url += "#{ticker},"
+    end
+    uri = Net::HTTP.get(URI(url))
+    response = JSON.parse(uri)
+
+    balance_at_times = Hash.new(0)
+    stocks.each do |ticker, _|
+      charts = response[ticker]['chart']
+      charts.each do |chart|
+        if chart['marketOpen']
+          balance_at_times[chart['label'] + ' ET'] += chart['marketOpen']
+        end
+      end
+    end
+
+    balance_at_times
+    # TODO: add buying_power_available to each balance?
   end
 
 end

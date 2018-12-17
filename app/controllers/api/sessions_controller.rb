@@ -21,4 +21,9 @@ class Api::SessionsController < ApplicationController
     end
   end
 
+  def info
+    @user = User.find(params[:id])
+    render 'api/users/info'
+  end
+
 end
