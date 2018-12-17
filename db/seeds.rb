@@ -14,6 +14,13 @@ User.create!(
   password: "mtobeiyf"
 )
 
+User.create!(
+  first_name: "Eric",
+  last_name: "To",
+  email: "erto@berkeley.edu",
+  password: "password"
+)
+
 Deposit.create!(
   user_id: User.first.id,
   amount: 100.22,
@@ -36,4 +43,22 @@ Transaction.create!(
   transaction_date: 2.weeks.ago,
   transaction_type: "buy",
   amount: 24.50
+)
+
+Transaction.create!(
+  user_id: User.first.id,
+  ticker: "FIT",
+  num_shares: 4,
+  transaction_date: 2.days.ago,
+  transaction_type: "sell",
+  amount: 22.00
+)
+
+Transaction.create!(
+  user_id: User.last.id,
+  ticker: "SIRI",
+  num_shares: 1,
+  transaction_date: 2.weeks.ago,
+  transaction_type: "buy",
+  amount: 0
 )

@@ -1,6 +1,13 @@
 .dashboard-container {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+
+  .rechartExample {
+    margin-left: 128px;
+    // margin-top: 200px;
+    margin-top: 140px;
+  }
 }
 
 .sidebar-container {
@@ -17,4 +24,19 @@
   right: 128px;
   top: 95px;
   width: 275.77px;
+}
+
+.header-card {
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  height: 43px;
+  padding: 4px 21px 0;
+
+  h3 {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
 }

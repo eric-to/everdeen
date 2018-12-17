@@ -24,7 +24,7 @@ class User < ApplicationRecord
   has_many :deposits
   has_many :transactions
 
-  ########## auth-related methods ##########
+  ########## Auth-related Methods ##########
 
   def password=(password)
     @password = password
@@ -50,21 +50,42 @@ class User < ApplicationRecord
     self.session_token ||= SecureRandom.urlsafe_base64
   end
 
-  ########## portfolio and stock-related methods ##########
-  
+  ########## Portfolio-related Methods ##########
+
   def buying_power
-    net_amount = 0
-    self.deposits.each do |deposit|
-      net_amount += deposit.amount
-    end
+    total = 0
+    self.deposits.each { |deposit| total += deposit.amount }
     self.transactions.each do |transaction|
-      if transaction.transaction_type == 'buy'
-        net_amount -= transaction.amount
+      if transaction.transaction_type == "buy"
+        total -= transaction.amount
       else
-        net_amount += transaction.amount
+        total += transaction.amount
       end
     end
-    net_amount
+    total.round(2)
+  end
+
+  def shares_owned
+    stocks = Hash.new(0)
+    self.transactions.each do |transaction|
+      if transaction.transaction_type == "buy"
+        stocks[transaction.ticker] += transaction.num_shares
+      else
+        stocks[transaction.ticker] -= transaction.num_shares
+      end
+    end
+    stocks
+  end
+
+  def one_day_data
+    open_balance = buying_power
+    url = "https://api.iextrading.com/1.0/stock/market/batch?types=chart&range=1d&symbols="
+    self.transactions.select(:ticker).distinct.each do |transaction|
+      url += "#{transaction.ticker},"
+    end
+    response = JSON.parse(open(url).read)
+    p response["GPRO"]
+    
   end
 
 end

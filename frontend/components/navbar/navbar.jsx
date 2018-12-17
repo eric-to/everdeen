@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import NavLogoSVG from '../logo/nav_logo_svg';
-import SearchSVG from '../logo/search_svg';
+// import SearchSVG from '../logo/search_svg';
 
 const Navbar = ({ currentUser, logOut }) => {
   const splashNavbar = () => {
