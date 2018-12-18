@@ -14,9 +14,45 @@
     <script type="text/javascript">
       window.newsAPIKey = "<%= Rails.application.credentials.news[:api_key] %>";
     </script>
+
+
+
+    <style id="default">
+      body {
+        background: white;
+      }
+    </style>
+    <style id="pinkcss">
+      body {
+        background: pink;
+      }
+    </style>
+    <script type="text/javascript">
+      if(localStorage.getItem("theme") == "default") {
+        document.getElementById("pinkcss").disabled = true;
+      }
+    </script>
+
   </head>
 
   <body>
     <%= yield %>
   </body>
 </html>
+
+<script type="text/javascript">
+  window.onload = function() {
+    themeButton = document.getElementById("theme");
+    if (themeButton) {
+      themeButton.addEventListener("click", function() {
+      pink = document.getElementById("pinkcss");
+      if (pink.disabled == true) {
+        pink.disabled = false;
+        localStorage.removeItem("theme");
+      } else {
+        pink.disabled = true;
+        localStorage.setItem("theme", "default");
+      }});
+    }
+  }
+</script>

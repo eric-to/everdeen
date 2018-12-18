@@ -22,7 +22,7 @@ const Navbar = ({ currentUser, logOut }) => {
               <Link to="/signup">Sign Up</Link>
             </div>
             <div>
-              <Link to="/">Dark Mode</Link>
+              <Link id="theme" to="/">Pink Mode</Link>
             </div>
             <div class="fa-links">
               <a href="https://github.com/eric-to" target="_blank">
@@ -54,7 +54,7 @@ const Navbar = ({ currentUser, logOut }) => {
         <div className="nav-links">
           <div></div>
           <div><Link to="/">Home</Link></div>
-          <div><Link to="/">Dark Mode</Link></div>
+          <div><Link id="theme" to="/">Pink Mode</Link></div>
           <div><Link to="/" onClick={logOut}>Log Out</Link></div>
         </div>
 
