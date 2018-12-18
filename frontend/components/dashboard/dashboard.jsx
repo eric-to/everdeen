@@ -63,11 +63,12 @@ class Dashboard extends React.Component {
           { this.graphHeader() }
 
           <LineChart className="rechartExample" width={676} height={196} data={data}>
+            
             <YAxis
               hide={true}
               domain={[min, max]}
             />
-            <Tooltip isAnimationActive={false} />
+            <Tooltip isAnimationActive={false} offset={-40} position={{y: -20}} />
 
             <Line type="linear" dataKey="balance" stroke="#21ce99" dot={false} strokeWidth={2} />
           </LineChart>

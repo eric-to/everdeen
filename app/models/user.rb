@@ -24,8 +24,6 @@ class User < ApplicationRecord
   has_many :deposits
   has_many :transactions
 
-  ########## Auth-related Methods ##########
-
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
@@ -50,7 +48,8 @@ class User < ApplicationRecord
     self.session_token ||= SecureRandom.urlsafe_base64
   end
 
-  ########## Portfolio-related Methods ##########
+  ####################
+  ## Portfolio-related Methods
 
   def buying_power_available
     total_amount = 0
@@ -162,7 +161,6 @@ class User < ApplicationRecord
     end
 
     balance_at_times
-    # TODO: add buying_power_available to each balance?
   end
 
 end
