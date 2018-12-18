@@ -19,6 +19,24 @@
   margin-left: 129px;
 }
 
+.chart-tabs-container {
+  border-bottom: 1px solid $bottom-border;
+  font-size: 13px;
+  margin-top: 24px;
+  margin-left: 129px;
+  width: 676px;
+}
+
+.chart-tabs {
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 22px;
+  justify-content: space-between;
+  padding-bottom: 18px; 
+  width: 16px;
+}
+
 // .chart-ranges {
 //   border-bottom: 1px solid #f4f4f5;
 //   color: $black;
@@ -48,17 +66,11 @@
   width: 275.77px;
 }
 
-.header-card-container, .stock-card-container {
+.header-card-container {
   border-bottom: 1px solid $bottom-border;
 }
 
-.stock-card-container {
-  height: 60px;
-  width: 276px;
-}
-
 .header-card {
-  // border-bottom: 1px solid $bottom-border;
   display: flex;
   align-items: center;
   font-family: "DINPro-Medium";
@@ -74,24 +86,25 @@
   }
 }
 
+.stock-card-container:hover {
+  background-color: #fafafa;
+}
+
 .stock-card {
-  // border-bottom: 1px solid $bottom-border;
+  display: flex;
+  align-content: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  font-family: "DINPro-Medium";
   height: 60px;
-  margin-left: 25px;
+  margin-left: 24px;
 
-  &.div {
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 0.25px;
-    line-height: 19px;
-  }
-
-  h4 {
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 0.25px;
-    line-height: 19px;
+  .ticker {
     margin: 0;
     padding: 0;
   }
+}
+
+div.stocks-container > div:last-child {
+  border-bottom: 1px solid $bottom-border;
 }

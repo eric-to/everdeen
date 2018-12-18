@@ -16,7 +16,7 @@ User.create!(
 
 Deposit.create!(
   user_id: User.first.id,
-  amount: 4906.22,
+  amount: 499206.22,
   deposit_date: 18.months.ago
 )
 
@@ -33,7 +33,7 @@ Transaction.create!(
   user_id: User.first.id,
   ticker: "AAPL",
   num_shares: 5,
-  transaction_date: 2.weeks.ago,
+  transaction_date: 6.weeks.ago,
   transaction_type: "sell",
   amount: 828.35
 )
@@ -42,7 +42,7 @@ Transaction.create!(
   user_id: User.first.id,
   ticker: "AMZN",
   num_shares: 1,
-  transaction_date: 1.week.ago,
+  transaction_date: 5.weeks.ago,
   transaction_type: "buy",
   amount: 366.20
 )
@@ -51,7 +51,43 @@ Transaction.create!(
   user_id: User.first.id,
   ticker: "FB",
   num_shares: 1,
-  transaction_date: Time.now,
+  transaction_date: 4.weeks.ago,
   transaction_type: "buy",
   amount: 144.62
+)
+
+Transaction.create!(
+  user_id: User.first.id,
+  ticker: "GOOG",
+  num_shares: 10,
+  transaction_date: 3.weeks.ago,
+  transaction_type: "buy",
+  amount: 10159.40
+)
+
+Transaction.create!(
+  user_id: User.first.id,
+  ticker: "ATVI",
+  num_shares: 18,
+  transaction_date: 2.weeks.ago,
+  transaction_type: "buy",
+  amount: 847.44
+)
+
+Transaction.create!(
+  user_id: User.first.id,
+  ticker: "GOOG",
+  num_shares: 5,
+  transaction_date: 10.days.ago,
+  transaction_type: "buy",
+  amount: 5079.70
+)
+
+Transaction.create!(
+  user_id: User.first.id,
+  ticker: "TLSA",
+  num_shares: 6,
+  transaction_date: 4.days.ago,
+  transaction_type: "buy",
+  amount: 2087.16
 )

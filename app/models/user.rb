@@ -139,8 +139,7 @@ class User < ApplicationRecord
   end
 
   def intraday_data
-    data = []
-    data.push({ time: '09:30 AM ET', balance: opening_balance(Time.now) })
+    open_balance = opening_balance(Time.now)
     stocks = shares_owned
 
     url = 'https://api.iextrading.com/1.0/stock/market/batch?types=chart&chartInterval=5&range=1d&symbols='
@@ -150,12 +149,13 @@ class User < ApplicationRecord
     uri = Net::HTTP.get(URI(url))
     response = JSON.parse(uri)
 
-    balance_at_times = Hash.new(0)
-    stocks.each do |ticker, _|
+    balance_at_times = Hash.new(open_balance);
+    # balance_at_times['09:30 AM ET'] = open_balance
+    stocks.each do |ticker, num_shares|
       charts = response[ticker]['chart']
       charts.each do |chart|
-        if chart['marketOpen']
-          balance_at_times[chart['label'] + ' ET'] += chart['marketOpen']
+        if chart['marketOpen'] && chart['label'] != '09:30 AM'
+          balance_at_times[chart['label'] + ' ET'] += chart['marketOpen'] * num_shares
         end
       end
     end

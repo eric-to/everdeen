@@ -11,7 +11,7 @@ const NewsItem = ({ newsItem }) => {
     //   }
     // }
     if (newsItem.description !== null) {
-      return newsItem.description.slice(0, 120);
+      return `${newsItem.description.slice(0, 140)}...`;
     }
   };
 

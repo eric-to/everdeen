@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChart, Line, YAxis, Tooltip } from 'recharts';
+import { Line, LineChart, Tooltip, YAxis, XAxis } from 'recharts';
 
 import NewsfeedContainer from './newsfeed_container';
 import SidebarContainer from './sidebar_container';
@@ -39,8 +39,8 @@ class Dashboard extends React.Component {
   render() {
     let data = [];
     let graphData;
-    let min = 99999;
-    let max = -99999;
+    let min = 9999999;
+    let max = -9999999;
     if (this.props.currentUser.intraday_data) {
       graphData = this.props.currentUser.intraday_data;
       const times = Object.keys(graphData);
@@ -48,10 +48,10 @@ class Dashboard extends React.Component {
         let dataPoint = {};
         dataPoint["time"] = times[i];
         dataPoint["balance"] = graphData[times[i]];
-        if (graphData[times[i]] < min) {
-          min = graphData[times[i]];
-        } else if (graphData[times[i]] > max) {
-          max = graphData[times[i]];
+        if (dataPoint["balance"] < min) {
+          min = dataPoint["balance"];
+        } else if (dataPoint["balance"] > max) {
+          max = dataPoint["balance"];
         }
         data.push(dataPoint);
       }
@@ -63,7 +63,6 @@ class Dashboard extends React.Component {
           { this.graphHeader() }
 
           <LineChart className="rechartExample" width={676} height={196} data={data}>
-            
             <YAxis
               hide={true}
               domain={[min, max]}
@@ -72,13 +71,15 @@ class Dashboard extends React.Component {
 
             <Line type="linear" dataKey="balance" stroke="#21ce99" dot={false} strokeWidth={2} />
           </LineChart>
-          {/* <ul className="chart-ranges">
-            <li><a>1D</a></li>
-            <li><a>1W</a></li>
-            <li><a>1M</a></li>
-            <li><a>3M</a></li>
-            <li><a>ALL</a></li>
-          </ul> */}
+          <ul className="chart-tabs-container">
+            <div className="chart-tabs">
+              <li><a>1D</a></li>
+              <li><a>1W</a></li>
+              <li><a>1M</a></li>
+              <li><a>3M</a></li>
+              <li><a>ALL</a></li>
+            </div>
+          </ul>
 
           <NewsfeedContainer />
         </div>

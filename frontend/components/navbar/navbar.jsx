@@ -66,3 +66,6 @@ const Navbar = ({ currentUser, logOut }) => {
 }
 
 export default Navbar;
+
+// TODO: reload the themeButton handler script without having to refresh
+// because this is an SAP
