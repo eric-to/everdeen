@@ -31,14 +31,12 @@ const receiveUserInfo = info => ({
 });
 
 // thunk action creators
-// TODO: clear errors
 export const signUp = user => dispatch => (
   SessionAPIUtils.signUp(user)
     .then(user => dispatch(receiveCurrentUser(user)),
           err => dispatch(receiveSessionErrors(err.responseJSON)))
 );
 
-// TODO: clear errors
 export const logIn = user => dispatch => (
   SessionAPIUtils.logIn(user)
     .then(user => dispatch(receiveCurrentUser(user)),

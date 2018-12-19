@@ -20,7 +20,7 @@ class Newsfeed extends React.Component {
     return (
       <div className="newsfeed">
         <h2 className="newsfeed-header">Recent News</h2>
-        <ul>
+        <ul className="all-news-container">
           {news.map(item => {
             return <NewsItem newsItem={item} />
           })}

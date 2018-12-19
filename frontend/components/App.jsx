@@ -13,8 +13,9 @@ const App = () => (
     <Switch>
       {/* Home page */}
       <Route exact path="/" component={HomeContainer} />
-      {/* Login form */}
+      {/* Stock detail page */}
       <Route exact path="/stocks/:ticker" component={StockShowContainer} />
+      {/* Login form */}
       <AuthRoute path="/login" component={SignInFormContainer} />
       {/* Sign up form */}
       <AuthRoute path="/signup" component={SignUpFormContainer} />

@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import NavLogoSVG from '../logo/nav_logo_svg';
 // import SearchSVG from '../logo/search_svg';
 
-// TODO: Add search svg to search bar and redirect theme button clickers to same page
+// TODO: Add search svg to search bar and redirect
+// theme button clicks to the current page or do
+// nothing
 const Navbar = ({ currentUser, logOut }) => {
   const splashNavbar = () => {
     return (
@@ -49,6 +51,7 @@ const Navbar = ({ currentUser, logOut }) => {
             <div className="searchbar">
               <input type="text" placeholder="Search" />
             </div>
+            {/* <SearchSVG /> */}
           </div>
         </div>
 
@@ -68,5 +71,5 @@ const Navbar = ({ currentUser, logOut }) => {
 
 export default Navbar;
 
-// TODO: reload the themeButton handler script without having to refresh
-// because this is an SAP
+// TODO: reattach the theme button click
+// handler globally across the site

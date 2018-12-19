@@ -1,7 +1,7 @@
 @import "colors";
 
 .newsfeed {
-  margin-top: 65px;
+  margin-top: 55px;
   margin-bottom: 94px; // TODO: find better value
   margin-left: -30px;
 }
@@ -17,6 +17,10 @@
   margin-left: 158px;
   padding-bottom: 16px;
   width: 678.66px;
+}
+
+.all-news-container {
+  margin-top: -22px;
 }
 
 .news-item-container {

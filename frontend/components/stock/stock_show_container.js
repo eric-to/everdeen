@@ -29,7 +29,6 @@ const mapDispatchToProps = dispatch => ({
   fetchStockYearData: ticker => dispatch(fetchStockYearData(ticker)),
   fetchStockFiveYearsData: ticker => dispatch(fetchStockFiveYearsData(ticker)),
   fetchStockCompanyInfo: ticker => dispatch(fetchStockCompanyInfo(ticker)),
-  fetchStockNews: ticker => dispatch(fetchStockNews(ticker)),
   fetchNews: ticker => dispatch(fetchNews(ticker)),
   fetchStock: ticker => dispatch(fetchStock(ticker))
 });

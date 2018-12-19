@@ -1,4 +1,5 @@
-// TODO: Improve these queries, if possible - i.e. use intervals for charts, filter news
+// TODO: Improve these queries (use more filters, like chartInterval)
+// TODO: Clean up method names
 export const fetchIntradayData = ticker => (
   $.ajax({
     url: `https://api.iextrading.com/1.0/stock/${ticker}/chart/1d` 
@@ -32,11 +33,5 @@ export const fetchFiveYearsData = ticker => (
 export const fetchStockCompanyInfo = ticker => (
   $.ajax({
     url: `https://api.iextrading.com/1.0/stock/market/batch?symbols=${ticker}&types=quote,company,info`
-  })
-);
-
-export const fetchStockNews = ticker => (
-  $.ajax({
-    url: `https://newsapi.org/v2/everything?q=${ticker}&apiKey=a8591a0bdd2945bea9a91fb46d21dfda`
   })
 );

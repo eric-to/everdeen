@@ -13,10 +13,17 @@ class StockChart extends React.Component {
     const data = [];
     let min = Infinity;
     let max = -Infinity;
+    let prevDataPoint;
     for (let i = 0; i < oneDayData.length; i++) {
       let time = oneDayData[i].label;
       if (i % 5 === 0 || time === "3:59 PM") {
         let marketPrice = oneDayData[i].marketAverage;
+        if (marketPrice === -1) {
+          data.push({
+            prevDataPoint
+          })
+          continue;
+        }
         if (time === "3:59 PM") {
           data.push({
             time: "4:00 PM",
@@ -27,6 +34,10 @@ class StockChart extends React.Component {
             time: time,
             price: oneDayData[i].marketAverage
           });
+          prevDataPoint = {
+            time: time,
+            price: oneDayData[i].marketAverage
+          };
         }
 
         if (marketPrice < min) {
@@ -36,7 +47,6 @@ class StockChart extends React.Component {
         }
       }
     }
-    console.log('wtf');
 
     return {
       chartData: data,

@@ -63,7 +63,7 @@ class Dashboard extends React.Component {
         <div>
           { this.graphHeader() }
 
-          <LineChart className="rechartExample" width={676} height={196} data={data}>
+          <LineChart className="portfolio-chart" width={676} height={196} data={data}>
             <YAxis
               hide={true}
               domain={[min, max]}
@@ -83,7 +83,7 @@ class Dashboard extends React.Component {
             </div>
           </ul>
 
-          <NewsfeedContainer ticker={"home"} />
+          <NewsfeedContainer ticker={"NOTATICKER"} />
         </div>
         <SidebarContainer />
       </div>
