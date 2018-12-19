@@ -7,10 +7,7 @@ class StockChart extends React.Component {
     this.state = { active: "1d" };
   }
 
-  formatTime(timeString) {
-  }
-
-  // TODO: Format time and price
+  // TODO: Format time, date, and price
   // TODO: Check graph endpoints (and open balance)
   calcOneDayData(oneDayData = []) {
     const data = [];
@@ -39,6 +36,7 @@ class StockChart extends React.Component {
         }
       }
     }
+    console.log('wtf');
 
     return {
       chartData: data,
@@ -84,7 +82,7 @@ class StockChart extends React.Component {
   render() {
     let data = [];
     if (this.props.stock) {
-      if (this.state === "1d") {
+      if (this.state.active === "1d") {
         data = this.calcOneDayData(this.props.stock);
       }
     }
@@ -110,12 +108,12 @@ class StockChart extends React.Component {
           </LineChart>
           <div className="chart-tabs-container">
             <ul className="chart-tabs">
-              {/* <li><a onClick={ () => this.setState({ active: "1d" }) }>1D</a></li>
+              <li><a onClick={ () => this.setState({ active: "1d" }) }>1D</a></li>
               <li><a onClick={ () => this.setState({ active: "1w" }) }>1W</a></li>
               <li><a onClick={ () => this.setState({ active: "1m" }) }>1M</a></li>
               <li><a onClick={ () => this.setState({ active: "3m" }) }>3M</a></li>
               <li><a onClick={ () => this.setState({ active: "1y" }) }>1Y</a></li>
-              <li><a onClick={ () => this.setState({ active: "5y" }) }>5Y</a></li> */}
+              <li><a onClick={ () => this.setState({ active: "5y" }) }>5Y</a></li>
             </ul>
           </div>
         </div>
