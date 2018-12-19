@@ -10,16 +10,22 @@ import {
   fetchStockYearData,
   fetchStockFiveYearsData,
   fetchStockCompanyInfo,
-  fetchStockNews,
-  fetchStock
+  fetchStockInfo
 } from '../../actions/stock_actions';
 
-// TODO: Refactor to nest stock-related state under the ticker key
-// for nicer code
+// TODO: Refactor the stock state to make it easier
+// to work with
 const mapStateToProps = (state, ownProps) => ({
   news: state.entities.news,
-  stock: state.entities.stocks[ownProps.match.params.ticker],
-  currentUser: state.entities.users[state.session.id]
+  // stock: state.entities.stocks[ownProps.match.params.ticker],
+  intradayData: state.entities.stocks.intradayData,
+  monthData: state.entities.stocks.monthData,
+  threeMonthsData: state.entities.stocks.threeMonthsData,
+  yearData: state.entities.stocks.yearData,
+  fiveYearsData: state.entities.stocks.fiveYearsData,
+  ceo: state.entities.stocks.ceo,
+  companyName: state.entities.stocks.companyName,
+  // currentUser: state.entities.users[state.session.id]
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -30,7 +36,7 @@ const mapDispatchToProps = dispatch => ({
   fetchStockFiveYearsData: ticker => dispatch(fetchStockFiveYearsData(ticker)),
   fetchStockCompanyInfo: ticker => dispatch(fetchStockCompanyInfo(ticker)),
   fetchNews: ticker => dispatch(fetchNews(ticker)),
-  fetchStock: ticker => dispatch(fetchStock(ticker))
+  fetchStockInfo: ticker => dispatch(fetchStockInfo(ticker))
 });
 
 export default connect(

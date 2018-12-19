@@ -19,11 +19,18 @@
   margin-left: 129px;
 }
 
-.chart-tabs-container {
+.portfolio-chart-tabs-container {
   border-bottom: 1px solid $bottom-border;
   font-size: 13px;
   margin-top: 24px;
   margin-left: 129px;
+  width: 676px;
+}
+
+.stock-chart-tabs-container {
+  border-bottom: 1px solid $bottom-border;
+  font-size: 13px;
+  margin-top: 24px;
   width: 676px;
 }
 

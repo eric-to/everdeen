@@ -72,7 +72,7 @@ class Dashboard extends React.Component {
 
             <Line type="linear" dataKey="balance" stroke="#21ce99" dot={false} strokeWidth={2} />
           </LineChart>
-          <ul className="chart-tabs-container">
+          <ul className="portfolio-chart-tabs-container">
             <div className="chart-tabs">
               <li><a>1D</a></li>
               <li><a>1W</a></li>

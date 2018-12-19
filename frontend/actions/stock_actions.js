@@ -6,8 +6,7 @@ export const RECEIVE_STOCK_THREE_MONTHS_DATA = 'RECEIVE_STOCK_THREE_MONTHS_DATA'
 export const RECEIVE_STOCK_YEAR_DATA = 'RECEIVE_STOCK_YEAR_DATA';
 export const RECEIVE_STOCK_FIVE_YEARS_DATA = 'RECEIVE_STOCK_FIVE_YEARS_DATA';
 export const RECEIVE_STOCK_COMPANY_INFO = 'RECEIVE_STOCK_COMPANY_INFO';
-export const RECEIVE_STOCK_NEWS = 'RECEIVE_STOCK_NEWS';
-export const RECEIVE_STOCK = 'RECEIVE_STOCK';
+// export const RECEIVE_STOCK = 'RECEIVE_STOCK';
 
 // normal action creators
 const receiveStockIntradayData = (ticker, data) => ({
@@ -46,43 +45,29 @@ const receiveStockCompanyInfo = (ticker, info) => ({
   info
 })
 
-const receiveStockNews = (ticker, news) => ({
-  type: RECEIVE_STOCK_NEWS,
-  ticker,
-  news
-});
-
-const receiveStock = ticker => ({
-  type: RECEIVE_STOCK,
-  ticker
-});
-
 // thunk action creators
-// export const fetchStock = ticker => dispatch (
-// );
-
 export const fetchStockIntradayData = ticker => dispatch => (
   StockAPIUtils.fetchIntradayData(ticker)
     .then(data => dispatch(receiveStockIntradayData(ticker, data)))
 );
 
 export const fetchStockMonthData = ticker => dispatch => (
-  StockAPIUtils.fetchStockMonthData(ticker)
+  StockAPIUtils.fetchMonthData(ticker)
     .then(data => dispatch(receiveStockMonthData(ticker, data)))
 );
 
 export const fetchStockThreeMonthsData = ticker => dispatch => (
-  StockAPIUtils.fetchStockThreeMonthsData(ticker)
+  StockAPIUtils.fetchThreeMonthsData(ticker)
     .then(data => dispatch(receiveStockThreeMonthsData(ticker, data)))
 );
 
 export const fetchStockYearData = ticker => dispatch => (
-  StockAPIUtils.fetchStockYearData(ticker)
+  StockAPIUtils.fetchYearData(ticker)
     .then(data => dispatch(receiveStockYearData(ticker, data)))
 );
 
 export const fetchStockFiveYearsData = ticker => dispatch => (
-  StockAPIUtils.fetchStockFiveYearsData(ticker)
+  StockAPIUtils.fetchFiveYearsData(ticker)
     .then(data => dispatch(receiveStockFiveYearsData(ticker, data)))
 );
 
@@ -91,7 +76,12 @@ export const fetchStockCompanyInfo = ticker => dispatch => (
     .then(info => dispatch(receiveStockCompanyInfo(ticker, info[ticker])))
 );
 
-export const fetchStockNews = ticker => dispatch => (
-  StockAPIUtils.fetchStockNews(ticker)
-    .then(news => dispatch(receiveStockNews(ticker, news.articles)))
+export const fetchStockInfo = ticker => dispatch => ( 
+  StockAPIUtils.fetchStockCompanyInfo(ticker) 
+    .then(info => dispatch(receiveStockCompanyInfo(ticker, info[ticker])))
+    .then(() => dispatch(fetchStockIntradayData(ticker)))
+    .then(() => dispatch(fetchStockMonthData(ticker)))
+    .then(() => dispatch(fetchStockThreeMonthsData(ticker)))
+    .then(() => dispatch(fetchStockYearData(ticker)))
+    .then(() => dispatch(fetchStockFiveYearsData(ticker)))
 );

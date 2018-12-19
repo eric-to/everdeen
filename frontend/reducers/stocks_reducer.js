@@ -9,27 +9,28 @@ const stocksReducer = (state = {}, action) => {
 
   switch(action.type) {
     case StockActions.RECEIVE_STOCK_INTRADAY_DATA:
-      newState[action.ticker] = action.data;
+      newState.intradayData = action.data;
       return newState;
 
     case StockActions.RECEIVE_STOCK_MONTH_DATA:
-      newState[action.ticker].monthData = action.data;
+      newState.monthData = action.data;
       return newState;
 
     case StockActions.RECEIVE_STOCK_THREE_MONTHS_DATA:
-      newState[action.ticker].threeMonthsData = action.data;
+      newState.threeMonthsData = action.data;
       return newState;
 
     case StockActions.RECEIVE_STOCK_YEAR_DATA:
-      newState[action.ticker].yearData = action.data;
+      newState.yearData = action.data;
       return newState;
 
     case StockActions.RECEIVE_STOCK_FIVE_YEARS_DATA:
-      newState[action.ticker].fiveYearsData = action.data;
+      newState.fiveYearsData = action.data;
       return newState;
 
     case StockActions.RECEIVE_STOCK_COMPANY_INFO:
-      // grab company info
+      newState.ceo = action.info.company.CEO;
+      newState.companyName = action.info.quote.companyName;
       return newState;
 
     default:

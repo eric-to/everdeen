@@ -32,11 +32,11 @@ class StockChart extends React.Component {
         } else {
           data.push({
             time: time,
-            price: oneDayData[i].marketAverage
+            price: marketPrice
           });
           prevDataPoint = {
             time: time,
-            price: oneDayData[i].marketAverage
+            price: marketPrice
           };
         }
 
@@ -50,6 +50,7 @@ class StockChart extends React.Component {
 
     return {
       chartData: data,
+      currentPrice: prevDataPoint.price,
       minPrice: min,
       maxPrice: max
     };
@@ -59,13 +60,24 @@ class StockChart extends React.Component {
     const data = [];
     let min = Infinity;
     let max = -Infinity;
+    let prevDataPoint;
     for (let i = 0; i < oneMonthData.length; i++) {
       let date = oneMonthData[i].date;
       let closingPrice = oneMonthData[i].close;
+      if (closingPrice === -1) {
+        data.push({
+          prevDataPoint
+        })
+        continue;
+      }
       data.push({
         time: date,
         price: closingPrice
       });
+      prevDataPoint = {
+        time: date,
+        price: closingPrice
+      };
 
       if (closingPrice < min) {
         min = closingPrice;
@@ -76,6 +88,7 @@ class StockChart extends React.Component {
 
     return {
       chartData: data,
+      currentPrice: prevDataPoint.price,
       minPrice: min,
       maxPrice: max
     }
@@ -89,17 +102,40 @@ class StockChart extends React.Component {
     return this.calcOneMonthData(oneYearData);
   }
 
+  calcFiveYearData(fiveYearData = []) {
+    return this.calcOneMonthData(fiveYearData);
+  }
+
   render() {
     let data = [];
-    if (this.props.stock) {
-      if (this.state.active === "1d") {
-        data = this.calcOneDayData(this.props.stock);
-      }
+
+    if (this.props.intradayData && this.state.active === "1d") {
+      data = this.calcOneDayData(this.props.intradayData);
+    }
+
+    if (this.props.oneMonthData && this.state.active === "1m") {
+      console.log(this.state.active);
+      data = this.calcOneMonthData(this.props.oneMonthData);
+    }
+
+    if (this.props.threeMonthData && this.state.active === "3m") {
+      data = this.calcThreeMonthData(this.props.threeMonthData);
+    }
+
+    if (this.props.yearData && this.state.active === "1y") {
+      data = this.calcOneYearData(this.props.yearData);
+    }
+
+    // TODO: plot by week, not by day
+    if (this.props.fiveYearData && this.state.active === "5y") {
+      data = this.calcFiveYearData(this.props.fiveYearData);
     }
 
     if (data.length !== 0) {
       return (
         <div className="stock-chart">
+          <h1 id="company-name">{this.props.companyName}</h1>
+          <h2 id="stock-price">{`$${data.currentPrice}`}</h2>
           <LineChart
             width={676}
             height={196}
@@ -116,7 +152,7 @@ class StockChart extends React.Component {
               dot={false}
               strokeWidth={2}/>
           </LineChart>
-          <div className="chart-tabs-container">
+          <div className="stock-chart-tabs-container">
             <ul className="chart-tabs">
               <li><a onClick={ () => this.setState({ active: "1d" }) }>1D</a></li>
               <li><a onClick={ () => this.setState({ active: "1w" }) }>1W</a></li>

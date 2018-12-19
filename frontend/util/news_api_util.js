@@ -8,6 +8,6 @@ export const fetchNews = (ticker) => {
   if (ticker === "NOTATICKER") {
     return $.ajax("https://newsapi.org/v2/everything?sources=business-insider,cnbc,the-wall-street-journal&pageSize=30&apiKey=a8591a0bdd2945bea9a91fb46d21dfda");
   } else {
-    return $.ajax("https://newsapi.org/v2/everything?q=${ticker}&apiKey=a8591a0bdd2945bea9a91fb46d21dfda");
+    return $.ajax("https://newsapi.org/v2/everything?q=${ticker}&apiKey=a8591a0bdd2945bea9a91fb46d21dfda&language=en");
   }
 };
