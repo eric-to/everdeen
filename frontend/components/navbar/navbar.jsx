@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import NavLogoSVG from '../logo/nav_logo_svg';
 // import SearchSVG from '../logo/search_svg';
 
+// TODO: Add search svg to search bar and redirect theme button clickers to same page
 const Navbar = ({ currentUser, logOut }) => {
   const splashNavbar = () => {
     return (

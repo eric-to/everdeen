@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchNews: () => dispatch(fetchNews())
+  fetchNews: ticker => dispatch(fetchNews(ticker))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Newsfeed);

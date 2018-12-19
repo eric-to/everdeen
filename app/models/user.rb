@@ -76,6 +76,24 @@ class User < ApplicationRecord
     stocks
   end
 
+  def current_stock_prices
+    stocks = shares_owned
+    stock_prices = Hash.new
+
+    url = 'https://api.iextrading.com/1.0/stock/market/batch?types=quote&range=1m&last=5&symbols=';
+    stocks.each do |ticker, _|
+      url += "#{ticker},"
+    end
+    uri = Net::HTTP.get(URI(url))
+    response = JSON.parse(uri)
+
+    stocks.each do |ticker, _|
+      stock_prices[ticker] = response[ticker]['quote']['latestPrice']
+    end
+
+    stock_prices
+  end
+
   def total_market_value
     stocks = shares_owned
     total_amount = buying_power_available
@@ -149,7 +167,7 @@ class User < ApplicationRecord
     uri = Net::HTTP.get(URI(url))
     response = JSON.parse(uri)
 
-    balance_at_times = Hash.new(open_balance);
+    balance_at_times = Hash.new(open_balance)
     # balance_at_times['09:30 AM ET'] = open_balance
     stocks.each do |ticker, num_shares|
       charts = response[ticker]['chart']

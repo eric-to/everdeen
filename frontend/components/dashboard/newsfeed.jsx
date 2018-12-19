@@ -4,7 +4,7 @@ import NewsItem from './news_item';
 
 class Newsfeed extends React.Component {
   componentDidMount() {
-    this.props.fetchNews();
+    this.props.fetchNews(this.props.ticker);
   }
 
   // Kudos to Dwayne Charrington for sharing

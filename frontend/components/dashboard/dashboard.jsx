@@ -41,6 +41,7 @@ class Dashboard extends React.Component {
     let graphData;
     let min = 9999999;
     let max = -9999999;
+
     if (this.props.currentUser.intraday_data) {
       graphData = this.props.currentUser.intraday_data;
       const times = Object.keys(graphData);
@@ -77,11 +78,12 @@ class Dashboard extends React.Component {
               <li><a>1W</a></li>
               <li><a>1M</a></li>
               <li><a>3M</a></li>
+              <li><a>1Y</a></li>
               <li><a>ALL</a></li>
             </div>
           </ul>
 
-          <NewsfeedContainer />
+          <NewsfeedContainer ticker={"home"} />
         </div>
         <SidebarContainer />
       </div>
