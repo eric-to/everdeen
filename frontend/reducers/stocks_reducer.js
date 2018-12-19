@@ -5,7 +5,8 @@ const stocksReducer = (state = {}, action) => {
   let newState = Object.assign({}, state);
   switch(action.type) {
     case StockActions.RECEIVE_STOCK_INTRADAY_DATA:
-      newState[action.ticker].intradayData = action.data;
+      // newState[action.ticker].intradayData = action.data;
+      newState[action.ticker] = action.data;
       return newState;
     case StockActions.RECEIVE_STOCK_MONTH_DATA:
       newState[action.ticker].monthData = action.data;
@@ -20,8 +21,11 @@ const stocksReducer = (state = {}, action) => {
       newState[action.ticker].fiveYearsData = action.data;
       return newState;
     case StockActions.RECEIVE_STOCK_COMPANY_INFO:
+      newState[action.ticker].marketCap = action.info.quote.marketCap;
       newState[action.ticker].description = action.info.company.description;
       newState[action.ticker].ceo = action.info.company.CEO;
+      newState[action.ticker].exchange = action.info.company.exchange;
+
       return newState;
     case StockActions.RECEIVE_STOCK_NEWS:
       newState[action.ticker].news = action.news;

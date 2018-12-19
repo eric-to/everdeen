@@ -10,7 +10,8 @@ import {
   fetchStockYearData,
   fetchStockFiveYearsData,
   fetchStockCompanyInfo,
-  fetchStockNews
+  fetchStockNews,
+  fetchStock
 } from '../../actions/stock_actions';
 
 // TODO: Refactor to nest stock-related state under the ticker key
@@ -29,7 +30,8 @@ const mapDispatchToProps = dispatch => ({
   fetchStockFiveYearsData: ticker => dispatch(fetchStockFiveYearsData(ticker)),
   fetchStockCompanyInfo: ticker => dispatch(fetchStockCompanyInfo(ticker)),
   fetchStockNews: ticker => dispatch(fetchStockNews(ticker)),
-  fetchNews: ticker => dispatch(fetchNews(ticker))
+  fetchNews: ticker => dispatch(fetchNews(ticker)),
+  fetchStock: ticker => dispatch(fetchStock(ticker))
 });
 
 export default connect(

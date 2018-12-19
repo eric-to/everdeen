@@ -85,9 +85,9 @@ Transaction.create!(
 
 Transaction.create!(
   user_id: User.first.id,
-  ticker: "TLSA",
+  ticker: "TSLA",
   num_shares: 6,
   transaction_date: 4.days.ago,
   transaction_type: "buy",
-  amount: 2087.16
+  amount: 2022.72
 )

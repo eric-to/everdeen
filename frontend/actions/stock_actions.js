@@ -7,10 +7,12 @@ export const RECEIVE_STOCK_YEAR_DATA = 'RECEIVE_STOCK_YEAR_DATA';
 export const RECEIVE_STOCK_FIVE_YEARS_DATA = 'RECEIVE_STOCK_FIVE_YEARS_DATA';
 export const RECEIVE_STOCK_COMPANY_INFO = 'RECEIVE_STOCK_COMPANY_INFO';
 export const RECEIVE_STOCK_NEWS = 'RECEIVE_STOCK_NEWS';
+export const RECEIVE_STOCK = 'RECEIVE_STOCK';
 
 // normal action creators
-const receiveStockIntradayData = data => ({
+const receiveStockIntradayData = (ticker, data) => ({
   type: RECEIVE_STOCK_INTRADAY_DATA,
+  ticker,
   data
 })
 
@@ -50,9 +52,17 @@ const receiveStockNews = (ticker, news) => ({
   news
 });
 
+const receiveStock = ticker => ({
+  type: RECEIVE_STOCK,
+  ticker
+});
+
 // thunk action creators
+// export const fetchStock = ticker => dispatch (
+// );
+
 export const fetchStockIntradayData = ticker => dispatch => (
-  StockAPIUtils.fetchStockIntradayData(ticker)
+  StockAPIUtils.fetchIntradayData(ticker)
     .then(data => dispatch(receiveStockIntradayData(ticker, data)))
 );
 
@@ -78,7 +88,7 @@ export const fetchStockFiveYearsData = ticker => dispatch => (
 
 export const fetchStockCompanyInfo = ticker => dispatch => (
   StockAPIUtils.fetchStockCompanyInfo(ticker)
-    .then(info => dispatch(receiveStockCompanyInfo(tick, info)))
+    .then(info => dispatch(receiveStockCompanyInfo(ticker, info[ticker])))
 );
 
 export const fetchStockNews = ticker => dispatch => (

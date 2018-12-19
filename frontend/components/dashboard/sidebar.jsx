@@ -1,6 +1,5 @@
 import React from 'react';
-
-import { fetchLatestPrice } from '../../util/stock_api_util';
+import { Link } from 'react-router-dom';
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -38,15 +37,17 @@ class Sidebar extends React.Component {
       const stock_prices = currentUser.current_stock_prices;
 
       return (
-        <div className="stock-card-container">
-          <div className="stock-card">
-            <div>
-              <h4 className="ticker">{stock["ticker"]}</h4>
-              <div className="num-shares">{stock["num_shares"]}</div>
+        <Link className="stock-links" to={`/stocks/${stock["ticker"]}`}>
+          <div className="stock-card-container">
+            <div className="stock-card">
+              <div>
+                <h4 className="ticker">{stock["ticker"]}</h4>
+                <div className="num-shares">{stock["num_shares"]}</div>
+              </div>
+              <h3 className="stock-price">{`$${stock_prices[stock["ticker"]]}`}</h3>
             </div>
-            <h3 className="stock-price">{`$${stock_prices[stock["ticker"]]}`}</h3>
           </div>
-        </div>
+        </Link>
       );
     };
 
