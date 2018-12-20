@@ -33,11 +33,11 @@ class Sidebar extends React.Component {
       }
     }
 
-    const stockCard = (stock) => {
+    const stockCard = (stock, i) => {
       const stock_prices = currentUser.current_stock_prices;
 
       return (
-        <Link className="stock-links" to={`/stocks/${stock["ticker"]}`}>
+        <Link key={i} className="stock-links" to={`/stocks/${stock["ticker"]}`}>
           <div className="stock-card-container">
             <div className="stock-card">
               <div>
@@ -61,7 +61,7 @@ class Sidebar extends React.Component {
             </div>
           </div>
           <div className="stocks-container">
-            {stocks.map(stock => stockCard(stock))}
+            {stocks.map((stock, i) => stockCard(stock, i))}
           </div>
 
           <div id="watchlist-header" className="header-card-container">

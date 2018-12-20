@@ -33,8 +33,8 @@ class Newsfeed extends React.Component {
       <div className="newsfeed">
         { this.newsHeading() }
         <ul className="all-news-container">
-          {news.map(item => {
-            return <NewsItem newsItem={item} />
+          {news.map((item, i) => {
+            return <NewsItem newsItem={item} key={i} />
           })}
         </ul>
       </div>

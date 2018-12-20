@@ -2,7 +2,7 @@ import React from 'react';
 
 export const SearchSVG = () => (
   <svg
-    className="search-icon"
+    id="search-icon"
     width="18px"
     height="18px"
     viewBox="0 0 18 18"

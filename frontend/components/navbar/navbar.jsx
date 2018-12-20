@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import NavLogoSVG from '../logo/nav_logo_svg';
-// import SearchSVG from '../logo/search_svg';
+import SearchBar from './search_bar';
 
 // TODO: Add search svg to search bar and redirect
 // theme button clicks to the current page or do
@@ -47,12 +47,14 @@ const Navbar = ({ currentUser, logOut }) => {
         <Link className="nav-logo" to="/"><NavLogoSVG /></Link>
         <div className="nav-logo-search">
 
-          <div className="searchbar-container">
+          {/* <div className="searchbar-container">
             <div className="searchbar">
               <input type="text" placeholder="Search" />
             </div>
-            {/* <SearchSVG /> */}
-          </div>
+            <SearchSVG />
+          </div> */}
+          <SearchBar />
+
         </div>
 
         <div className="nav-links">
