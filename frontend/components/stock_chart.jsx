@@ -19,9 +19,7 @@ class StockChart extends React.Component {
       if (i % 5 === 0 || time === "3:59 PM") {
         let marketPrice = oneDayData[i].marketAverage;
         if (marketPrice === -1) {
-          data.push({
-            prevDataPoint
-          })
+          data.push(prevDataPoint);
           continue;
         }
         if (time === "3:59 PM") {
@@ -56,12 +54,44 @@ class StockChart extends React.Component {
     };
   }
 
-  // calcOneWeekData(oneWeekData = []) {
-  //   const data = [];
-  //   let min = Infinity;
-  //   let max = -Infinity;
-  //   let prevDataPoint;
-  // }
+  calcOneWeekData(oneWeekData = []) {
+    const data = [];
+    let min = Infinity;
+    let max = -Infinity;
+    let prevDataPoint;
+    if (oneWeekData.length > 0) {
+      const weekData = oneWeekData.slice(oneWeekData.length - 7);
+      for (let i = 0; i < weekData.length; i++) {
+        let date = weekData[i].date;
+        let closingPrice = weekData[i].close;
+        if (closingPrice === -1) {
+          data.push(prevDataPoint);
+          continue;
+        }
+        data.push({
+          time: date,
+          price: closingPrice
+        });
+        prevDataPoint = {
+          time: date,
+          price: closingPrice
+        };
+
+        if (closingPrice < min) {
+          min = closingPrice;
+        } else if (closingPrice > max) {
+          max = closingPrice;
+        }
+      }
+
+      return {
+        chartData: data,
+        currentPrice: prevDataPoint.price,
+        minPrice: min,
+        maxPrice: max
+      };
+    }
+  }
 
   calcOneMonthData(oneMonthData = []) {
     const data = [];
@@ -72,9 +102,7 @@ class StockChart extends React.Component {
       let date = oneMonthData[i].date;
       let closingPrice = oneMonthData[i].close;
       if (closingPrice === -1) {
-        data.push({
-          prevDataPoint
-        })
+        data.push(prevDataPoint);
         continue;
       }
       data.push({
@@ -98,7 +126,7 @@ class StockChart extends React.Component {
       currentPrice: prevDataPoint.price,
       minPrice: min,
       maxPrice: max
-    }
+    };
   }
 
   calcThreeMonthData(threeMonthData = []) {
@@ -157,8 +185,11 @@ class StockChart extends React.Component {
       data = this.calcOneDayData(this.props.intradayData);
     }
 
+    if (this.props.oneMonthData && this.state.active === "1w") {
+      data = this.calcOneWeekData(this.props.oneMonthData);
+    }
+
     if (this.props.oneMonthData && this.state.active === "1m") {
-      console.log(this.state.active);
       data = this.calcOneMonthData(this.props.oneMonthData);
     }
 
@@ -191,7 +222,7 @@ class StockChart extends React.Component {
               domain={[data.min, data.max]}/>
             <Tooltip
               isAnimationActive={false}/>
-            <Line 
+            <Line
               type="linear"
               dataKey="price"
               stroke="#21ce99"
@@ -201,7 +232,7 @@ class StockChart extends React.Component {
           <div className="stock-chart-tabs-container">
             <ul className="chart-tabs">
               <li><a onClick={ () => this.setState({ active: "1d" }) }>1D</a></li>
-              <li><a>1W</a></li>
+              <li><a onClick={ () => this.setState({ active: "1w" }) }>1W</a></li>
               <li><a onClick={ () => this.setState({ active: "1m" }) }>1M</a></li>
               <li><a onClick={ () => this.setState({ active: "3m" }) }>3M</a></li>
               <li><a onClick={ () => this.setState({ active: "1y" }) }>1Y</a></li>
