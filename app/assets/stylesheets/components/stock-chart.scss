@@ -7,7 +7,7 @@
 #company-name {
   font-family: "DINPro-Regular";
   font-size: 36px;
-  letter-spacing: -0.29px;
+  letter-spacing: -0.80px;
   line-height: 42px;
   margin: 0;
   padding: 0;
@@ -20,6 +20,12 @@
   letter-spacing: -1px;
   margin: 0;
   padding: 0;
+}
+
+#timeIndicator {
+  color: #cbcbcd;
+  font-family: "DINPro-Regular";
+  font-weight: normal;
 }
 
 .stock-chart {

@@ -1,23 +1,84 @@
 @import "colors";
 
 #search-icon {
-  // position: absolute;
+  fill: rgb(203, 203, 205);
+  left: 151px;
+  margin-top: 9px;
+  position: absolute;
+  transition: fill .15s ease-out;
 }
 
 .searchbar input {
   border: 1px solid rgb(244, 244, 245);
   border-radius: 4px;
   font-size: 13px;
-  height: 34px;
+  font-weight: norma;
+  height: 36px;
   margin: 0;
   margin-top: 6px;
   margin-left: -33px;
   padding: 0;
   padding-left: 52px;
-  width: 476px;
+  width: 426px;
 
   &:hover, &:focus {
     border-color: white;
     box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.01), 0 3px 24px rgba(48,51,51,.09);
+
+    & + #search-icon {
+      fill: rgb(140, 140, 142);
+    }
+  }
+}
+
+input::-webkit-input-placeholder {
+  color: rgb(203, 203, 205);
+}
+input:focus::-webkit-input-placeholder {
+  color: rgb(140, 140, 142);
+}
+
+input:-moz-placeholder {
+  color: rgb(203, 203, 205);
+}
+input:focus:-moz-placeholder {
+  color: rgb(140, 140, 142);
+}
+
+input::-moz-placeholder {
+  color: rgb(203, 203, 205);
+}
+input:focus::-moz-placeholder {
+  color: rgb(140, 140, 142);
+}
+
+input:-ms-input-placeholder {
+  color: rgb(203, 203, 205);
+}
+input:focus:-ms-input-placeholder {
+  color: rgb(140, 140, 142);
+}
+
+.searchbar-container:focus-within, .searchbar-container:hover {
+  #search-icon, input::placeholder {
+    color: rgb(140, 140, 142);
+    fill: rgb(140, 140, 142);
+  }
+}
+
+.search-results {
+  background: white;
+  position: absolute;
+  margin-left: -24px;
+  width: 478px;
+}
+
+.result {
+  display: flex;
+}
+
+.search-results li {
+  &:hover {
+    background: black;
   }
 }

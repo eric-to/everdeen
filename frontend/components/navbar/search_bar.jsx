@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import SearchSVG from '../logo/search_svg';
 // All searchable IEX symbols
@@ -11,6 +11,10 @@ class SearchBar extends React.Component {
     this.state = { query: "", results: [] };
     this.updateQuery = this.updateQuery.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  resetQuery() {
+    this.setState({ query: "", results: [] });
   }
 
   updateQuery(e) {
@@ -36,10 +40,32 @@ class SearchBar extends React.Component {
     }
   }
 
+  searchResults() {
+    let results = this.state.results;
+    if (results.length > 0) {
+      results = results.slice(0, 8);
+      return (
+        <ul className="search-results">
+          <div>Stocks</div>
+          {results.map((result, i) => {
+            return (
+              <li key={i}>
+                <Link className="result" to={`/stocks/${result.symbol}`} onClick={this.resetQuery}>
+                  <div>{result.symbol}</div>
+                  <div>{result.name}</div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      );
+    }
+  }
+
   render() {
     return (
-      <div>
-        {/* <SearchSVG /> */}
+      <div className="searchContainer">
+        <SearchSVG />
         <form className="searchbar" onSubmit={ this.handleSubmit }>
           <input
             type="text"
@@ -47,6 +73,7 @@ class SearchBar extends React.Component {
             onChange={ this.updateQuery }
             value={ this.state.query } />
         </form>
+        { this.searchResults() }
       </div>
     );
   }

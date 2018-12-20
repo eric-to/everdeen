@@ -7,6 +7,28 @@ class StockChart extends React.Component {
     this.state = { active: "1d" };
   }
 
+  calcChangeInPrice(openPrice, latestPrice) {
+    // let delta = latestPrice - openPrice;
+    let changeInPrice = latestPrice - openPrice;
+    changeInPrice = (Math.round(changeInPrice * 100) / 100).toFixed(2);
+    let changeInPricePercent;
+    if (changeInPrice < 0) {
+      changeInPrice = changeInPrice * -1;
+      changeInPricePercent = ((changeInPrice / openPrice) * 100).toFixed(2);
+      changeInPricePercent = `(${changeInPricePercent}%)`;
+      changeInPrice = `-$${changeInPrice}`;
+    } else {
+      changeInPricePercent = ((changeInPrice / openPrice) * 100).toFixed(2);
+      changeInPricePercent = `(${changeInPricePercent}%)`;
+      changeInPrice = `+$${changeInPrice}`;
+    }
+
+    return {
+      priceChange: changeInPrice,
+      percentChange: changeInPricePercent
+    };
+  }
+
   // TODO: Format time, date, and price
   // TODO: Check graph endpoints (and open balance)
   calcOneDayData(oneDayData = []) {
@@ -46,7 +68,26 @@ class StockChart extends React.Component {
       }
     }
 
+    // TODO: double-check math
+    // let changeInBalancePercent;
+    // let changeInBalance = prevDataPoint.price - oneDayData[0].marketAverage;
+    // changeInBalance = (Math.round(changeInBalance * 100) / 100).toFixed(2);
+    // if (changeInBalance < 0) {
+    //   changeInBalancePercent = (changeInBalance * -1) / oneDayData[0].marketAverage;
+    //   changeInBalancePercent = (Math.round(changeInBalancePercent * 100) / 100).toFixed(2);
+    //   changeInBalancePercent = `(-${(Math.floor(changeInBalancePercent * 100) / 100).toFixed(2)}%)`
+    //   changeInBalance = `-$${(Math.floor(changeInBalance * 100) / 100).toFixed(2)}`;
+    // } else {
+    //   changeInBalancePercent = changeInBalance / oneDayData[0].marketAverage;
+    //   changeInBalancePercent = (Math.round(changeInBalancePercent * 100) / 100).toFixed(2);
+    //   changeInBalancePercent = `(${(Math.floor(changeInBalancePercent * 100) / 100).toFixed(2)}%)`
+    //   changeInBalance = `+$${(Math.floor(changeInBalance * 100) / 100).toFixed(2)}`;
+    // }
+    const priceChange = this.calcChangeInPrice(oneDayData[0].marketAverage, prevDataPoint.price);
+
     return {
+      balanceChange: priceChange.priceChange,
+      percentChange: priceChange.percentChange,
       chartData: data,
       currentPrice: prevDataPoint.price,
       minPrice: min,
@@ -84,7 +125,11 @@ class StockChart extends React.Component {
         }
       }
 
+      const priceChange = this.calcChangeInPrice(weekData[0].close, prevDataPoint.price);
+
       return {
+        balanceChange: priceChange.priceChange,
+        percentChange: priceChange.percentChange,
         chartData: data,
         currentPrice: prevDataPoint.price,
         minPrice: min,
@@ -121,7 +166,11 @@ class StockChart extends React.Component {
       }
     }
 
+    const priceChange = this.calcChangeInPrice(oneMonthData[0].close, prevDataPoint.price);
+
     return {
+      balanceChange: priceChange.priceChange,
+      percentChange: priceChange.percentChange,
       chartData: data,
       currentPrice: prevDataPoint.price,
       minPrice: min,
@@ -178,6 +227,23 @@ class StockChart extends React.Component {
     );
   }
 
+  timeIndicator() {
+    switch(this.state.active) {
+      case "1d":
+        return " Today";
+      case "1w":
+        return " Past Week";
+      case "1m":
+        return " Past Month";
+      case "3m":
+        return " Past 3 Months";
+      case "1y":
+        return " Past Year";
+      case "5y":
+        return " Past 5 Years";
+    }
+  }
+
   render() {
     let data = [];
 
@@ -211,7 +277,10 @@ class StockChart extends React.Component {
         <div className="stock-chart">
           <div className="stock-chart-header">
             <h1 id="company-name">{this.props.companyName}</h1>
-            <h2 id="stock-price">{`$${data.currentPrice}`}</h2>
+            <h2 id="stock-price">{`$${data.currentPrice.toFixed(2)}`}</h2>
+            <span>{`${data.balanceChange} `}</span>
+            <span>{data.percentChange}</span>
+            <span id="timeIndicator">{ this.timeIndicator() }</span>
           </div>
           <LineChart
             width={676}
