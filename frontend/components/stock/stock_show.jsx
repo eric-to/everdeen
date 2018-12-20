@@ -13,6 +13,13 @@ class StockShow extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    const ticker = this.props.match.params.ticker;
+    if (prevProps.match.params.ticker !== ticker) {
+      this.props.fetchStockInfo(ticker);
+    }
+  }
+
   render() {
     return (
       <div>

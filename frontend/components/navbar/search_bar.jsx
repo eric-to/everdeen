@@ -19,6 +19,10 @@ class SearchBar extends React.Component {
 
   updateQuery(e) {
     const query = e.target.value;
+    if (query.length === "") {
+      // this.setState({ query: "", results: [] });
+      return;
+    } 
     const queryExp = RegExp("^" + query, 'i');
     let results = [];
     results = symbols.filter(stock => {
@@ -40,19 +44,28 @@ class SearchBar extends React.Component {
     }
   }
 
+  formatName(name) {
+    if (name.length >= 50) {
+      return `${name.slice(0, 50)}...`;
+    } else {
+      return name;
+    }
+  }
+
   searchResults() {
     let results = this.state.results;
     if (results.length > 0) {
       results = results.slice(0, 8);
       return (
         <ul className="search-results">
-          <div>Stocks</div>
+          <div id="search-header">Stocks</div>
           {results.map((result, i) => {
             return (
               <li key={i}>
                 <Link className="result" to={`/stocks/${result.symbol}`} onClick={this.resetQuery}>
                   <div>{result.symbol}</div>
-                  <div>{result.name}</div>
+                  <div>{this.formatName(result.name)}</div>
+                  <div></div>
                 </Link>
               </li>
             );
