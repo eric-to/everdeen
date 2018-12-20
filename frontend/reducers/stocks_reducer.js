@@ -31,6 +31,11 @@ const stocksReducer = (state = {}, action) => {
     case StockActions.RECEIVE_STOCK_COMPANY_INFO:
       newState.ceo = action.info.company.CEO;
       newState.companyName = action.info.quote.companyName;
+      newState.description = action.info.company.description;
+      newState.exchange = action.info.company.exchange;
+      newState.industry = action.info.company.industry;
+      newState.peRatio = action.info.quote.peRatio;
+      newState.sector = action.info.company.sector;
       return newState;
 
     default:

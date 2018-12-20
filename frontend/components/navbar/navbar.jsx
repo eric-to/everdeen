@@ -27,12 +27,12 @@ const Navbar = ({ currentUser, logOut }) => {
             <div>
               <Link id="theme" to="/">Pink Mode</Link>
             </div>
-            <div class="fa-links">
+            <div className="fa-links">
               <a href="https://github.com/eric-to" target="_blank">
-                <i class="fab fa-github"></i>
+                <i className="fab fa-github"></i>
               </a>
               <a href="https://www.linkedin.com/in/ertoo" target="_blank">
-                <i class="fab fa-linkedin-in"></i>
+                <i className="fab fa-linkedin-in"></i>
               </a>
             </div>
           </div>

@@ -21,7 +21,7 @@ class Splash extends React.Component {
           <h4 className="step-3">
             Everdeen lets you invest in the stock market<br/>for free. The odds are in your favor!
           </h4>
-          <Link class="step-5" to="/signup">Sign Up</Link>
+          <Link className="step-5" to="/signup">Sign Up</Link>
         </div>
 
         {/* <img className="step-4" src="https://d2ue93q3u507c2.cloudfront.net/assets/marketing/images/home_redesign/iPhoneHome_still%402x.png" /> */}

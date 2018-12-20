@@ -17,7 +17,6 @@ import {
 // to work with
 const mapStateToProps = (state, ownProps) => ({
   news: state.entities.news,
-  // stock: state.entities.stocks[ownProps.match.params.ticker],
   intradayData: state.entities.stocks.intradayData,
   monthData: state.entities.stocks.monthData,
   threeMonthsData: state.entities.stocks.threeMonthsData,
@@ -25,7 +24,11 @@ const mapStateToProps = (state, ownProps) => ({
   fiveYearsData: state.entities.stocks.fiveYearsData,
   ceo: state.entities.stocks.ceo,
   companyName: state.entities.stocks.companyName,
-  // currentUser: state.entities.users[state.session.id]
+  description: state.entities.stocks.description,
+  exchange: state.entities.stocks.exchange,
+  industry: state.entities.stocks.industry,
+  peRatio: state.entities.stocks.peRatio,
+  sector: state.entities.stocks.sector
 });
 
 const mapDispatchToProps = dispatch => ({

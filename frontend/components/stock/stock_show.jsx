@@ -25,7 +25,12 @@ class StockShow extends React.Component {
             yearData={this.props.yearData}
             fiveYearData={this.props.fiveYearsData}
             ceo={this.props.ceo}
-            companyName={this.props.companyName}/>
+            companyName={this.props.companyName}
+            description={this.props.description}
+            exchange={this.props.exchange}
+            industry={this.props.industry}
+            peRatio={this.props.peRatio}
+            sector={this.props.sector}/>
           <NewsfeedContainer ticker={this.props.match.params.ticker} />
         </div>
         <SidebarContainer />

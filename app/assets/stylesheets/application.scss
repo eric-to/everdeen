@@ -16,8 +16,12 @@
 @import "components/*";
 
 @font-face {
+  font-family: "DINPro-Regular";
+  src: font-url("DINPro-Regular.ttf") format("truetype");
+}
+
+@font-face {
   font-family: "DINPro-Medium";
-  font-weight: normal;
   src: font-url("DINPro-Medium.ttf") format("truetype");
 }
 

@@ -56,6 +56,13 @@ class StockChart extends React.Component {
     };
   }
 
+  // calcOneWeekData(oneWeekData = []) {
+  //   const data = [];
+  //   let min = Infinity;
+  //   let max = -Infinity;
+  //   let prevDataPoint;
+  // }
+
   calcOneMonthData(oneMonthData = []) {
     const data = [];
     let min = Infinity;
@@ -106,6 +113,43 @@ class StockChart extends React.Component {
     return this.calcOneMonthData(fiveYearData);
   }
 
+  aboutCompany() {
+    return (
+      <div className="about-company-container">
+        <div className="about-header">
+          <h2>About</h2>
+        </div>
+        <div className="company-description">
+          <h3>{ this.props.description }</h3>
+        </div>
+
+        <div className="company-details">
+          <div className="detail">
+            <div className="detail-title">CEO</div>
+            <span id="ceo">{ this.props.ceo }</span>
+          </div>
+          <div className="detail">
+            <div className="detail-title">Sector</div>
+            { this.props.sector }
+          </div>
+          <div className="detail">
+            <div className="detail-title">Industry</div>
+            { this.props.industry }
+          </div>
+          <div className="detail">
+            <div className="detail-title">Exchange</div>
+            { this.props.exchange }
+          </div>
+          <div className="detail">
+            <div className="detail-title">Price-Earnings Ratio</div>
+            { this.props.peRatio }
+
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     let data = [];
 
@@ -134,8 +178,10 @@ class StockChart extends React.Component {
     if (data.length !== 0) {
       return (
         <div className="stock-chart">
-          <h1 id="company-name">{this.props.companyName}</h1>
-          <h2 id="stock-price">{`$${data.currentPrice}`}</h2>
+          <div className="stock-chart-header">
+            <h1 id="company-name">{this.props.companyName}</h1>
+            <h2 id="stock-price">{`$${data.currentPrice}`}</h2>
+          </div>
           <LineChart
             width={676}
             height={196}
@@ -155,13 +201,14 @@ class StockChart extends React.Component {
           <div className="stock-chart-tabs-container">
             <ul className="chart-tabs">
               <li><a onClick={ () => this.setState({ active: "1d" }) }>1D</a></li>
-              <li><a onClick={ () => this.setState({ active: "1w" }) }>1W</a></li>
+              <li><a>1W</a></li>
               <li><a onClick={ () => this.setState({ active: "1m" }) }>1M</a></li>
               <li><a onClick={ () => this.setState({ active: "3m" }) }>3M</a></li>
               <li><a onClick={ () => this.setState({ active: "1y" }) }>1Y</a></li>
               <li><a onClick={ () => this.setState({ active: "5y" }) }>5Y</a></li>
             </ul>
           </div>
+          { this.aboutCompany() }
         </div>
       );
     } else {

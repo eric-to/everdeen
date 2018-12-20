@@ -107,7 +107,7 @@
 
 .stock-price {
   color: #171718;
-  font-family: "DINPro-Medium";
+  font-family: "DINPro-Regular";
   font-size: 16px;
   font-weight: 100;
   letter-spacing: 0;
@@ -119,11 +119,12 @@ div.stocks-container > div:last-child {
 }
 
 .ticker {
+  font-family: "DINPro-Medium";
   font-weight: 500;
 }
 
 .num-shares {
-  font-weight: normal;
+  font-family: "DINPro-Regular";
 }
 
 .stock-links {
