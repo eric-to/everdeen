@@ -40,6 +40,9 @@ const stocksReducer = (state = {}, action) => {
       newState.industry = action.info.company.industry;
       newState.peRatio = action.info.quote.peRatio;
       newState.sector = action.info.company.sector;
+      newState.week52High = action.info.quote["week52High"];
+      newState.week52Low = action.info.quote["week52Low"];
+      newState.website = action.info.company.website;
       return newState;
 
     default:

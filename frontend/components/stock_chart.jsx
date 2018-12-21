@@ -5,6 +5,38 @@ class StockChart extends React.Component {
   constructor(props) {
     super(props);
     this.state = { active: "1d" };
+
+    // Learned this cool trick from Jeremiah Kellick
+    this.priceRef = React.createRef();
+    this.hoverPriceRef = React.createRef();
+    this.priceChangeRef = React.createRef();
+    this.hoverPriceChangeRef = React.createRef();
+
+    this.customTooltip = this.customTooltip.bind(this)
+  }
+
+  customTooltip(data) {
+    const price = this.priceRef.current;
+    const hoverPrice = this.hoverPriceRef.current;
+    const priceChange = this.priceChangeRef.current;
+    const hoverPriceChangeRef = this.hoverPriceChangeRef.current;
+
+    if (price && hoverPrice) {
+      if (data.payload[0]) {
+        price.classList.add("hide");
+        hoverPrice.innerText = `$${(Math.round(data.payload[0].value * 100) / 100).toFixed(2)}`;
+      } else {
+        price.classList.remove("hide");
+        hoverPrice.innerText = "";
+      }
+    }
+
+    // if (priceChange && hoverPriceChangeRef) {
+    //   if (data.payload[0]) {
+
+    //   }
+    // }
+
   }
 
   calcChangeInPrice(openPrice, latestPrice) {
@@ -84,6 +116,12 @@ class StockChart extends React.Component {
     //   changeInBalance = `+$${(Math.floor(changeInBalance * 100) / 100).toFixed(2)}`;
     // }
     const priceChange = this.calcChangeInPrice(oneDayData[0].marketAverage, prevDataPoint.price);
+    let color;
+    if (oneDayData[0].marketAverage > prevDataPoint.price) {
+      color = "#f45531";
+    } else {
+      color = "#82ca9d";
+    }
 
     return {
       balanceChange: priceChange.priceChange,
@@ -91,7 +129,8 @@ class StockChart extends React.Component {
       chartData: data,
       currentPrice: prevDataPoint.price,
       minPrice: min,
-      maxPrice: max
+      maxPrice: max,
+      color: color
     };
   }
 
@@ -126,6 +165,12 @@ class StockChart extends React.Component {
       }
 
       const priceChange = this.calcChangeInPrice(weekData[0].close, prevDataPoint.price);
+      let color;
+      if (weekData[0].close > prevDataPoint.price) {
+        color = "#f45531";
+      } else {
+        color = "#82ca9d";
+      }
 
       return {
         balanceChange: priceChange.priceChange,
@@ -133,7 +178,8 @@ class StockChart extends React.Component {
         chartData: data,
         currentPrice: prevDataPoint.price,
         minPrice: min,
-        maxPrice: max
+        maxPrice: max,
+        color: color
       };
     }
   }
@@ -167,6 +213,12 @@ class StockChart extends React.Component {
     }
 
     const priceChange = this.calcChangeInPrice(oneMonthData[0].close, prevDataPoint.price);
+    let color;
+    if (oneMonthData[0].close > prevDataPoint.price) {
+      color = "#f45531";
+    } else {
+      color = "#82ca9d";
+    }
 
     return {
       balanceChange: priceChange.priceChange,
@@ -174,7 +226,8 @@ class StockChart extends React.Component {
       chartData: data,
       currentPrice: prevDataPoint.price,
       minPrice: min,
-      maxPrice: max
+      maxPrice: max,
+      color: color
     };
   }
 
@@ -220,7 +273,18 @@ class StockChart extends React.Component {
           <div className="detail">
             <div className="detail-title">Price-Earnings Ratio</div>
             { this.props.peRatio }
-
+          </div>
+          <div className="detail">
+            <div className="detail-title">52 Week High</div>
+            { this.props.week52High }
+          </div>
+          <div className="detail">
+            <div className="detail-title">52 Week Low</div>
+            { this.props.week52Low }
+          </div>
+          <div className="detail">
+            <div className="detail-title">Website</div>
+            <a href={`${this.props.website}`} target="_blank">{this.props.website}</a>
           </div>
         </div>
       </div>
@@ -241,6 +305,16 @@ class StockChart extends React.Component {
         return " Past Year";
       case "5y":
         return " Past 5 Years";
+    }
+  }
+
+  determineColor(color, tab) {
+    if (this.state.active !== tab) {
+      return "black"
+    } else if (color === "#f45531") {
+      return "red"
+    } else {
+      return "green"
     }
   }
 
@@ -277,7 +351,8 @@ class StockChart extends React.Component {
         <div className="stock-chart">
           <div className="stock-chart-header">
             <h1 id="company-name">{this.props.companyName}</h1>
-            <h2 id="stock-price">{`$${data.currentPrice.toFixed(2)}`}</h2>
+            <h2 ref={this.priceRef} className="current-stock-price">{`$${data.currentPrice.toFixed(2)}`}</h2>
+            <h2 ref={this.hoverPriceRef} className="current-stock-price"></h2>
             <span>{`${data.balanceChange} `}</span>
             <span>{data.percentChange}</span>
             <span id="timeIndicator">{ this.timeIndicator() }</span>
@@ -290,22 +365,24 @@ class StockChart extends React.Component {
               hide={true}
               domain={[data.min, data.max]}/>
             <Tooltip
-              isAnimationActive={false}/>
+              isAnimationActive={false}
+              position={{ y: -19 }}
+              content={this.customTooltip}/>
             <Line
               type="linear"
               dataKey="price"
-              stroke="#21ce99"
+              stroke={data.color}
               dot={false}
               strokeWidth={2}/>
           </LineChart>
           <div className="stock-chart-tabs-container">
             <ul className="chart-tabs">
-              <li><a onClick={ () => this.setState({ active: "1d" }) }>1D</a></li>
-              <li><a onClick={ () => this.setState({ active: "1w" }) }>1W</a></li>
-              <li><a onClick={ () => this.setState({ active: "1m" }) }>1M</a></li>
-              <li><a onClick={ () => this.setState({ active: "3m" }) }>3M</a></li>
-              <li><a onClick={ () => this.setState({ active: "1y" }) }>1Y</a></li>
-              <li><a onClick={ () => this.setState({ active: "5y" }) }>5Y</a></li>
+              <li><a className={this.determineColor(data.color, "1d")} onClick={ () => this.setState({ active: "1d" }) }>1D</a></li>
+              <li><a className={this.determineColor(data.color, "1w")} onClick={ () => this.setState({ active: "1w" }) }>1W</a></li>
+              <li><a className={this.determineColor(data.color, "1m")} onClick={ () => this.setState({ active: "1m" }) }>1M</a></li>
+              <li><a className={this.determineColor(data.color, "3m")} onClick={ () => this.setState({ active: "3m" }) }>3M</a></li>
+              <li><a className={this.determineColor(data.color, "1y")} onClick={ () => this.setState({ active: "1y" }) }>1Y</a></li>
+              <li><a className={this.determineColor(data.color, "5y")} onClick={ () => this.setState({ active: "5y" }) }>5Y</a></li>
             </ul>
           </div>
           { this.aboutCompany() }

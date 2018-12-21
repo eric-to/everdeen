@@ -11,6 +11,7 @@ class SearchBar extends React.Component {
     this.state = { query: "", results: [] };
     this.updateQuery = this.updateQuery.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.resetQuery = this.resetQuery.bind(this);
   }
 
   resetQuery() {

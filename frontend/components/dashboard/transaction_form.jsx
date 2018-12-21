@@ -13,7 +13,10 @@ class TransactionForm extends React.Component {
 
     this.updateNumShares = this.updateNumShares.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.formHeading = this.formHeading.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState(this.state);
   }
 
   updateNumShares(e) {
@@ -21,15 +24,30 @@ class TransactionForm extends React.Component {
     this.setState({
       num_shares: num_shares
     })
-    
 
+    this.updateAmount(e.target.value);
+
+    // if (num_shares === "") {
+    //   this.setState({ amount: "0.00" })
+    // } else {
+    //   this.setState({
+    //     amount: parseFloat(num_shares) * parseFloat(this.state.marketPrice)
+    //   })
+    // }
+  }
+
+  updateAmount(num_shares) {
     if (num_shares === "") {
-      this.setState({ amount: "0.00" })
+      num_shares = "";
+      this.setState({ amount: "0.00" });
     } else {
-      this.setState({
-        amount: parseFloat(num_shares) * parseFloat(this.state.marketPrice)
-      })
+      let amount = Math.round((parseFloat(num_shares) * parseFloat(this.state.marketPrice)) * 100) / 100;
+      this.setState({ amount });
     }
+  }
+
+  updateTransactionType(type) {
+    this.setState({ transaction_type: type });
   }
 
   handleSubmit(e) {
@@ -44,14 +62,6 @@ class TransactionForm extends React.Component {
     }
 
     this.props.createTransaction(transaction);
-  }
-
-  formHeading() {
-    return (
-      <div>
-        <div>{`Buy ${this.state.ticker}`}</div>
-      </div>
-    );
   }
 
   formFooter() {
@@ -81,7 +91,21 @@ class TransactionForm extends React.Component {
       <div id="sidebar-container" className="sidebar-container">
         <div id="transaction-form-container" className="sidebar">
           <form className="transaction-form" onSubmit={this.handleSubmit}>
-            { this.formHeading() }
+            <div className="form-tabs-container">
+              <h3>
+                <a
+                  id="buy-tag"
+                  className="form-tab"
+                  onClick={() => this.updateTransactionType({ transaction_type: "buy" })}>
+                  {`Buy ${this.state.ticker}`}
+                </a>
+                <a
+                  className="form-tab"
+                  onClick={() => this.updateTransactionType({ transaction_type: "sell" })}>
+                  {`Sell ${this.state.ticker}`}
+                </a>
+              </h3>
+            </div>
             <div className="shares">
               <div className="shares-label">Shares</div>
               <input id="shares-input" type="text" onChange={this.updateNumShares} value={this.state.num_shares} placeholder={"0"} />
@@ -91,7 +115,9 @@ class TransactionForm extends React.Component {
               <div>{this.state.marketPrice}</div>
             </div>
             <div className="estimated-cost-container">
-              <div className="estimated-cost">Estimated Cost</div>
+              <div className="estimated-cost">
+                { this.state.transaction_type === "buy" ? "Estimated Cost" : "Estimated Credit" }
+              </div>
               <div>{`$${this.state.amount}`}</div>
             </div>
             <div className="submit-transaction-container">

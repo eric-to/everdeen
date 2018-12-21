@@ -2,6 +2,7 @@ import React from 'react';
 
 import NavbarContainer from '../navbar/navbar_container';
 import NewsfeedContainer from '../dashboard/newsfeed_container';
+import { PacmanLoader } from 'react-spinners';
 import SidebarContainer from '../dashboard/sidebar_container';
 import StockChart from '../stock_chart';
 import TransactionForm from '../dashboard/transaction_form';
@@ -9,9 +10,7 @@ import TransactionForm from '../dashboard/transaction_form';
 class StockShow extends React.Component {
   componentDidMount() {
     const ticker = this.props.match.params.ticker;
-    if (!this.props.stock) {
-      this.props.fetchStockInfo(ticker);
-    }
+    this.props.fetchStockInfo(ticker)
   }
 
   componentDidUpdate(prevProps) {
@@ -21,6 +20,13 @@ class StockShow extends React.Component {
       this.props.fetchNews(ticker);
     }
   }
+
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.match.params.ticker !== this.props.match.params.ticker) {
+  //     const ticker = nextProps.match.params.ticker;
+  //     this.props.fetchStockInfo(ticker);
+  //   }
+  // }
 
   render() {
     let price;
@@ -32,6 +38,17 @@ class StockShow extends React.Component {
           price = intradayData[i].marketAverage;
         }
       }
+    } else {
+      return (
+        <div className='loading'>
+          <PacmanLoader
+            sizeUnit={"px"}
+            size={20}
+            color={'#21ce99'}
+            loading={true}
+          />
+        </div>
+      );
     }
 
     return (
@@ -50,7 +67,10 @@ class StockShow extends React.Component {
             exchange={this.props.exchange}
             industry={this.props.industry}
             peRatio={this.props.peRatio}
-            sector={this.props.sector}/>
+            sector={this.props.sector}
+            week52High={this.props.week52High}
+            week52Low={this.props.week52Low}
+            website={this.props.website}/>
           <NewsfeedContainer ticker={this.props.match.params.ticker} />
         </div>
         <TransactionForm 

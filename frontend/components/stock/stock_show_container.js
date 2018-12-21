@@ -31,7 +31,10 @@ const mapStateToProps = (state, ownProps) => ({
   exchange: state.entities.stocks.exchange,
   industry: state.entities.stocks.industry,
   peRatio: state.entities.stocks.peRatio,
-  sector: state.entities.stocks.sector
+  sector: state.entities.stocks.sector,
+  week52High: state.entities.stocks.week52High,
+  week52Low: state.entities.stocks.week52Low,
+  website: state.entities.stocks.website
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -8,6 +8,29 @@ import SidebarContainer from './sidebar_container';
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
+    
+    this.customTooltip = this.customTooltip.bind(this);
+    this.priceRef = React.createRef();
+    this.hoverPriceRef = React.createRef();
+    this.priceChangeRef = React.createRef();
+    this.hoverPriceChangeRef = React.createRef();
+  }
+
+  customTooltip(data) {
+    const price = this.priceRef.current;
+    const hoverPrice = this.hoverPriceRef.current;
+    // const priceChange = this.priceChangeRef.current;
+    // const hoverPriceChangeRef = this.hoverPriceChangeRef.current;
+
+    if (price && hoverPrice) {
+      if (data.payload[0]) {
+        price.classList.add("hide");
+        hoverPrice.innerText = `$${(Math.round(data.payload[0].value * 100) / 100).toFixed(2)}`;
+      } else {
+        price.classList.remove("hide");
+        hoverPrice.innerText = "";
+      }
+    }
   }
 
   componentDidMount() {
@@ -29,9 +52,10 @@ class Dashboard extends React.Component {
     if (this.props.currentUser.total_market_value) {
       return (
         <div>
-          <h1 className="portfolio-value">
+          <h1 ref={this.priceRef} className="portfolio-value">
             {formatMoney(this.props.currentUser.total_market_value)}
           </h1>
+          <h1 ref={this.hoverRef} className="potfolio-value"></h1>
         </div>
       );
     }
@@ -80,7 +104,10 @@ class Dashboard extends React.Component {
               hide={true}
               domain={[min, max]}
             />
-            <Tooltip isAnimationActive={false} offset={-40} position={{y: -20}} />
+            <Tooltip
+              isAnimationActive={false}
+              position={{ y: -19 }}
+              content={this.customTooltip} />
 
             <Line type="linear" dataKey="balance" stroke="#21ce99" dot={false} strokeWidth={2} />
           </LineChart>

@@ -62,3 +62,19 @@ header {
   top: 50%;
   z-index: 10;
 }
+
+.red {
+  color: #f45531;
+}
+
+.green {
+  color: #82ca9d;
+}
+
+.black {
+  color: $black;
+}
+
+.hide {
+  display: none;
+}
