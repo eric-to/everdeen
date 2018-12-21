@@ -3,7 +3,6 @@ import React from 'react';
 import NavbarContainer from '../navbar/navbar_container';
 import NewsfeedContainer from '../dashboard/newsfeed_container';
 import { PacmanLoader } from 'react-spinners';
-import SidebarContainer from '../dashboard/sidebar_container';
 import StockChart from '../stock_chart';
 import TransactionForm from '../dashboard/transaction_form';
 
@@ -20,13 +19,6 @@ class StockShow extends React.Component {
       this.props.fetchNews(ticker);
     }
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.match.params.ticker !== this.props.match.params.ticker) {
-  //     const ticker = nextProps.match.params.ticker;
-  //     this.props.fetchStockInfo(ticker);
-  //   }
-  // }
 
   render() {
     let price;

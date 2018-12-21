@@ -9,19 +9,20 @@
   border-bottom: 1px solid $light-border;
   font-family: "DINPro-Regular";
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0;
   line-height: 22px;
   margin: 0;
 }
 
+#sell-tag {
+  margin-left: -27px;
+}
+
 .form-tabs-container {
   // margin-left: 25.5px;
   border-bottom: 2px solid #fafafa;
-}
-
-#buy-tab {
-  margin-left: 25px;
+  height: 51px;
 }
 
 .form-tab {
@@ -33,6 +34,7 @@
   margin: 0;
   margin-right: 13px;
   padding-top: 13px;
+  padding-left: 25px;
 }
 
 .transaction-form {

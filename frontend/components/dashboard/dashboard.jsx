@@ -39,27 +39,14 @@ class Dashboard extends React.Component {
     }
   }
 
-  graphHeader() {
-    const formatMoney = (amount, showPlus = false) => {
-      let sign = showPlus ? '+' : '';
-      if (amount < 0) {
-        amount *= -1;
-        sign = '-';
-      }
-      return sign + '$' + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-    };
-
-    if (this.props.currentUser.total_market_value) {
-      return (
-        <div>
-          <h1 ref={this.priceRef} className="portfolio-value">
-            {formatMoney(this.props.currentUser.total_market_value)}
-          </h1>
-          <h1 ref={this.hoverRef} className="potfolio-value"></h1>
-        </div>
-      );
+  formatMoney(amount, showPlus = false) {
+    let sign = showPlus ? '+' : '';
+    if (amount < 0) {
+      amount *= -1;
+      sign = '-';
     }
-  }
+    return sign + '$' + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+  };
 
   render() {
     let data = [];
@@ -97,7 +84,12 @@ class Dashboard extends React.Component {
     const content = this.props.currentUser ? (
       <div className="dashboard-container">
         <div>
-          { this.graphHeader() }
+          <div>
+            <h1 ref={this.priceRef} className="portfolio-value">
+              {this.formatMoney(this.props.currentUser.total_market_value)}
+            </h1>
+            <h1 ref={this.hoverRef} className="potfolio-value"></h1>
+          </div>
 
           <LineChart className="portfolio-chart" width={676} height={196} data={data}>
             <YAxis

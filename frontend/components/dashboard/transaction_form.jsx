@@ -100,6 +100,7 @@ class TransactionForm extends React.Component {
                   {`Buy ${this.state.ticker}`}
                 </a>
                 <a
+                  id="sell-tag"
                   className="form-tab"
                   onClick={() => this.updateTransactionType({ transaction_type: "sell" })}>
                   {`Sell ${this.state.ticker}`}
@@ -108,11 +109,11 @@ class TransactionForm extends React.Component {
             </div>
             <div className="shares">
               <div className="shares-label">Shares</div>
-              <input id="shares-input" type="text" onChange={this.updateNumShares} value={this.state.num_shares} placeholder={"0"} />
+              <input id="shares-input" type="text" onChange={this.updateNumShares} value={this.state.num_shares} placeholder={"0"} autoComplete="off" />
             </div>
             <div className="market-price-container">
               <div className="market-price">Market Price</div>
-              <div>{this.state.marketPrice}</div>
+              <div>{`$${this.state.marketPrice}`}</div>
             </div>
             <div className="estimated-cost-container">
               <div className="estimated-cost">

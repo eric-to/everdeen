@@ -115,9 +115,18 @@ class StockChart extends React.Component {
     //   changeInBalancePercent = `(${(Math.floor(changeInBalancePercent * 100) / 100).toFixed(2)}%)`
     //   changeInBalance = `+$${(Math.floor(changeInBalance * 100) / 100).toFixed(2)}`;
     // }
-    const priceChange = this.calcChangeInPrice(oneDayData[0].marketAverage, prevDataPoint.price);
+    let openPrice;
+    for (let i = 0; i < oneDayData.length; i++) {
+      openPrice = oneDayData[i].marketAverage;
+      if (openPrice !== -1) {
+        break;
+      }
+    }
+    console.log(openPrice);
+
+    const priceChange = this.calcChangeInPrice(openPrice, prevDataPoint.price);
     let color;
-    if (oneDayData[0].marketAverage > prevDataPoint.price) {
+    if (openPrice > prevDataPoint.price) {
       color = "#f45531";
     } else {
       color = "#82ca9d";
@@ -363,17 +372,17 @@ class StockChart extends React.Component {
             data={data.chartData}>
             <YAxis
               hide={true}
-              domain={[data.min, data.max]}/>
+              domain={[data.min, data.max]} />
             <Tooltip
               isAnimationActive={false}
               position={{ y: -19 }}
-              content={this.customTooltip}/>
+              content={this.customTooltip} />
             <Line
               type="linear"
               dataKey="price"
               stroke={data.color}
               dot={false}
-              strokeWidth={2}/>
+              strokeWidth={2} />
           </LineChart>
           <div className="stock-chart-tabs-container">
             <ul className="chart-tabs">

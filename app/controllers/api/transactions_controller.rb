@@ -5,11 +5,16 @@ class Api::TransactionsController < ApplicationController
     @transaction.user_id = current_user.id
 
     # check validity of transaction
+    if @transaction.save
+      render json: ["You acquired new shares of #{@transaction.ticker}"]
+    else
+      render json: @transaction.errors.full_messages, status: 422
+    end
   end
 
   private
 
-  def transactions_params
-    params.require(:transactions).permit(:ticker, :num_shares, :transaction_type, :amount)
+  def transaction_params
+    params.require(:transaction).permit(:ticker, :num_shares, :transaction_type, :amount)
   end
 end

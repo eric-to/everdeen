@@ -51,10 +51,17 @@ class GraphSnapshot extends React.Component {
             max = marketPrice;
           }
 
-          if (openPrice < prevDataPoint.price) {
-            color = "#f45531";
-          } else {
+          for (let i = 0; i < oneDayData.length; i++) {
+            openPrice = oneDayData[i].marketAverage;
+            if (openPrice !== -1) {
+              break;
+            }
+          }
+
+          if (openPrice <= prevDataPoint.price) {
             color = "#82ca9d";
+          } else {
+            color = "#f45531";
           }
         }
       }
