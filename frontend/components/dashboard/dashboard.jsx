@@ -48,16 +48,48 @@ class Dashboard extends React.Component {
     return sign + '$' + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
   };
 
+  calcChangeInPrice(openPrice, latestPrice) {
+    // let delta = latestPrice - openPrice;
+    let changeInPrice = latestPrice - openPrice;
+    changeInPrice = (Math.round(changeInPrice * 100) / 100).toFixed(2);
+    let changeInPricePercent;
+    if (changeInPrice < 0) {
+      changeInPrice = changeInPrice * -1;
+      changeInPricePercent = ((changeInPrice / openPrice) * 100).toFixed(2);
+      changeInPricePercent = `${changeInPricePercent}%`;
+      changeInPrice = `-$${changeInPrice}`;
+    } else {
+      changeInPricePercent = ((changeInPrice / openPrice) * 100).toFixed(2);
+      changeInPricePercent = `${changeInPricePercent}%`;
+      changeInPrice = `+$${changeInPrice}`;
+    }
+
+    return {
+      priceChange: changeInPrice,
+      percentChange: changeInPricePercent
+    };
+  }
+
   render() {
     let data = [];
     let graphData;
-    let min = 9999999;
-    let max = -9999999;
+    let min = Infinity;
+    let max = -Infinity;
+
+    let startValue;
+    let endValue;
+    let balanceChange;
 
     if (this.props.currentUser.intraday_data) {
       graphData = this.props.currentUser.intraday_data;
       const times = Object.keys(graphData);
       for (let i = 0; i < times.length; i++) {
+        if (i === 0) {
+          startValue = graphData[times[0]];
+        }
+        if (i === times.length - 1) {
+          endValue = graphData[times[i]];
+        }
         let dataPoint = {};
         dataPoint["time"] = times[i];
         dataPoint["balance"] = graphData[times[i]];
@@ -68,6 +100,7 @@ class Dashboard extends React.Component {
         }
         data.push(dataPoint);
       }
+      balanceChange = this.calcChangeInPrice(startValue, endValue);
     } else {
       return (
         <div className='loading'>
@@ -89,6 +122,10 @@ class Dashboard extends React.Component {
               {this.formatMoney(this.props.currentUser.total_market_value)}
             </h1>
             <h1 ref={this.hoverRef} className="potfolio-value"></h1>
+            <div className="portfolio-changes">
+              <span>{balanceChange.priceChange}</span>
+              <span>{` (${balanceChange.priceChange[0] === '-' ? '-' : '' }${balanceChange.percentChange})`}</span>
+            </div>
           </div>
 
           <LineChart className="portfolio-chart" width={676} height={196} data={data}>
@@ -101,7 +138,7 @@ class Dashboard extends React.Component {
               position={{ y: -19 }}
               content={this.customTooltip} />
 
-            <Line type="linear" dataKey="balance" stroke="#21ce99" dot={false} strokeWidth={2} />
+            <Line type="linear" dataKey="balance" stroke={endValue < startValue ? "#f45531" : "#21ce99"  } dot={false} strokeWidth={2} />
           </LineChart>
           <ul className="portfolio-chart-tabs-container">
             <div className="chart-tabs">
