@@ -7,6 +7,8 @@
 #  ticker           :string           not null
 #  num_shares       :integer          not null
 #  transaction_date :datetime         not null
+#  transaction_type :string           not null
+#  amount           :float            not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

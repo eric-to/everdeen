@@ -6,46 +6,57 @@ export const RECEIVE_STOCK_THREE_MONTHS_DATA = 'RECEIVE_STOCK_THREE_MONTHS_DATA'
 export const RECEIVE_STOCK_YEAR_DATA = 'RECEIVE_STOCK_YEAR_DATA';
 export const RECEIVE_STOCK_FIVE_YEARS_DATA = 'RECEIVE_STOCK_FIVE_YEARS_DATA';
 export const RECEIVE_STOCK_COMPANY_INFO = 'RECEIVE_STOCK_COMPANY_INFO';
+export const RECEIVE_MULTI_INTRADAY_DATA = 'RECEIVE_MULTI_INTRADAY_DATA'
 // export const RECEIVE_STOCK = 'RECEIVE_STOCK';
+
+const receiveMultiIntradayData = data => ({
+  type: RECEIVE_MULTI_INTRADAY_DATA,
+  data
+});
 
 // normal action creators
 const receiveStockIntradayData = (ticker, data) => ({
   type: RECEIVE_STOCK_INTRADAY_DATA,
   ticker,
   data
-})
+});
 
 const receiveStockMonthData = (ticker, data) => ({
   type: RECEIVE_STOCK_MONTH_DATA,
   ticker,
   data
-})
+});
 
 const receiveStockThreeMonthsData = (ticker, data) => ({
   type: RECEIVE_STOCK_THREE_MONTHS_DATA,
   ticker,
   data
-})
+});
 
 const receiveStockYearData = (ticker, data) => ({
   type: RECEIVE_STOCK_YEAR_DATA,
   ticker,
   data
-})
+});
 
 const receiveStockFiveYearsData = (ticker, data) => ({
   type: RECEIVE_STOCK_FIVE_YEARS_DATA,
   ticker,
   data
-})
+});
 
 const receiveStockCompanyInfo = (ticker, info) => ({
   type: RECEIVE_STOCK_COMPANY_INFO,
   ticker,
   info
-})
+});
 
 // thunk action creators
+export const fetchMultiIntradayData = tickers => dispatch => (
+  StockAPIUtils.fetchMultiIntradayData(tickers)
+    .then(data => dispatch(receiveMultiIntradayData(data)))
+);
+
 export const fetchStockIntradayData = ticker => dispatch => (
   StockAPIUtils.fetchIntradayData(ticker)
     .then(data => dispatch(receiveStockIntradayData(ticker, data)))

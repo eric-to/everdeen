@@ -1,5 +1,6 @@
 import React from 'react';
 import { Line, LineChart, Tooltip, YAxis, XAxis } from 'recharts';
+import { PacmanLoader } from 'react-spinners';
 
 import NewsfeedContainer from './newsfeed_container';
 import SidebarContainer from './sidebar_container';
@@ -56,9 +57,20 @@ class Dashboard extends React.Component {
         }
         data.push(dataPoint);
       }
+    } else {
+      return (
+        <div className='loading'>
+          <PacmanLoader
+            sizeUnit={"px"}
+            size={20}
+            color={'#21ce99'}
+            loading={true}
+          />
+        </div>
+      );
     }
 
-    return (
+    const content = this.props.currentUser ? (
       <div className="dashboard-container">
         <div>
           { this.graphHeader() }
@@ -86,6 +98,20 @@ class Dashboard extends React.Component {
           <NewsfeedContainer ticker={"NOTATICKER"} />
         </div>
         <SidebarContainer />
+      </div>
+    ) : (
+      <div className='loading'>
+        <PacmanLoader
+          sizeUnit={"px"}
+          size={800}
+          color={'#21ce99'}
+          loading={true}
+        />
+      </div>
+    );
+    return (
+      <div>
+        {content}
       </div>
     );
   }

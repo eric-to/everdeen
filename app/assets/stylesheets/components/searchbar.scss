@@ -58,18 +58,11 @@ input:focus:-ms-input-placeholder {
 }
 
 // TODO: Figure out how to highlight search icon
-
-// .searchbar-container:focus-within, .searchbar-container:hover {
-//   #search-icon, input::placeholder {
-//     color: rgb(140, 140, 142);
-//     fill: rgb(140, 140, 142);
-//   }
-// }
-
 // TODO: Fix the shadowing...
 .search-results {
   background: white;
-  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.01), 0 3px 24px rgba(48, 51, 51, .09);
+  // box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.01), 0 3px 24px rgba(48, 51, 51, .09);
+  box-shadow: 3px 2px 2px $almost-white, -3px 2px 2px $almost-white, 0px 3px 2px $almost-white, 0px 0px 2px $almost-white;
   border-radius: 4px;
   margin-top: -10px;
   margin-left: -33px;
@@ -79,7 +72,7 @@ input:focus:-ms-input-placeholder {
   width: 480px;
 }
 
-.searchbar:focus-within + .search-results, .search-results:focus-within, .search-results:focus, .search-results:active {
+.searchbar:focus-within + .search-results, .search-results:focus, .search-results:active {
   visibility: visible;
 }
 

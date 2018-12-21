@@ -8,6 +8,10 @@ const stocksReducer = (state = {}, action) => {
   // get everything before I do anything else
 
   switch(action.type) {
+    case StockActions.RECEIVE_MULTI_INTRADAY_DATA:
+      newState.multiIntradayData = action.data;
+      return newState;
+
     case StockActions.RECEIVE_STOCK_INTRADAY_DATA:
       newState.intradayData = action.data;
       return newState;

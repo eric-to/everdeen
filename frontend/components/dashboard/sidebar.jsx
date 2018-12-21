@@ -1,10 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import GraphSnapshot from './graph_snapshot';
+
 class Sidebar extends React.Component {
   constructor(props) {
     super(props)
     this.currentUser = this.props.currentUser
+  }
+
+  componentDidMount() {
+    if (this.currentUser !== null) {
+      const tickers = Object.keys(this.currentUser.shares_owned);
+      this.props.fetchMultiIntradayData(tickers);
+    }
   }
 
   render() {
@@ -37,13 +46,14 @@ class Sidebar extends React.Component {
       const stock_prices = currentUser.current_stock_prices;
 
       return (
-        <Link key={i} className="stock-links" to={`/stocks/${stock["ticker"]}`}>
+        <Link key={stock.ticker} className="stock-links" to={`/stocks/${stock["ticker"]}`}>
           <div className="stock-card-container">
             <div className="stock-card">
               <div>
                 <h4 className="ticker">{stock["ticker"]}</h4>
                 <div className="num-shares">{stock["num_shares"]}</div>
               </div>
+              <GraphSnapshot ticker={stock.ticker} multiIntradayData={this.props.multiIntradayData} />
               <h3 className="stock-price">{`$${stock_prices[stock["ticker"]]}`}</h3>
             </div>
           </div>

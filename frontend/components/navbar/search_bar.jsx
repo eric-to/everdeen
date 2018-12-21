@@ -17,6 +17,7 @@ class SearchBar extends React.Component {
     this.setState({ query: "", results: [] });
   }
 
+  // TODO: Clicking empty searchbar renders some results
   updateQuery(e) {
     const query = e.target.value;
     if (query.length === "") {

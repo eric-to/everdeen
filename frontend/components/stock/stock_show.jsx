@@ -4,6 +4,7 @@ import NavbarContainer from '../navbar/navbar_container';
 import NewsfeedContainer from '../dashboard/newsfeed_container';
 import SidebarContainer from '../dashboard/sidebar_container';
 import StockChart from '../stock_chart';
+import TransactionForm from '../dashboard/transaction_form';
 
 class StockShow extends React.Component {
   componentDidMount() {
@@ -17,10 +18,22 @@ class StockShow extends React.Component {
     const ticker = this.props.match.params.ticker;
     if (prevProps.match.params.ticker !== ticker) {
       this.props.fetchStockInfo(ticker);
+      this.props.fetchNews(ticker);
     }
   }
 
   render() {
+    let price;
+    const intradayData = this.props.intradayData;
+    if (intradayData) {
+      let index = intradayData.length - 1;
+      for (let i = index; i > 0; i--) {
+        if (intradayData[i].marketAverage !== -1) {
+          price = intradayData[i].marketAverage;
+        }
+      }
+    }
+
     return (
       <div>
         <NavbarContainer />
@@ -40,7 +53,12 @@ class StockShow extends React.Component {
             sector={this.props.sector}/>
           <NewsfeedContainer ticker={this.props.match.params.ticker} />
         </div>
-        <SidebarContainer />
+        <TransactionForm 
+          currentUser={this.props.currentUser}
+          price={price}
+          createTransaction={this.props.createTransaction}
+          fetchUserInfo={this.props.fetchUserInfo}
+          ticker={this.props.match.params.ticker} />
       </div>
     );
   }

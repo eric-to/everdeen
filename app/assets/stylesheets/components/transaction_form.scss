@@ -1,0 +1,107 @@
+@import "colors";
+
+#transaction-form-container {
+  border-radius: 4px;
+  height: 352px;
+}
+
+#form-heading {
+  border-bottom: 1px solid $light-border;
+  font-family: "DINPro-Regular";
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 22px;
+  margin: 0;
+}
+
+.transaction-form {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  height: 100%;
+}
+
+.shares {
+  display: flex;
+  font-family: "DINPro-Regular";
+  font-weight: normal;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 13px;
+}
+
+.shares-label {
+  padding-left: 24px;
+}
+
+#shares-input {
+  background: #fafafa;
+  border: 1px solid #fafafa;
+  border-radius: 4px;
+  color: $black;
+  font-family: inherit;
+  font-size: 13px;
+  height: 34px;
+  line-height: 1.5em;
+  margin: 0;
+  margin-right: 36px;
+  outline: 0;
+  text-align: right;
+  width: 78px;
+}
+
+.market-price-container {
+  padding-left: 24px;
+}
+
+.market-price {
+  border-bottom: 1px solid #f4f4f5;
+  padding-bottom: 15px;
+  width: 228px;
+}
+
+.estimated-cost-container {
+  margin-top: -9px;
+  padding-left: 24px;
+}
+
+.estimated-cost {
+  padding-top: -9px;
+  width: 228px;
+}
+
+.submit-transaction-container {
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 16px;
+  margin-top: -13px;
+  padding-bottom: 24px;
+  text-align: center;
+}
+
+#submit-transaction {
+  background: $green;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 100%;
+  font-weight: 500;
+  height: 48px;
+  line-height: 1.15px;
+  width: 228px;
+}
+
+.form-footer-container {
+  width: 100%;
+}
+
+.form-footer {
+  border-top: 1px solid #f4f4f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 47px;
+}

@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
 
 import StockShow from './stock_show';
+import { createTransaction } from '../../actions/transaction_actions';
 import { fetchNews } from '../../actions/news_actions';
+import { fetchUserInfo } from '../../actions/session_actions';
 
 import {
   fetchStockIntradayData,
@@ -16,6 +18,7 @@ import {
 // TODO: Refactor the stock state to make it easier
 // to work with
 const mapStateToProps = (state, ownProps) => ({
+  currentUser: state.entities.users[state.session.id],
   news: state.entities.news,
   intradayData: state.entities.stocks.intradayData,
   monthData: state.entities.stocks.monthData,
@@ -39,7 +42,9 @@ const mapDispatchToProps = dispatch => ({
   fetchStockFiveYearsData: ticker => dispatch(fetchStockFiveYearsData(ticker)),
   fetchStockCompanyInfo: ticker => dispatch(fetchStockCompanyInfo(ticker)),
   fetchNews: ticker => dispatch(fetchNews(ticker)),
-  fetchStockInfo: ticker => dispatch(fetchStockInfo(ticker))
+  fetchStockInfo: ticker => dispatch(fetchStockInfo(ticker)),
+  createTransaction: transaction => dispatch(createTransaction(transaction)),
+  fetchUserInfo: user => dispatch(fetchUserInfo(user))
 });
 
 export default connect(

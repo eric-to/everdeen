@@ -53,3 +53,12 @@ ul, ul li {
 header {
   position: fixed;
 }
+
+.loading {
+  background: #fff;
+  left: 47%;
+  // overflow: hidden;
+  position: fixed;
+  top: 50%;
+  z-index: 10;
+}

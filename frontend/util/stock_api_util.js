@@ -6,6 +6,16 @@ export const fetchIntradayData = ticker => (
   })
 );
 
+export const fetchMultiIntradayData = tickers => {
+  let url = `https://api.iextrading.com/1.0/stock/market/batch?types=chart&range=1d&last=5&symbols=`;
+  for (let i = 0; i < tickers.length; i++) {
+    url += `${tickers[i]},`;
+  }
+  return $.ajax({
+    url: url
+  })
+}
+
 export const fetchMonthData = ticker => (
   $.ajax({
     url: `https://api.iextrading.com/1.0/stock/${ticker}/chart/1m`
