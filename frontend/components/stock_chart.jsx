@@ -6,20 +6,24 @@ class StockChart extends React.Component {
     super(props);
     this.state = { active: "1d" };
 
-    // Learned this cool trick from Jeremiah Kellick
     this.priceRef = React.createRef();
     this.hoverPriceRef = React.createRef();
     this.priceChangeRef = React.createRef();
     this.hoverPriceChangeRef = React.createRef();
+    this.percentChangeRef = React.createRef();
+    this.hoverPercentChangeRef = React.createRef();
 
     this.customTooltip = this.customTooltip.bind(this)
   }
 
   customTooltip(data) {
+    const intradayData = this.props.intradayData;
     const price = this.priceRef.current;
     const hoverPrice = this.hoverPriceRef.current;
     const priceChange = this.priceChangeRef.current;
-    const hoverPriceChangeRef = this.hoverPriceChangeRef.current;
+    const hoverPriceChange = this.hoverPriceChangeRef.current;
+    const percentChange = this.percentChangeRef.current;
+    const hoverPercentChange = this.hoverPercentChangeRef.current;
 
     if (price && hoverPrice) {
       if (data.payload[0]) {
@@ -31,11 +35,30 @@ class StockChart extends React.Component {
       }
     }
 
-    // if (priceChange && hoverPriceChangeRef) {
-    //   if (data.payload[0]) {
-
-    //   }
-    // }
+    // TODO: Refactor these conditions and code overall here
+    if (priceChange && hoverPriceChange) {
+      if (data.payload[0]) {
+        priceChange.classList.add("hide");
+        percentChange.classList.add("hide");
+        let openPrice;
+        for (let i = 0; i < intradayData.length; i++) {
+          openPrice = intradayData[i].marketAverage;
+          if (openPrice !== -1) {
+            break;
+          }
+        }
+        let latestPrice = data.payload[0].value;
+        const balanceChange = this.calcChangeInPrice(openPrice, latestPrice);
+        hoverPriceChange.innerText = balanceChange.priceChange;
+        const negation = `${ balanceChange.priceChange[0] === '-' ? '-' : '' }`
+        hoverPercentChange.innerText = ` (${negation}${balanceChange.percentChange})`;
+      } else {
+        priceChange.classList.remove("hide");
+        percentChange.classList.remove("hide");
+        hoverPriceChange.innerText = "";
+        hoverPercentChange.innerText = "";
+      }
+    }
 
   }
 
@@ -47,11 +70,11 @@ class StockChart extends React.Component {
     if (changeInPrice < 0) {
       changeInPrice = changeInPrice * -1;
       changeInPricePercent = ((changeInPrice / openPrice) * 100).toFixed(2);
-      changeInPricePercent = `(${changeInPricePercent}%)`;
+      changeInPricePercent = `${changeInPricePercent}%`;
       changeInPrice = `-$${changeInPrice}`;
     } else {
       changeInPricePercent = ((changeInPrice / openPrice) * 100).toFixed(2);
-      changeInPricePercent = `(${changeInPricePercent}%)`;
+      changeInPricePercent = `${changeInPricePercent}%`;
       changeInPrice = `+$${changeInPrice}`;
     }
 
@@ -115,6 +138,8 @@ class StockChart extends React.Component {
     //   changeInBalancePercent = `(${(Math.floor(changeInBalancePercent * 100) / 100).toFixed(2)}%)`
     //   changeInBalance = `+$${(Math.floor(changeInBalance * 100) / 100).toFixed(2)}`;
     // }
+
+    // TODO: check open price for the rest of the functions in this file!
     let openPrice;
     for (let i = 0; i < oneDayData.length; i++) {
       openPrice = oneDayData[i].marketAverage;
@@ -122,7 +147,6 @@ class StockChart extends React.Component {
         break;
       }
     }
-    console.log(openPrice);
 
     const priceChange = this.calcChangeInPrice(openPrice, prevDataPoint.price);
     let color;
@@ -362,8 +386,10 @@ class StockChart extends React.Component {
             <h1 id="company-name">{this.props.companyName}</h1>
             <h2 ref={this.priceRef} className="current-stock-price">{`$${data.currentPrice.toFixed(2)}`}</h2>
             <h2 ref={this.hoverPriceRef} className="current-stock-price"></h2>
-            <span>{`${data.balanceChange} `}</span>
-            <span>{data.percentChange}</span>
+            <span ref={this.priceChangeRef}>{`${data.balanceChange} `}</span>
+            <span ref={this.hoverPriceChangeRef}></span>
+            <span ref={this.percentChangeRef}>{`(${ data.balanceChange[0] === '-' ? '-' : '' }${data.percentChange})`}</span>
+            <span ref={this.hoverPercentChangeRef}></span>
             <span id="timeIndicator">{ this.timeIndicator() }</span>
           </div>
           <LineChart
