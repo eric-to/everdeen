@@ -47,30 +47,32 @@ class StockShow extends React.Component {
       <div>
         <NavbarContainer />
         <div className="dashboard-container">
-          <StockChart
-            intradayData={this.props.intradayData}
-            oneMonthData={this.props.monthData}
-            threeMonthData={this.props.threeMonthsData}
-            yearData={this.props.yearData}
-            fiveYearData={this.props.fiveYearsData}
-            ceo={this.props.ceo}
-            companyName={this.props.companyName}
-            description={this.props.description}
-            exchange={this.props.exchange}
-            industry={this.props.industry}
-            peRatio={this.props.peRatio}
-            sector={this.props.sector}
-            week52High={this.props.week52High}
-            week52Low={this.props.week52Low}
-            website={this.props.website}/>
-          <NewsfeedContainer ticker={this.props.match.params.ticker} />
+          <div>
+            <StockChart
+              intradayData={this.props.intradayData}
+              oneMonthData={this.props.monthData}
+              threeMonthData={this.props.threeMonthsData}
+              yearData={this.props.yearData}
+              fiveYearData={this.props.fiveYearsData}
+              ceo={this.props.ceo}
+              companyName={this.props.companyName}
+              description={this.props.description}
+              exchange={this.props.exchange}
+              industry={this.props.industry}
+              peRatio={this.props.peRatio}
+              sector={this.props.sector}
+              week52High={this.props.week52High}
+              week52Low={this.props.week52Low}
+              website={this.props.website} />
+            <NewsfeedContainer ticker={this.props.match.params.ticker} />
+          </div>
+          <TransactionForm
+            currentUser={this.props.currentUser}
+            price={price}
+            createTransaction={this.props.createTransaction}
+            fetchUserInfo={this.props.fetchUserInfo}
+            ticker={this.props.match.params.ticker} />
         </div>
-        <TransactionForm 
-          currentUser={this.props.currentUser}
-          price={price}
-          createTransaction={this.props.createTransaction}
-          fetchUserInfo={this.props.fetchUserInfo}
-          ticker={this.props.match.params.ticker} />
       </div>
     );
   }

@@ -3,10 +3,10 @@
 .dashboard-container {
   display: flex;
   justify-content: space-between;
-  flex-direction: column;
+  // flex-direction: column;
 
   .portfolio-chart {
-    margin-left: 128px;
+    // margin-left: 128px;
     margin-top: 90px;
   }
 }
@@ -16,14 +16,14 @@
   font-size: 36px;
   font-weight: 500;
   margin-top: 99px;
-  margin-left: 129px;
+  // margin-left: 129px;
 }
 
 .portfolio-chart-tabs-container {
   border-bottom: 1px solid $bottom-border;
   font-size: 13px;
   margin-top: 24px;
-  margin-left: 129px;
+  // margin-left: 129px;
   width: 676px;
 }
 
@@ -51,11 +51,11 @@
 .sidebar {
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.01), 0 3px 24px rgba(48,51,51,.09);
   border-radius: 4px;
-  left: 876px;
+  // left: 876px;
   height: 77.2%;
   overflow-y: scroll;
   position: fixed;
-  right: 128px;
+  // right: 128px;
   top: 95px;
   width: 275.77px;
 
@@ -76,7 +76,7 @@
   height: 43px;
   padding: 4px 21px 0;
   padding-left: 0;
-  margin-left: 25px;
+  // margin-left: 25px;
 
   h3 {
     font-size: 16px;
@@ -97,7 +97,7 @@
   font-family: "DINPro-Medium";
   font-weight: 400;
   height: 60px;
-  margin-left: 24px;
+  // margin-left: 24px;
   margin-right: 24px;
 
   .ticker {
@@ -134,5 +134,5 @@ div.stocks-container > div:last-child {
 
 .portfolio-changes {
   margin-top: -20px;
-  margin-left: 130px;
+  // margin-left: 130px;
 }

@@ -9,7 +9,7 @@ import { AuthRoute } from '../util/route_util';
 
 // TODO: Add ProtectedRoute to ensure only logged in users can access some features
 const App = () => (
-  <div>
+  <div className="app">
     <Switch>
       {/* Home page */}
       <Route exact path="/" component={HomeContainer} />

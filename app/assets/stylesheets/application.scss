@@ -52,6 +52,7 @@ ul, ul li {
 
 header {
   position: fixed;
+  left: 0;
 }
 
 .loading {
@@ -77,4 +78,17 @@ header {
 
 .hide {
   display: none;
+}
+
+
+
+// body {
+//   text-align: left;
+//   width: 800px;
+//   margin: 0 auto;
+// }
+
+.app {
+  margin: auto;
+  max-width: 1024px;
 }

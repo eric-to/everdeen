@@ -1,5 +1,5 @@
 import React from 'react';
-import { Line, LineChart, Tooltip, YAxis } from 'recharts';
+import { Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts';
 
 class StockChart extends React.Component {
   constructor(props) {
@@ -60,6 +60,7 @@ class StockChart extends React.Component {
       }
     }
 
+    return data.label;
   }
 
   calcChangeInPrice(openPrice, latestPrice) {
@@ -396,12 +397,16 @@ class StockChart extends React.Component {
             width={676}
             height={196}
             data={data.chartData}>
+            <XAxis
+              dataKey="time"
+              hide={true} />
             <YAxis
               hide={true}
               domain={[data.min, data.max]} />
             <Tooltip
+              offset={-25}
               isAnimationActive={false}
-              position={{ y: -19 }}
+              position={{ y: -40 }}
               content={this.customTooltip} />
             <Line
               type="linear"
