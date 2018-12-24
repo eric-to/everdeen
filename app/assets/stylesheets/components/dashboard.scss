@@ -44,68 +44,6 @@
   width: 16px;
 }
 
-.sidebar-container {
-  width: 276px;
-}
-
-.sidebar {
-  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.01), 0 3px 24px rgba(48,51,51,.09);
-  border-radius: 4px;
-  // left: 876px;
-  height: 77.2%;
-  overflow-y: scroll;
-  position: fixed;
-  // right: 128px;
-  top: 95px;
-  width: 275.77px;
-
-  &::-webkit-scrollbar {
-    background: transparent;
-    width: 0px;
-  }
-}
-
-.header-card-container {
-  border-bottom: 1px solid $bottom-border;
-}
-
-.header-card {
-  display: flex;
-  align-items: center;
-  font-family: "DINPro-Medium";
-  height: 43px;
-  padding: 4px 21px 0;
-  padding-left: 0;
-  // margin-left: 25px;
-
-  h3 {
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 0;
-  }
-}
-
-.stock-card-container:hover {
-  background-color: #fafafa;
-}
-
-.stock-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-  font-family: "DINPro-Medium";
-  font-weight: 400;
-  height: 60px;
-  // margin-left: 24px;
-  margin-right: 24px;
-
-  .ticker {
-    margin: 0;
-    padding: 0;
-  }
-}
-
 .stock-price {
   color: #171718;
   font-family: "DINPro-Regular";

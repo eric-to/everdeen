@@ -1,5 +1,4 @@
 import React from "react";
-import { sep } from "path";
 
 const NewsItem = ({ newsItem }) => {
   const MONTHS = {
@@ -58,7 +57,7 @@ const NewsItem = ({ newsItem }) => {
           <div className="news-item-image" style={{ backgroundImage: `url("${newsItem.urlToImage}")` }} />
         </div>
         <div className="news-item-info">
-          <span className="news-item-meta">{ `${newsItem.source.name} - ${timeAgo(newsItem.publishedAt)}` }</span>
+          <div className="news-item-meta">{ `${newsItem.source.name} - ${timeAgo(newsItem.publishedAt)}` }</div>
           <h3 className="news-item-title">{ newsItem.title }</h3>
           <h3 className="news-item-description">{ summary }</h3>
         </div>

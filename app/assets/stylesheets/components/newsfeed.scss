@@ -6,8 +6,7 @@
 }
 
 .newsfeed-heading {
-  border-color: $dark-border;
-  border-bottom: 1px solid #f4f4f5;
+  border-bottom: 1px solid $bottom-border;
   font-family: "DINPro-Medium";
   font-size: 26px;
   font-weight: 500;
@@ -25,9 +24,9 @@
   border-radius: 4px;
   display: flex;
   height: 134px;
+  margin-left: -30px;
   padding: 30px;
   width: 678.66px;
-  margin-left: -30px;
 
   &:hover {
     background-color: $almost-white;
@@ -46,17 +45,24 @@
   margin-left: 24px;
 }
 
+.news-item-meta {
+  // color: $dark-gray;
+  margin-bottom: 5px;
+}
+
 .news-item-title, .news-item-description {
   color: $black;
   font-size: 16px;
-  letter-spacing: 0;
   line-height: 22px;
   margin: 0;
+  width: 420px;
 }
 
 .news-item-title {
   font-family: "DINPro-Medium";
   font-weight: 600;
+  letter-spacing: 0;
+  margin-bottom: 4px;
 }
 
 .news-item-description {
