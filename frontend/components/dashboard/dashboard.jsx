@@ -151,7 +151,7 @@ class Dashboard extends React.Component {
             </div>
           </ul>
 
-          <NewsfeedContainer ticker={"NOTATICKER"} />
+          <NewsfeedContainer />
         </div>
         <SidebarContainer />
       </div>

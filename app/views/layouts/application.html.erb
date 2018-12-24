@@ -53,20 +53,3 @@
     <%= yield %>
   </body>
 </html>
-
-<script type="text/javascript">
-  window.onload = function() {
-    themeButton = document.getElementById("theme");
-    if (themeButton) {
-      themeButton.addEventListener("click", function() {
-      pink = document.getElementById("pinkcss");
-      if (pink.disabled == true) {
-        pink.disabled = false;
-        localStorage.removeItem("theme");
-      } else {
-        pink.disabled = true;
-        localStorage.setItem("theme", "default");
-      }});
-    }
-  }
-</script>

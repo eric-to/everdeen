@@ -30,7 +30,7 @@ html, body {
   font-size: 13px;
   letter-spacing: 0.25px;
   margin: 0;
-  min-width: 1155px;
+  // min-width: 1155px;
   text-align: left;
 }
 
@@ -56,9 +56,7 @@ header {
 }
 
 .loading {
-  background: #fff;
   left: 47%;
-  // overflow: hidden;
   position: fixed;
   top: 50%;
   z-index: 10;
@@ -92,3 +90,21 @@ header {
   margin: auto;
   max-width: 1024px;
 }
+
+
+// <script type="text/javascript">
+//   window.onload = function() {
+//     themeButton = document.getElementById("theme");
+//     if (themeButton) {
+//       themeButton.addEventListener("click", function() {
+//       pink = document.getElementById("pinkcss");
+//       if (pink.disabled == true) {
+//         pink.disabled = false;
+//         localStorage.removeItem("theme");
+//       } else {
+//         pink.disabled = true;
+//         localStorage.setItem("theme", "default");
+//       }});
+//     }
+//   }
+// </script>

@@ -1,41 +1,40 @@
-import React from 'react';
+import React from "react";
 
-import NewsItem from './news_item';
+import NewsItem from "./news_item";
 
 class Newsfeed extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchNews(this.props.ticker);
   }
 
-  newsHeading() {
-    if (this.props.ticker === "NOTATICKER") {
-      return (
-        <h2 className="newsfeed-header">Recent News</h2>
-      );
-    } else {
-      return (
-        <h2 className="newsfeed-header">News</h2>
-      );
+  // Finds all the unique articles
+  filterByTitle(news) {
+    const seenTitles = [];
+    const uniqueItems = [];
+    for (let i = 0; i < news.length; i++) {
+      let item = news[i];
+      if (seenTitles.indexOf(item.title) === -1) {
+        seenTitles.push(item.title);
+        uniqueItems.push(item);
+      }
     }
+    return uniqueItems;
   }
 
-  // Kudos to Dwayne Charrington for sharing
-  // Find him on Github @ Vheissu
-  filterNews(news, prop) {
-    return news.filter((obj, pos, arr) => {
-      return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
-    });
+  newsHeading() {
+    const heading = !this.props.ticker ? "Recent News" : "News";
+    return <h2 className="newsfeed-heading">{ heading }</h2>;
   }
 
   render() {
-    const news = this.filterNews(this.props.news, "title");
+    const news = this.filterByTitle(this.props.news);
     return (
-      <div className="newsfeed">
+      <div className="newsfeed-container">
         { this.newsHeading() }
-        <ul className="all-news-container">
-          {news.map((item, i) => {
-            return <NewsItem newsItem={item} key={i} />
-          })}
+        <ul className="newsfeed">
+          {news.map((item) => (
+            <NewsItem newsItem={item} key={item.title} />
+          ))}
         </ul>
       </div>
     );

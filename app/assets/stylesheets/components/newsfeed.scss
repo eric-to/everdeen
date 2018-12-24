@@ -1,12 +1,11 @@
 @import "colors";
 
-.newsfeed {
+.newsfeed-container {
+  margin-bottom: 64px;
   margin-top: 55px;
-  margin-bottom: 94px; // TODO: find better value
-  // margin-left: -30px;
 }
 
-.newsfeed-header {
+.newsfeed-heading {
   border-color: $dark-border;
   border-bottom: 1px solid #f4f4f5;
   font-family: "DINPro-Medium";
@@ -14,12 +13,11 @@
   font-weight: 500;
   letter-spacing: -0.14px;
   line-height: 30px;
-  // margin-left: 158px;
   padding-bottom: 16px;
   width: 678.66px;
 }
 
-.all-news-container {
+.newsfeed {
   margin-top: -22px;
 }
 
@@ -27,9 +25,9 @@
   border-radius: 4px;
   display: flex;
   height: 134px;
-  // margin-left: 128px;
   padding: 30px;
   width: 678.66px;
+  margin-left: -30px;
 
   &:hover {
     background-color: $almost-white;
@@ -44,19 +42,21 @@
   width: 196px;
 }
 
+.news-item-info {
+  margin-left: 24px;
+}
+
 .news-item-title, .news-item-description {
   color: $black;
-  font-family: "DINPro-Medium";
   font-size: 16px;
-  font-weight: 600;
   letter-spacing: 0;
   line-height: 22px;
   margin: 0;
-  // margin-left: 25px;
 }
 
 .news-item-title {
-  margin-bottom: 2px;
+  font-family: "DINPro-Medium";
+  font-weight: 600;
 }
 
 .news-item-description {
