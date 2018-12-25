@@ -44,32 +44,6 @@
   width: 16px;
 }
 
-.stock-price {
-  color: #171718;
-  font-family: "DINPro-Regular";
-  font-size: 16px;
-  font-weight: 100;
-  letter-spacing: 0;
-  line-height: 22px;
-}
-
-div.stocks-container > div:last-child {
-  border-bottom: 1px solid $bottom-border;
-}
-
-.ticker {
-  font-family: "DINPro-Medium";
-  font-weight: 500;
-}
-
-.num-shares {
-  font-family: "DINPro-Regular";
-}
-
-.stock-links {
-  color: $black;
-}
-
 .portfolio-changes {
   margin-top: -20px;
   // margin-left: 130px;

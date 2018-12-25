@@ -1,12 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import NavLogoSVG from '../logo/nav_logo_svg';
+import LogoSVG from '../logo/logo_svg';
 import SearchBar from './search_bar';
 
-// TODO: Add search svg to search bar and redirect
-// theme button clicks to the current page or do
-// nothing
 const Navbar = ({ currentUser, logOut }) => {
   const splashNavbar = () => {
     return (
@@ -44,17 +41,9 @@ const Navbar = ({ currentUser, logOut }) => {
   const homeNavbar = () => {
     return (
       <header>
-        <Link className="nav-logo" to="/"><NavLogoSVG /></Link>
+        <Link className="nav-logo" to="/"><LogoSVG /></Link>
         <div className="nav-logo-search">
-
-          {/* <div className="searchbar-container">
-            <div className="searchbar">
-              <input type="text" placeholder="Search" />
-            </div>
-            <SearchSVG />
-          </div> */}
           <SearchBar />
-
         </div>
 
         <div className="nav-links">
@@ -72,6 +61,3 @@ const Navbar = ({ currentUser, logOut }) => {
 }
 
 export default Navbar;
-
-// TODO: reattach the theme button click
-// handler globally across the site

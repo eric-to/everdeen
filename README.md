@@ -1,2 +1,2 @@
 # Everdeen
-Work in progress.
+Will be updated soon - 12/24/2018

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Line, LineChart, YAxis } from 'recharts';
 
-class GraphSnapshot extends React.Component {
+class MiniChart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -81,7 +81,7 @@ class GraphSnapshot extends React.Component {
             type="linear"
             dataKey="price"
             stroke={color}
-            strokeWidth="2"
+            strokeWidth="1.5"
             dot={false} />
         </LineChart>
       </div>
@@ -90,4 +90,4 @@ class GraphSnapshot extends React.Component {
   }
 }
 
-export default GraphSnapshot;
+export default MiniChart;

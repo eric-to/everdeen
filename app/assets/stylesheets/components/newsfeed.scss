@@ -25,7 +25,6 @@
   display: flex;
   height: 134px;
   margin-left: -30px;
-  overflow: hidden;
   padding: 30px;
   width: 678.66px;
 
@@ -44,10 +43,12 @@
 
 .news-item-info {
   margin-left: 24px;
+  overflow: hidden;
 }
 
 .news-item-meta {
-  color: $dark-gray;
+  // color: $dark-gray;
+  color: $cool-purple;
   margin-bottom: 5px;
 }
 
@@ -56,7 +57,6 @@
   font-size: 16px;
   line-height: 22px;
   margin: 0;
-  overflow: hidden;
   width: 420px;
 }
 

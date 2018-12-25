@@ -1,23 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import GraphSnapshot from './graph_snapshot';
+import MiniChart from "./mini_chart";
 
 class Sidebar extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.currentUser = this.props.currentUser
   }
 
   componentDidMount() {
-    if (this.currentUser !== null) {
+    if (this.currentUser) {
       const tickers = Object.keys(this.currentUser.shares_owned);
       this.props.fetchMultiIntradayData(tickers);
     }
   }
 
   render() {
-    const currentUser = this.props.currentUser
+    const currentUser = this.currentUser
 
     const stocks = [];
     if (currentUser.shares_owned) {
@@ -42,6 +42,12 @@ class Sidebar extends React.Component {
       }
     }
 
+    stocks.sort((stock1, stock2) => {
+      let ticker1 = stock1.ticker.toUpperCase();
+      let ticker2 = stock2.ticker.toUpperCase();
+      return ticker1.localeCompare(ticker2);
+    });
+
     const stockCard = (stock, i) => {
       const stock_prices = currentUser.current_stock_prices;
 
@@ -53,7 +59,7 @@ class Sidebar extends React.Component {
                 <h4 className="ticker">{stock["ticker"]}</h4>
                 <div className="num-shares">{stock["num_shares"]}</div>
               </div>
-              <GraphSnapshot ticker={stock.ticker} multiIntradayData={this.props.multiIntradayData} />
+              <MiniChart ticker={stock.ticker} multiIntradayData={this.props.multiIntradayData} />
               <h3 className="stock-price">{`$${stock_prices[stock["ticker"]]}`}</h3>
             </div>
           </div>
@@ -65,6 +71,11 @@ class Sidebar extends React.Component {
       <div className="sidebar-container">
         <div className="sidebar">
 
+          <div className="header-card-container">
+            <div className="header-card">
+              <h3 id="crypto-header">Cryptocurrencies (tba)</h3>
+            </div>
+          </div>
           <div className="header-card-container">
             <div className="header-card">
               <h3>Stocks</h3>

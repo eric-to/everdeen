@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NavLogoSVG = () => (
+const LogoSVG = () => (
   <svg width="48" height="48" viewBox="0 0 48 48">
     <g transform="translate(8 9)">
       <path
@@ -77,4 +77,4 @@ const NavLogoSVG = () => (
   </svg>
 );
 
-export default NavLogoSVG;
+export default LogoSVG;

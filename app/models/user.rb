@@ -88,7 +88,11 @@ class User < ApplicationRecord
     response = JSON.parse(uri)
 
     stocks.each do |ticker, _|
-      stock_prices[ticker] = response[ticker]['quote']['latestPrice']
+      price = (response[ticker]['quote']['latestPrice']).to_s
+      if price[-2] == '.'
+        price += '0'
+      end
+      stock_prices[ticker] = price
     end
 
     stock_prices
