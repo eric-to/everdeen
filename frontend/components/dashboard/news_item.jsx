@@ -17,7 +17,6 @@ const NewsItem = ({ newsItem }) => {
   }
 
   const timeAgo = (time) => {
-    console.log(time);
     const timeDiff = (new Date()) - (new Date(time));
     const seconds = Math.floor(timeDiff / 1000);
     const minutes = Math.floor(seconds / 60);

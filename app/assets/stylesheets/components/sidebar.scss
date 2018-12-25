@@ -29,7 +29,6 @@
   font-family: "DINPro-Medium";
   height: 51px;
   padding: 4px 21px 0;
-  padding-left: 0;
   padding: 0 24px;
 
   & h3 {
@@ -40,9 +39,18 @@
   }
 }
 
+#crypto-header {
+  color: $cool-purple;
+}
+
 #watchlist-header {
   border-top: 1px solid $bottom-border;
 }
+
+.stock-link {
+  color: $black;
+}
+
 
 .stock-card-container:hover {
   background-color: $almost-white;
@@ -57,35 +65,16 @@
   font-weight: 400;
   height: 60px;
   padding: 0 24px;
-
-  .ticker {
-    font-family: "DINPro-Medium";
-    font-weight: 500;
-    font-size: 13px;
-    letter-spacing: 0.25px;
-    line-height: 19px;
-    margin: 0;
-    padding: 0;
-  }
-}
-
-.stock-price {
-  color: #171718;
-  font-family: "DINPro-Regular";
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: 22px;
-  width: 69.88px;
-  text-align: right;
-}
-
-div.stocks-container > div:last-child {
-  border-bottom: 1px solid $bottom-border;
 }
 
 .ticker {
   font-family: "DINPro-Medium";
   font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.25px;
+  line-height: 19px;
+  margin: 0;
+  padding: 0;
 }
 
 .num-shares {
@@ -94,10 +83,12 @@ div.stocks-container > div:last-child {
   width: 69.88px;
 }
 
-.stock-links {
+.stock-price {
   color: $black;
-}
-
-#crypto-header {
-  color: $cool-purple;
+  font-family: "DINPro-Regular";
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 22px;
+  text-align: right;
+  width: 69.88px;
 }
