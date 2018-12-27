@@ -1,45 +1,61 @@
 @import "colors";
 
-.navLogoStar {
+header {
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 100;
+}
+
+.logo-search-container {
+  display: flex;
+}
+
+.logo-star {
   display: none;
 }
 
 .nav-logo {
-  // margin-left: 48px;
+  margin-left: 48px;
   margin-top: 6px;
   right: 45px;
-}
+  -webkit-transition: fill 300ms ease-out;
+  transition: fill 300ms ease-out;
 
-header {
-  background: white;
-  display: grid;
-  grid-template-columns: 1fr 5fr 2fr;
-  width: 100%;
-  align-items: center;
-  z-index: 10;
+  &:hover {
+    fill: $green;
+  }
 }
 
 .nav-links {
   display: flex;
   justify-content: space-between;
-  margin-top: 6px;
-  // margin-left: 14px;
-  width: 242px;
+  align-items: center;
+  flex-basis: 226.3px;
+  height: 64px;
+  margin-right: 48px;
+  margin-top: -1px;
 
   a, button {
-    font-size: 13px;
-    font-weight: 400;
-  }
-
-  a {
-
-    &:hover {
-      color: $green;
-    }
-  }
-
-  button {
+    color: $black;
     cursor: pointer;
-    border: none;
+    font-size: 13px;
   }
+
+  a:hover {
+    color: $green;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+button {
+  border: none;
 }

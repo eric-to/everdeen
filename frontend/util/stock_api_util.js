@@ -1,5 +1,3 @@
-// TODO: Improve these queries (use more filters, like chartInterval)
-// TODO: Clean up method names
 export const fetchIntradayData = ticker => (
   $.ajax({
     url: `https://api.iextrading.com/1.0/stock/${ticker}/chart/1d` 

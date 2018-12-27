@@ -1,4 +1,4 @@
-// Creates new user
+// Creates new User
 export const signUp = user => (
   $.ajax({
     method: 'POST',
@@ -7,7 +7,7 @@ export const signUp = user => (
   })
 );
 
-// Creates new session
+// Creates new Session
 export const logIn = user => (
   $.ajax({
     method: 'POST',
@@ -16,8 +16,7 @@ export const logIn = user => (
   })
 );
 
-// Deletes current session, resets the user's
-// session token
+// Resets current Session
 export const logOut = () => (
   $.ajax({
     method: 'DELETE',
@@ -25,7 +24,7 @@ export const logOut = () => (
   })
 );
 
-// Grabs portfolio-related data from the user
+// Gets user-related data
 export const fetchUserInfo = user => (
   $.ajax({
     url: `/api/users/${user.id}/info`

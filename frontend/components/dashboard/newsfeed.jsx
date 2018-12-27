@@ -7,6 +7,13 @@ class Newsfeed extends React.Component {
     this.props.fetchNews(this.props.ticker);
   }
 
+  // The NewsAPI is a little funky. Sometimes it gives
+  // articles that contain raw html in the description.
+  // This helps get rid of those articles.
+  containsBogus(description) {
+    return description.indexOf("href") > 0;
+  }
+
   // Finds all the unique articles
   filterByTitle(news) {
     const seenTitles = [];
@@ -14,8 +21,10 @@ class Newsfeed extends React.Component {
     for (let i = 0; i < news.length; i++) {
       let item = news[i];
       if (seenTitles.indexOf(item.title) === -1) {
-        seenTitles.push(item.title);
-        uniqueItems.push(item);
+        if (!(this.containsBogus(item.description))) {
+          seenTitles.push(item.title);
+          uniqueItems.push(item);
+        }
       }
     }
     return uniqueItems;

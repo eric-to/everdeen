@@ -149,12 +149,19 @@ class StockChart extends React.Component {
       }
     }
 
-    const priceChange = this.calcChangeInPrice(openPrice, prevDataPoint.price);
+    let priceChange;
     let color;
-    if (openPrice > prevDataPoint.price) {
-      color = "#f45531";
-    } else {
-      color = "#82ca9d";
+    if (prevDataPoint) {
+      priceChange = this.calcChangeInPrice(openPrice, prevDataPoint.price);
+      if (openPrice > prevDataPoint.price) {
+        color = "#f45531";
+      } else {
+        color = "#21ce99";
+      }
+    }
+
+    if (!priceChange) {
+      return {};
     }
 
     return {
@@ -203,7 +210,7 @@ class StockChart extends React.Component {
       if (weekData[0].close > prevDataPoint.price) {
         color = "#f45531";
       } else {
-        color = "#82ca9d";
+        color = "#21ce99";
       }
 
       return {
@@ -251,7 +258,7 @@ class StockChart extends React.Component {
     if (oneMonthData[0].close > prevDataPoint.price) {
       color = "#f45531";
     } else {
-      color = "#82ca9d";
+      color = "#21ce99";
     }
 
     return {
@@ -356,7 +363,11 @@ class StockChart extends React.Component {
     let data = [];
 
     if (this.props.intradayData && this.state.active === "1d") {
-      data = this.calcOneDayData(this.props.intradayData);
+      if (this.props.intradayData.length === 0 && this.props.oneMonthData) {
+        data = this.calcOneMonthData(this.props.oneMonthData);
+      } else {
+        data = this.calcOneDayData(this.props.intradayData);
+      }
     }
 
     if (this.props.oneMonthData && this.state.active === "1w") {
@@ -380,12 +391,13 @@ class StockChart extends React.Component {
       data = this.calcFiveYearData(this.props.fiveYearData);
     }
 
-    if (data.length !== 0) {
+    if (data.currentPrice) {
       return (
         <div className="stock-chart">
           <div className="stock-chart-header">
             <h1 id="company-name">{this.props.companyName}</h1>
-            <h2 ref={this.priceRef} className="current-stock-price">{`$${data.currentPrice.toFixed(2)}`}</h2>
+            {/* <h2 ref={this.priceRef} className="current-stock-price">{`$${data.currentPrice.toFixed(2)}`}</h2> */}
+            <h2 ref={this.priceRef} className="current-stock-price">{`$${data.currentPrice}`}</h2>
             <h2 ref={this.hoverPriceRef} className="current-stock-price"></h2>
             <span ref={this.priceChangeRef}>{`${data.balanceChange} `}</span>
             <span ref={this.hoverPriceChangeRef}></span>

@@ -59,7 +59,7 @@ class MiniChart extends React.Component {
           }
 
           if (openPrice <= prevDataPoint.price) {
-            color = "#82ca9d";
+            color = "#21ce99";
           } else {
             color = "#f45531";
           }

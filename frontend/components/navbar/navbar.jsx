@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import LogoSVG from '../logo/logo_svg';
-import SearchBar from './search_bar';
+import Searchbar from './searchbar';
 
 const Navbar = ({ currentUser, logOut }) => {
   const splashNavbar = () => {
@@ -10,9 +10,7 @@ const Navbar = ({ currentUser, logOut }) => {
       <div>
         <div className="splash-navbar-container">
           <div>
-            <Link to="/">
-              <img className="splash-navbar-logo" src="https://static1.squarespace.com/static/53fe4a70e4b0a2293ab0e42a/t/53fe4b7ce4b03ae33c17c7d2/1543455129039/"></img>
-            </Link>
+            <Link className="nav-logo" to="/"><LogoSVG /></Link>
           </div>
           <div className="splash-navbar-links">
             <div>
@@ -22,7 +20,7 @@ const Navbar = ({ currentUser, logOut }) => {
               <Link to="/signup">Sign Up</Link>
             </div>
             <div>
-              <Link id="theme" to="/">Pink Mode</Link>
+              <Link id="theme" to="/">Vibrant Mode</Link>
             </div>
             <div className="fa-links">
               <a href="https://github.com/eric-to" target="_blank">
@@ -41,16 +39,15 @@ const Navbar = ({ currentUser, logOut }) => {
   const homeNavbar = () => {
     return (
       <header>
-        <Link className="nav-logo" to="/"><LogoSVG /></Link>
-        <div className="nav-logo-search">
-          <SearchBar />
+        <div className="logo-search-container">
+          <Link className="nav-logo" to="/"><LogoSVG /></Link>
+          <Searchbar />
         </div>
 
         <div className="nav-links">
-          <div></div>
           <div><Link to="/">Home</Link></div>
-          <div><Link id="theme" to="/">Pink Mode</Link></div>
-          <div><Link to="/" onClick={logOut}>Log Out</Link></div>
+          <div><Link id="theme" to="/">Notifications</Link></div>
+          <div><Link to="/" onClick={logOut}>Account</Link></div>
         </div>
 
       </header>

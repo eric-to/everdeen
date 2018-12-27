@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import { logOut } from '../../actions/session_actions';
 import Navbar from './navbar';
+import { logOut } from '../../actions/session_actions';
 
 const mapStateToProps = ({ session, entities: { users } }) => {
   return {

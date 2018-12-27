@@ -1,4 +1,4 @@
-export const fetchNews = (ticker) => {
+export const fetchNews = ticker => {
   const domains = 'businessinsider.com,cnbc.com,engadget.com,mashable.com,techcrunch.com'
   if (!ticker) {
     return $.ajax(

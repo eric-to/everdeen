@@ -13,13 +13,7 @@
   border-radius: 4px;
   font-family: "DINPro-Regular";
   font-size: 13.5px;
-  font-weight: norma;
   height: 36px;
-  margin: 0;
-  margin-top: 6px;
-  // margin-left: -33px;
-  padding: 0;
-  padding-left: 52px;
   width: 426px;
   z-index: 10;
 
@@ -27,34 +21,6 @@
     border-color: white;
     box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.01), 0 3px 24px rgba(48,51,51,.09);
   }
-}
-
-input::-webkit-input-placeholder {
-  color: rgb(203, 203, 205);
-}
-input:focus::-webkit-input-placeholder {
-  color: rgb(140, 140, 142);
-}
-
-input:-moz-placeholder {
-  color: rgb(203, 203, 205);
-}
-input:focus:-moz-placeholder {
-  color: rgb(140, 140, 142);
-}
-
-input::-moz-placeholder {
-  color: rgb(203, 203, 205);
-}
-input:focus::-moz-placeholder {
-  color: rgb(140, 140, 142);
-}
-
-input:-ms-input-placeholder {
-  color: rgb(203, 203, 205);
-}
-input:focus:-ms-input-placeholder {
-  color: rgb(140, 140, 142);
 }
 
 // TODO: Figure out how to highlight search icon
@@ -68,7 +34,7 @@ input:focus:-ms-input-placeholder {
   // margin-left: -33px;
   padding-bottom: 15px;
   position: absolute;
-  visibility: hidden;
+  // visibility: hidden;
   width: 480px;
 }
 

@@ -2,10 +2,10 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 import SearchSVG from '../logo/search_svg';
-// All searchable IEX symbols
+// All searchable IEX symbols/tickers
 import symbols from './symbols.json';
 
-class SearchBar extends React.Component {
+class Searchbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = { query: "", results: [] };
@@ -79,19 +79,21 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div className="searchContainer">
-        <SearchSVG />
-        <form className="searchbar" onSubmit={ this.handleSubmit }>
-          <input
-            type="text"
-            placeholder="Search"
-            onChange={ this.updateQuery }
-            value={ this.state.query } />
-        </form>
-        { this.searchResults() }
+      <div className="search-container">
+        <div className="searchbar">
+          <form onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              placeholder="Search"
+              onChange={this.updateQuery}
+              value={this.state.query} />
+          </form>
+          {this.searchResults()}
+        </div>
+        {/* <SearchSVG /> */}
       </div>
     );
   }
 }
 
-export default withRouter(SearchBar);
+export default withRouter(Searchbar);
