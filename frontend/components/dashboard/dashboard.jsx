@@ -1,6 +1,6 @@
 import React from 'react';
 import { Line, LineChart, Tooltip, YAxis, XAxis } from 'recharts';
-import { PacmanLoader } from 'react-spinners';
+import { BeatLoader } from 'react-spinners';
 
 import NewsfeedContainer from './newsfeed_container';
 import SidebarContainer from './sidebar_container';
@@ -104,7 +104,7 @@ class Dashboard extends React.Component {
     } else {
       return (
         <div className='loading'>
-          <PacmanLoader
+          <BeatLoader
             sizeUnit={"px"}
             size={20}
             color={'#21ce99'}
@@ -157,7 +157,7 @@ class Dashboard extends React.Component {
       </div>
     ) : (
       <div className='loading'>
-        <PacmanLoader
+        <BeatLoader
           sizeUnit={"px"}
           size={800}
           color={'#21ce99'}

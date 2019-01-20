@@ -2,7 +2,7 @@ import React from 'react';
 
 import NavbarContainer from '../navbar/navbar_container';
 import NewsfeedContainer from '../dashboard/newsfeed_container';
-import { PacmanLoader } from 'react-spinners';
+import { BeatLoader } from 'react-spinners';
 import StockChart from '../stock_chart';
 import TransactionForm from '../dashboard/transaction_form';
 
@@ -33,7 +33,7 @@ class StockShow extends React.Component {
     } else {
       return (
         <div className='loading'>
-          <PacmanLoader
+          <BeatLoader
             sizeUnit={"px"}
             size={20}
             color={'#21ce99'}

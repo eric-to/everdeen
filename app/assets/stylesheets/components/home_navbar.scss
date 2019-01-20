@@ -1,11 +1,18 @@
 @import "colors";
 
+.splash-navbar-container {
+  background: white;
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: 10;
+}
+
 header {
   background: white;
   display: flex;
   justify-content: space-between;
   width: 100%;
-  z-index: 100;
 }
 
 .logo-search-container {
