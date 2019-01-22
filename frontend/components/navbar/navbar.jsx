@@ -47,7 +47,7 @@ const Navbar = ({ currentUser, logOut }) => {
         <div className="nav-links">
           <div><Link to="/">Home</Link></div>
           <div><Link id="theme" to="/">Notifications</Link></div>
-          <div><Link to="/" onClick={logOut}>Account</Link></div>
+          <div><Link to="/" onClick={logOut}>Log Out</Link></div>
         </div>
 
       </header>
