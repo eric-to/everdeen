@@ -104,7 +104,7 @@ class Sidebar extends React.Component {
 
           <div className="header-card-container">
             <div className="header-card">
-              <h3 id="crypto-header">Cryptocurrencies (tba)</h3>
+              <h3 id="crypto-header">Cryptocurrencies (soon)</h3>
             </div>
           </div>
 
