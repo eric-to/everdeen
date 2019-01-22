@@ -19,9 +19,9 @@ const Navbar = ({ currentUser, logOut }) => {
             <div>
               <Link to="/signup">Sign Up</Link>
             </div>
-            <div>
+            {/* <div>
               <Link id="theme" to="/">Vibrant Mode</Link>
-            </div>
+            </div> */}
             <div className="fa-links">
               <a href="https://github.com/eric-to" target="_blank">
                 <i className="fab fa-github"></i>

@@ -21,7 +21,7 @@
   font-family: "DINPro-Medium";
   font-size: 13.5px;
   font-weight: 600;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 40px;
   padding-top: 20.5px;
   padding-bottom: 20.5px;
@@ -37,6 +37,7 @@
   justify-content: space-around;
   font-size: 25px;
   margin-top: -9px;
+  width: 100px;
 }
 
 .personal-links {
