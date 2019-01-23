@@ -50,8 +50,10 @@ ul, ul li {
 }
 
 header {
+  background: white;
   position: fixed;
   left: 0;
+  z-index: 10;
 }
 
 .loading {
