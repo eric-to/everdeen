@@ -13,15 +13,12 @@ const Navbar = ({ currentUser, logOut }) => {
             <Link className="nav-logo" to="/"><LogoSVG /></Link>
           </div>
           <div className="splash-navbar-links">
-            <div>
+            <div className="splash-nav-link">
               <Link to="/login">Log In</Link>
             </div>
-            <div>
+            <div className="splash-nav-link">
               <Link to="/signup">Sign Up</Link>
             </div>
-            {/* <div>
-              <Link id="theme" to="/">Vibrant Mode</Link>
-            </div> */}
             <div className="fa-links">
               <a href="https://github.com/eric-to" target="_blank">
                 <i className="fab fa-github"></i>

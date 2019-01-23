@@ -28,11 +28,16 @@
   text-align: center;
 }
 
+.splash-nav-link {
+  min-width: 100px;
+}
+
 .splash-navbar-links a:hover {
   color: $light-green;
 }
 
 .fa-links {
+  color: black;
   display: flex;
   justify-content: space-around;
   font-size: 25px;
