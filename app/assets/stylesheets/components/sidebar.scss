@@ -40,7 +40,11 @@
 }
 
 #crypto-header {
-  color: $cool-purple;
+  color: $black;
+
+  &:hover {
+    color: $cool-purple;
+  }
 }
 
 #watchlist-header {
