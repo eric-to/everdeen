@@ -3,14 +3,14 @@
 .session-container > div {
   margin: 0;
   position: fixed;
-  top: 0;
   bottom: 0;
+  top: 0;
   width: 50%;
 }
 
 .session-container h2 {
-  color: black;
-  font-family: "DIN Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+  color: $black;
+  font-family: "DINPro-Medium";
   font-size: 26px;
   font-weight: 500;
   letter-spacing: -0.14px;
@@ -39,7 +39,7 @@
 
 .session-label {
   color: black;
-  font-family: "DIN Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "DINPro-Regular";
   font-size: 13px;
   font-weight: 300;
   letter-spacing: 0.25px;
