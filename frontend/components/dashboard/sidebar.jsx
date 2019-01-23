@@ -80,24 +80,6 @@ class Sidebar extends React.Component {
 
   render() {
     const ownedStocks = this.ownedStocks();
-    // const stockCard = stock => {
-    //   const stock_prices = this.currentUser.current_stock_prices;
-
-    //   return (
-    //     <Link key={stock.ticker} className="stock-link" to={`/stocks/${stock["ticker"]}`}>
-    //       <div className="stock-card-container">
-    //         <div className="stock-card">
-    //           <div>
-    //             <h4 className="ticker">{stock["ticker"]}</h4>
-    //             <div className="num-shares">{stock["num_shares"]}</div>
-    //           </div>
-    //           <MiniChart ticker={stock.ticker} multiIntradayData={this.props.multiIntradayData} />
-    //           <h3 className="stock-price">{`$${stock_prices[stock["ticker"]]}`}</h3>
-    //         </div>
-    //       </div>
-    //     </Link>
-    //   );
-    // };
     return (
       <div className="sidebar-container">
         <div className="sidebar">
