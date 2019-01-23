@@ -2,15 +2,15 @@ import React from "react";
 
 const NewsItem = ({ newsItem }) => {
   const MONTHS = {
-    "1": "Jan",
-    "2": "Feb",
-    "3": "Mar",
-    "4": "Apr",
-    "5": "May",
-    "6": "Jun",
-    "7": "Jul",
-    "8": "Aug",
-    "9": "Sep",
+    "01": "Jan",
+    "02": "Feb",
+    "03": "Mar",
+    "04": "Apr",
+    "05": "May",
+    "06": "Jun",
+    "07": "Jul",
+    "08": "Aug",
+    "09": "Sep",
     "10": "Oct",
     "11": "Nov",
     "12": "Dec"
@@ -31,6 +31,9 @@ const NewsItem = ({ newsItem }) => {
       const date = time.slice(5, 10).split("-");
       const month = MONTHS[date[0]];
       const day = date[1];
+      if (month === undefined) {
+        console.log(date);
+      }
       if (day[0] === "0") {
         return `${month} ${day.slice(1)}`;
       }
