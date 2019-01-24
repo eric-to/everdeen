@@ -8,6 +8,18 @@
   transition: fill .15s ease-out;
 }
 
+.searchbar {
+  ul {
+    display: none;
+  }
+
+  &.focus, &.focus-within, &.active {
+    ul {
+      display: block;
+    }
+  }
+}
+
 .searchbar input {
   border: 1px solid rgb(244, 244, 245);
   border-radius: 4px;
@@ -16,7 +28,8 @@
   height: 36px;
   margin-left: 20px;
   margin-top: 15px;
-  width: 426px;
+  padding-left: 47px;
+  width: 430px;
   z-index: 10;
 
   &:hover, &:focus {
@@ -33,6 +46,7 @@
   box-shadow: 3px 2px 2px $almost-white, -3px 2px 2px $almost-white, 0px 3px 2px $almost-white, 0px 0px 2px $almost-white;
   border-radius: 4px;
   margin-top: -10px;
+  margin-left: 20px;
   padding-bottom: 15px;
   position: absolute;
   width: 480px;
@@ -49,6 +63,7 @@
 }
 
 #search-header {
+  color: #d3d3d3;
   display: flex;
   align-items: center;
   margin-bottom: 5px;

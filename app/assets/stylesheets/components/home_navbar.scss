@@ -24,6 +24,9 @@ header {
 }
 
 .nav-logo {
+  margin-left: 48px;
+  margin-right: 32px;
+  margin-top: 6px;
   right: 45px;
   -webkit-transition: fill 300ms ease-out;
   transition: fill 300ms ease-out;
@@ -39,6 +42,7 @@ header {
   align-items: center;
   flex-basis: 114px;
   height: 64px;
+  margin-left: 15px;
   margin-right: 48px;
   margin-top: -1px;
   min-width: 114px;

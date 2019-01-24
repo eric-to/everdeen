@@ -18,13 +18,8 @@ class Searchbar extends React.Component {
     this.setState({ query: "", results: [] });
   }
 
-  // TODO: Clicking empty searchbar renders some results
   updateQuery(e) {
     const query = e.target.value;
-    if (query.length === "") {
-      // this.setState({ query: "", results: [] });
-      return;
-    } 
     const queryExp = RegExp("^" + query, 'i');
     let results = [];
     results = symbols.filter(stock => {
@@ -42,7 +37,6 @@ class Searchbar extends React.Component {
     if (results.length > 0) {
       const firstResult = this.state.results[0].symbol;
       this.props.history.push(`stocks/${firstResult}`);
-      this.setState({ query: "", results: [] });
     }
   }
 
