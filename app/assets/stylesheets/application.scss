@@ -41,6 +41,10 @@ a:active, a:focus, input:focus, button:focus {
   outline: 0;
 }
 
+a:visited {
+  color: inherit;
+}
+
 ul, ul li {
   list-style-type: none;
   margin: 0;

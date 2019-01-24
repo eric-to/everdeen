@@ -33,10 +33,8 @@
   box-shadow: 3px 2px 2px $almost-white, -3px 2px 2px $almost-white, 0px 3px 2px $almost-white, 0px 0px 2px $almost-white;
   border-radius: 4px;
   margin-top: -10px;
-  // margin-left: -33px;
   padding-bottom: 15px;
   position: absolute;
-  // visibility: hidden;
   width: 480px;
 }
 
@@ -46,7 +44,7 @@
 
 .search-results li {
   &:hover {
-    background: $black;
+    background: $green;
   }
 }
 
@@ -60,9 +58,10 @@
 }
 
 .result {
+  color: $black;
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
-  font-family: "DINPro-Regular";
+  font-family: "DINPro-Medium";
   font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.25px;
