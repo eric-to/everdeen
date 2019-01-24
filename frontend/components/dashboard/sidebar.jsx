@@ -100,12 +100,6 @@ class Sidebar extends React.Component {
             {ownedStocks.map(stock => this.stockCard(stock))}
           </div>
 
-          <div id="watchlist-header" className="header-card-container">
-            <div className="header-card">
-              <h3>Watchlist</h3>
-            </div>
-          </div>
-
         </div>
       </div>
     );

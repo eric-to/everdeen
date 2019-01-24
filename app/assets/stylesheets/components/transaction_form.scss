@@ -74,8 +74,8 @@
 
 .market-price-container {
   display: flex;
-  // margin-left: 24px;
-  width: 216px;
+  justify-content: space-between;
+  width: 240px;
 }
 
 .market-price {

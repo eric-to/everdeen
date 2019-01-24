@@ -53,6 +53,10 @@ class TransactionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
+    if (this.state.num_shares === "") {
+      return;
+    }
+
     const amount = Math.round(this.state.marketPrice * this.state.num_shares * 100) / 100;
     const transaction = {
       ticker: this.state.ticker,
@@ -122,7 +126,7 @@ class TransactionForm extends React.Component {
               <div>{`$${this.state.amount}`}</div>
             </div>
             <div className="submit-transaction-container">
-              <input id="submit-transaction" type="submit" value="Review Order" />
+              <input id="submit-transaction" type="submit" value="Submit Order" />
             </div>
             <div className="form-footer-container">
               {this.formFooter()}

@@ -21,9 +21,11 @@ class Newsfeed extends React.Component {
     for (let i = 0; i < news.length; i++) {
       let item = news[i];
       if (seenTitles.indexOf(item.title) === -1) {
-        if (!(this.containsBogus(item.description))) {
-          seenTitles.push(item.title);
-          uniqueItems.push(item);
+        if (item.description) {
+          if (!(this.containsBogus(item.description))) {
+            seenTitles.push(item.title);
+            uniqueItems.push(item);
+          }
         }
       }
     }
