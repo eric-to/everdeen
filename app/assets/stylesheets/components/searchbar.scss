@@ -3,21 +3,22 @@
 #search-icon {
   fill: rgb(203, 203, 205);
   left: 151px;
-  margin-top: 9px;
+  margin-top: -29px;
+  margin-left: 7px;
   position: absolute;
   transition: fill .15s ease-out;
 }
 
 .searchbar {
-  ul {
-    display: none;
-  }
+  // ul {
+  //   display: none;
+  // }
 
-  &.focus, &.focus-within, &.active {
-    ul {
-      display: block;
-    }
-  }
+  // &.focus, &.focus-within, &.active {
+  //   ul {
+  //     display: block;
+  //   }
+  // }
 }
 
 .searchbar input {
@@ -25,9 +26,9 @@
   border-radius: 4px;
   font-family: "DINPro-Regular";
   font-size: 13.5px;
-  height: 36px;
+  height: 34px;
   margin-left: 20px;
-  margin-top: 15px;
+  margin-top: 22px;
   padding-left: 47px;
   width: 430px;
   z-index: 10;

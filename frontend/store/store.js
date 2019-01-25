@@ -9,7 +9,7 @@ const configureStore = (preloadedState = {}) => {
     rootReducer,
     preloadedState,
     // applyMiddleware(thunk, logger) <- only for development use
-    applyMiddleware(thunk)
+    applyMiddleware(thunk, logger)
   )
 };
 

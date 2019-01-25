@@ -84,7 +84,7 @@ class Searchbar extends React.Component {
           </form>
           {this.searchResults()}
         </div>
-        {/* <SearchSVG /> */}
+        <SearchSVG />
       </div>
     );
   }

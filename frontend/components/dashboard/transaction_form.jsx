@@ -73,7 +73,7 @@ class TransactionForm extends React.Component {
     if (this.state.transaction_type === "buy") {
       return (
         <div className="form-footer">
-          {`$${currentUser.buying_power_available} Buying Power Available`}
+          {`$${(currentUser.buying_power_available).toLocaleString('en')} Buying Power Available`}
         </div>
       );
     } else {
