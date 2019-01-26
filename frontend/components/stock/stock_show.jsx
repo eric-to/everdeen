@@ -21,6 +21,7 @@ class StockShow extends React.Component {
   }
 
   render() {
+    console.log('hello')
     let price;
     const intradayData = this.props.intradayData;
     if (intradayData) {

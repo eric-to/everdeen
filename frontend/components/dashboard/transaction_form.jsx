@@ -26,14 +26,6 @@ class TransactionForm extends React.Component {
     })
 
     this.updateAmount(e.target.value);
-
-    // if (num_shares === "") {
-    //   this.setState({ amount: "0.00" })
-    // } else {
-    //   this.setState({
-    //     amount: parseFloat(num_shares) * parseFloat(this.state.marketPrice)
-    //   })
-    // }
   }
 
   updateAmount(num_shares) {
@@ -70,10 +62,14 @@ class TransactionForm extends React.Component {
 
   formFooter() {
     const currentUser = this.props.currentUser;
+    let moneyString = "";
+    if (currentUser.buying_power_available) {
+      moneyString = (currentUser.buying_power_available).toLocaleString('en')
+    }
     if (this.state.transaction_type === "buy") {
       return (
         <div className="form-footer">
-          {`$${(currentUser.buying_power_available).toLocaleString('en')} Buying Power Available`}
+          {`$${moneyString} Buying Power Available`}
         </div>
       );
     } else {
@@ -82,9 +78,71 @@ class TransactionForm extends React.Component {
       if (num_shares === null) {
         num_shares = 0
       }
+      if (num_shares === 1) {
+        return (
+          <div className="form-footer">
+            {`${num_shares} Share Available`}
+          </div>
+        );
+      } else {
+        return (
+          <div className="form-footer">
+            {`${num_shares} Shares Available`}
+          </div>
+        );
+      }
+
+    }
+  }
+
+  transactionButtons() {
+    const generalStyles = {
+      cursor: "pointer",
+      fontFamily: "DinPro-Medium"
+    }
+    const highlight = {
+      borderBottom: "3px solid #21ce99",
+      color: "#21ce99",
+      cursor: "pointer",
+      paddingBottom: "11.7px"
+    };
+
+    if (this.state.transaction_type === "buy") {
       return (
-        <div className="form-footer">
-          {`${num_shares} Shares Available`}
+        <div>
+          <a
+            id="buy-tag"
+            className="form-tab"
+            onClick={() => this.updateTransactionType("buy")}
+            style={ highlight }>
+            {`Buy ${this.state.ticker}`}
+          </a>
+          <a
+            id="sell-tag"
+            className="form-tab"
+            onClick={() => this.updateTransactionType("sell")}
+            style={ generalStyles }>
+            {`Sell ${this.state.ticker}`}
+          </a>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <a
+            id="buy-tag"
+            className="form-tab"
+            onClick={() => this.updateTransactionType("buy")}
+            style={generalStyles}>
+            {`Buy ${this.state.ticker}`}
+          </a>
+          <a
+            id="sell-tag"
+            className="form-tab"
+            onClick={() => this.updateTransactionType("sell")}
+            style={ highlight }>
+            {`Sell ${this.state.ticker}`}
+          </a>
         </div>
       );
     }
@@ -97,18 +155,7 @@ class TransactionForm extends React.Component {
           <form className="transaction-form" onSubmit={this.handleSubmit}>
             <div className="form-tabs-container">
               <h3>
-                <a
-                  id="buy-tag"
-                  className="form-tab"
-                  onClick={() => this.updateTransactionType({ transaction_type: "buy" })}>
-                  {`Buy ${this.state.ticker}`}
-                </a>
-                <a
-                  id="sell-tag"
-                  className="form-tab"
-                  onClick={() => this.updateTransactionType({ transaction_type: "sell" })}>
-                  {`Sell ${this.state.ticker}`}
-                </a>
+                {this.transactionButtons()}
               </h3>
             </div>
             <div className="shares">
@@ -126,7 +173,7 @@ class TransactionForm extends React.Component {
               <div>{`$${this.state.amount}`}</div>
             </div>
             <div className="submit-transaction-container">
-              <input id="submit-transaction" type="submit" value="Submit Order" />
+              <input id="submit-transaction" type="submit" value={ this.state.transaction_type === "buy" ? "Submit Order" : "Sell" } />
             </div>
             <div className="form-footer-container">
               {this.formFooter()}
