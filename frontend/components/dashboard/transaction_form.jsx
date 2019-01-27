@@ -98,13 +98,15 @@ class TransactionForm extends React.Component {
   transactionButtons() {
     const generalStyles = {
       cursor: "pointer",
-      fontFamily: "DinPro-Medium"
+      fontFamily: "DinPro-Medium",
+      paddingLeft: "0px"
     }
     const highlight = {
       borderBottom: "3px solid #21ce99",
       color: "#21ce99",
       cursor: "pointer",
-      paddingBottom: "11.7px"
+      paddingBottom: "11.7px",
+      paddingLeft: "0px"
     };
 
     if (this.state.transaction_type === "buy") {
