@@ -3,6 +3,18 @@ import React from 'react';
 class TransactionForm extends React.Component {
   constructor(props) {
     super(props);
+
+    // let price;
+    // const intradayData = this.props.intradayData;
+    // if (intradayData) {
+    //   let index = intradayData.length - 1;
+    //   for (let i = index; i > 0; i--) {
+    //     if (intradayData[i].marketAverage !== -1) {
+    //       price = intradayData[i].marketAverage;
+    //     }
+    //   }
+    // }
+
     this.state = {
       ticker: this.props.ticker,
       transaction_type: "buy",

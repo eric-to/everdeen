@@ -70,7 +70,6 @@ class StockShow extends React.Component {
             currentUser={this.props.currentUser}
             price={price}
             createTransaction={this.props.createTransaction}
-            fetchUserInfo={this.props.fetchUserInfo}
             ticker={this.props.symbol} />
         </div>
       </div>

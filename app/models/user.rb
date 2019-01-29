@@ -61,7 +61,12 @@ class User < ApplicationRecord
         total_amount += transaction.amount
       end
     end
-    total_amount.round(2)
+    total_amount = total_amount.round(2)
+    if total_amount <= 0
+      100000
+    else
+      total_amount
+    end
   end
 
   def shares_owned
