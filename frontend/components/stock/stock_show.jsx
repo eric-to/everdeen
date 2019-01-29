@@ -5,6 +5,7 @@ import NewsfeedContainer from '../dashboard/newsfeed_container';
 import { BeatLoader } from 'react-spinners';
 import StockChart from '../stock_chart';
 import TransactionForm from '../dashboard/transaction_form';
+import TransactionFormContainer from '../dashboard/transaction_form_container';
 
 class StockShow extends React.Component {
   componentDidMount() {
@@ -66,11 +67,7 @@ class StockShow extends React.Component {
               website={this.props.website} />
             <NewsfeedContainer ticker={this.props.match.params.ticker} />
           </div>
-          <TransactionForm
-            currentUser={this.props.currentUser}
-            price={price}
-            createTransaction={this.props.createTransaction}
-            ticker={this.props.symbol} />
+          <TransactionFormContainer />
         </div>
       </div>
     );

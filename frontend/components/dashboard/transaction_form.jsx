@@ -4,23 +4,23 @@ class TransactionForm extends React.Component {
   constructor(props) {
     super(props);
 
-    // let price;
-    // const intradayData = this.props.intradayData;
-    // if (intradayData) {
-    //   let index = intradayData.length - 1;
-    //   for (let i = index; i > 0; i--) {
-    //     if (intradayData[i].marketAverage !== -1) {
-    //       price = intradayData[i].marketAverage;
-    //     }
-    //   }
-    // }
+    let price;
+    const intradayData = this.props.intradayData;
+    if (intradayData) {
+      let index = intradayData.length - 1;
+      for (let i = index; i > 0; i--) {
+        if (intradayData[i].marketAverage !== -1) {
+          price = intradayData[i].marketAverage;
+        }
+      }
+    }
 
     this.state = {
-      ticker: this.props.ticker,
+      ticker: this.props.symbol,
       transaction_type: "buy",
       num_shares: "",
       amount: "0.00",
-      marketPrice: this.props.price
+      marketPrice: price
     }
 
     this.updateNumShares = this.updateNumShares.bind(this);
@@ -101,7 +101,7 @@ class TransactionForm extends React.Component {
       } else {
         return (
           <div className="form-footer">
-            {`${num_shares} Shares Available`}
+            {`${num_shares === undefined ? 0 : num_shares} Shares Available`}
           </div>
         );
       }

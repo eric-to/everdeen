@@ -6,6 +6,7 @@ import { createTransaction } from '../../actions/transaction_actions';
 const mapStateToProps = state => ({
   currentUser: state.entities.users[state.session.id],
   intradayData: state.entities.stocks.intradayData,
+  symbol: state.entities.stocks.symbol
 });
 
 const mapDispatchToProps = dispatch => ({
