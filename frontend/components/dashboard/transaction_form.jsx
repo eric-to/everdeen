@@ -58,6 +58,8 @@ class TransactionForm extends React.Component {
     }
 
     this.props.createTransaction(transaction);
+    
+    alert(`You ${ transaction.transaction_type == 'buy' ? 'bought' : 'sold' } ${transaction.ticker}!`);
   }
 
   formFooter() {

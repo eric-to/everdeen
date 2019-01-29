@@ -3,6 +3,8 @@
 .splash-navbar-container {
   background: white;
   left: 0;
+  margin: auto;
+  max-width: 1024px;
   position: fixed;
   right: 0;
   z-index: 10;
@@ -24,7 +26,7 @@ header {
 }
 
 .nav-logo {
-  margin-left: 38px;
+  margin-left: 11px;
   margin-right: 32px;
   margin-top: 15px;
   right: 45px;
