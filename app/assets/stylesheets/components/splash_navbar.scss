@@ -29,7 +29,12 @@
 }
 
 .splash-nav-link {
+  color: $green;
   min-width: 50px;
+
+  a:link {
+    color: $green;
+  }
 }
 
 .splash-navbar-links a:hover {
