@@ -9,18 +9,19 @@ class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     
-    this.customTooltip = this.customTooltip.bind(this);
     this.priceRef = React.createRef();
     this.hoverPriceRef = React.createRef();
     this.priceChangeRef = React.createRef();
     this.hoverPriceChangeRef = React.createRef();
+
+    this.customTooltip = this.customTooltip.bind(this);
   }
 
   customTooltip(data) {
     const price = this.priceRef.current;
     const hoverPrice = this.hoverPriceRef.current;
-    // const priceChange = this.priceChangeRef.current;
-    // const hoverPriceChangeRef = this.hoverPriceChangeRef.current;
+    const priceChange = this.priceChangeRef.current;
+    const hoverPriceChangeRef = this.hoverPriceChangeRef.current;
 
     if (price && hoverPrice) {
       if (data.payload[0]) {
@@ -31,6 +32,7 @@ class Dashboard extends React.Component {
         hoverPrice.innerText = "";
       }
     }
+
   }
 
   componentDidMount() {

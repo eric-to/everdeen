@@ -32,6 +32,7 @@ const mapStateToProps = (state, ownProps) => ({
   industry: state.entities.stocks.industry,
   peRatio: state.entities.stocks.peRatio,
   sector: state.entities.stocks.sector,
+  symbol: state.entities.stocks.symbol,
   week52High: state.entities.stocks.week52High,
   week52Low: state.entities.stocks.week52Low,
   website: state.entities.stocks.website
