@@ -1,2 +1,3 @@
 # Everdeen
-Will be updated soon - 12/24/2018
+
+Everdeen is a faithful clone of the old Robinhood website (I say old because the website's layout changed midway through this project) that allows users to invest for free.
