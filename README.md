@@ -1,3 +1,3 @@
 # Everdeen
 
-Everdeen is a faithful clone of the old Robinhood website (I say old because the website's layout changed midway through this project) that allows users to invest for free.
+This project was a 10-day endeavor where I built a full-stack clone of the Robinhood website (note that the actual website changed midway through the project, so splash page is different).
