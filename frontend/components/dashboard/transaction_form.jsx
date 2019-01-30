@@ -27,6 +27,28 @@ class TransactionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    let price;
+    const intradayData = this.props.intradayData;
+    if (intradayData) {
+      let index = intradayData.length - 1;
+      for (let i = index; i > 0; i--) {
+        if (intradayData[i].marketAverage !== -1) {
+          price = intradayData[i].marketAverage;
+        }
+      }
+    }
+
+    this.setState({
+      ticker: this.props.symbol,
+      transaction_type: "buy",
+      num_shares: "",
+      amount: "0.00",
+      marketPrice: price
+    });
+
+  }
+
   componentDidMount() {
     this.setState(this.state);
   }
@@ -165,6 +187,7 @@ class TransactionForm extends React.Component {
   }
 
   render() {
+    console.log('yo')
     return (
       <div id="sidebar-container" className="sidebar-container">
         <div id="transaction-form-container" className="sidebar">
