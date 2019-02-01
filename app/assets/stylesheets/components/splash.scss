@@ -3,7 +3,7 @@
 .splash {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   padding: 70px 52px;
   padding-left: 0px;
   padding-right: 0px;
@@ -101,4 +101,8 @@
 
 #splash-btn {
   color: white;
+
+  &:hover {
+    background-color: $light-green;
+  }
 }
