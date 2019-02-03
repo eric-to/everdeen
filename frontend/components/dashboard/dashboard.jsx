@@ -74,6 +74,14 @@ class Dashboard extends React.Component {
     };
   }
 
+  determineColor(color, tab) {
+    if (this.state.active !== tab) {
+      return "black"
+    } else {
+      return color;
+    }
+  }
+
   render() {
     let data = [];
     let graphData;
@@ -83,6 +91,7 @@ class Dashboard extends React.Component {
     let startValue;
     let endValue;
     let balanceChange;
+    let color;
 
     if (this.props.currentUser.intraday_data && this.state.active == '1d') {
       graphData = this.props.currentUser.intraday_data;
@@ -94,7 +103,7 @@ class Dashboard extends React.Component {
       graphData = this.props.currentUser.three_month_data;
     } else if (this.props.currentUser.yearly_data && this.state.active == '1y') {
       graphData = this.props.currentUser.yearly_data;
-    } else if (this.props.currentUser.five_year_data && this.state.active == 'all') {
+    } else if (this.props.currentUser.five_year_data && this.state.active == '5y') {
       graphData = this.props.currentUser.five_year_data;
     } else {
       return (
@@ -128,6 +137,7 @@ class Dashboard extends React.Component {
       data.push(dataPoint);
     }
     balanceChange = this.calcChangeInPrice(startValue, endValue);
+    color = (endValue < startValue) ? "red" : "green";
 
     const content = this.props.currentUser ? (
       <div className="dashboard-container">
@@ -161,12 +171,12 @@ class Dashboard extends React.Component {
           </LineChart>
           <ul className="portfolio-chart-tabs-container">
             <div className="chart-tabs">
-              <li><a onClick={() => this.setState({ active: "1d" }) }>1D</a></li>
-              <li><a onClick={() => this.setState({ active: "1w" }) }>1W</a></li>
-              <li><a onClick={() => this.setState({ active: "1m" }) } >1M</a></li>
-              <li><a onClick={() => this.setState({ active: "3m" }) }>3M</a></li>
-              <li><a onClick={() => this.setState({ active: "1y" }) }>1Y</a></li>
-              <li><a onClick={() => this.setState({ active: "all" }) }>ALL</a></li>
+              <li><a className={this.determineColor(color, "1d")} onClick={() => this.setState({ active: "1d" }) }>1D</a></li>
+              <li><a className={this.determineColor(color, "1w")} onClick={() => this.setState({ active: "1w" }) }>1W</a></li>
+              <li><a className={this.determineColor(color, "1m")} onClick={() => this.setState({ active: "1m" }) } >1M</a></li>
+              <li><a className={this.determineColor(color, "3m")} onClick={() => this.setState({ active: "3m" }) }>3M</a></li>
+              <li><a className={this.determineColor(color, "1y")} onClick={() => this.setState({ active: "1y" }) }>1Y</a></li>
+              <li><a className={this.determineColor(color, "5y")} onClick={() => this.setState({ active: "5y" }) }>5Y</a></li>
             </div>
           </ul>
 
