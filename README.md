@@ -4,9 +4,9 @@
 ## Technologies
 * Backend: PostgreSQL, Ruby on Rails
 * Frontend: React/Redux
-* [IEX API](https://iextrading.com)
-* [News API](https://newsapi.org/)
-* [Recharts](http://recharts.org/en-US/)
+* [IEX API](https://iextrading.com) (used to fetch intraday, weekly, monthly, and yearly stock price data)
+* [News API](https://newsapi.org/) (used to fetch live news articles about stocks)
+* [Recharts](http://recharts.org/en-US/) (used to help draw candlestick charts)
 
 ## Features
 * Secure frontend/backend user authentication using BCrypt
@@ -16,3 +16,5 @@
 * Ability to buy and sell shares at the latest price
 * Searchable stocks by their company name and symbol
 * Real-time newsfeed showing general and stock-specific business news articles
+
+### Highlights
