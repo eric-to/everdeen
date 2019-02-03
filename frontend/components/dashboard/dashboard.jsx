@@ -14,23 +14,49 @@ class Dashboard extends React.Component {
     this.hoverPriceRef = React.createRef();
     this.priceChangeRef = React.createRef();
     this.hoverPriceChangeRef = React.createRef();
+    this.percentChangeRef = React.createRef();
+    this.hoverPercentChangeRef = React.createRef();
 
     this.customTooltip = this.customTooltip.bind(this);
   }
 
   customTooltip(data) {
+    const intradayData = this.props.currentUser.intraday_data;
     const price = this.priceRef.current;
     const hoverPrice = this.hoverPriceRef.current;
     const priceChange = this.priceChangeRef.current;
-    const hoverPriceChangeRef = this.hoverPriceChangeRef.current;
+    const hoverPriceChange = this.hoverPriceChangeRef.current;
+    const percentChange = this.percentChangeRef.current;
+    const hoverPercentChange = this.hoverPercentChangeRef.current;
 
     if (price && hoverPrice) {
       if (data.payload[0]) {
         price.classList.add("hide");
+        hoverPrice.classList.remove("hide");
         hoverPrice.innerText = `$${(Math.round(data.payload[0].value * 100) / 100).toFixed(2)}`;
       } else {
         price.classList.remove("hide");
+        hoverPrice.classList.add("hide");
         hoverPrice.innerText = "";
+      }
+    }
+
+    if (priceChange && hoverPriceChange) {
+      if (data.payload[0]) {
+        priceChange.classList.add("hide");
+        percentChange.classList.add("hide");
+        let openPrice = intradayData[Object.keys(intradayData)[0]];
+
+        let latestPrice = data.payload[0].value;
+        const balanceChange = this.calcChangeInPrice(openPrice, latestPrice);
+        hoverPriceChange.innerText = balanceChange.priceChange;
+        const negation = `${balanceChange.priceChange[0] === '-' ? '-' : ''}`
+        hoverPercentChange.innerText = ` (${negation}${balanceChange.percentChange})`;
+      } else {
+        priceChange.classList.remove("hide");
+        percentChange.classList.remove("hide");
+        hoverPriceChange.innerText = "";
+        hoverPercentChange.innerText = "";
       }
     }
 
@@ -79,6 +105,23 @@ class Dashboard extends React.Component {
       return "black"
     } else {
       return color;
+    }
+  }
+
+  timeIndicator() {
+    switch (this.state.active) {
+      case "1d":
+        return " Today";
+      case "1w":
+        return " Past Week";
+      case "1m":
+        return " Past Month";
+      case "3m":
+        return " Past 3 Months";
+      case "1y":
+        return " Past Year";
+      case "5y":
+        return " Past 5 Years";
     }
   }
 
@@ -146,10 +189,13 @@ class Dashboard extends React.Component {
             <h1 ref={this.priceRef} className="portfolio-value">
               {this.formatMoney(this.props.currentUser.total_market_value)}
             </h1>
-            <h1 ref={this.hoverRef} className="potfolio-value"></h1>
+            <h1 ref={this.hoverPriceRef} className="portfolio-value hide"></h1>
             <div className="portfolio-changes">
-              <span>{balanceChange.priceChange}</span>
-              <span>{` (${balanceChange.priceChange[0] === '-' ? '-' : '' }${balanceChange.percentChange})`}</span>
+              <span ref={this.priceChangeRef}>{balanceChange.priceChange}</span>
+              <span ref={this.hoverPriceChangeRef}></span>
+              <span ref={this.percentChangeRef}>{` (${balanceChange.priceChange[0] === '-' ? '-' : '' }${balanceChange.percentChange})`}</span>
+              <span ref={this.hoverPercentChangeRef}></span>
+              <span id="timeIndicator">{this.timeIndicator()}</span>
             </div>
           </div>
 
