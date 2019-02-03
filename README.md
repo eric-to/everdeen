@@ -9,3 +9,6 @@
 * [Recharts](http://recharts.org/en-US/)
 
 ## Features
+* Protected user authentication using BCrypt
+* Real-time and historical price data for all major stocks traded on the NASDAQ and NYSE exchanges
+* Interactive charts displaying price data and relative changes over time for intraday, weekly, monthly, and yearly time periods
