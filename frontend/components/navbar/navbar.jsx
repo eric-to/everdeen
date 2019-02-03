@@ -9,7 +9,7 @@ const Navbar = ({ currentUser, logOut }) => {
     return (
       <div>
         <div className="splash-navbar-container">
-          <div>
+          <div id="nav-logo-container">
             <Link className="nav-logo" to="/"><LogoSVG /></Link>
           </div>
           <div className="splash-navbar-links">

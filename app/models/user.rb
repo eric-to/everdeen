@@ -177,7 +177,6 @@ class User < ApplicationRecord
     response = JSON.parse(uri)
 
     balance_at_times = Hash.new(open_balance)
-    # balance_at_times['09:30 AM ET'] = open_balance
     stocks.each do |ticker, num_shares|
       charts = response[ticker]['chart']
       charts.each do |chart|
@@ -189,5 +188,7 @@ class User < ApplicationRecord
 
     balance_at_times
   end
+
+  def 
 
 end

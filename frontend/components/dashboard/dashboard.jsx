@@ -33,6 +33,7 @@ class Dashboard extends React.Component {
       }
     }
 
+    return data.label
   }
 
   componentDidMount() {
@@ -131,11 +132,15 @@ class Dashboard extends React.Component {
           </div>
 
           <LineChart className="portfolio-chart" width={676} height={196} data={data}>
+            <XAxis
+              dataKey="time"
+              hide={true} />
             <YAxis
               hide={true}
               domain={[min, max]}
             />
             <Tooltip
+              offset={-25}
               isAnimationActive={false}
               position={{ y: -19 }}
               content={this.customTooltip} />
