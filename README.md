@@ -7,3 +7,5 @@
 * [IEX API](https://iextrading.com)
 * [News API](https://newsapi.org/)
 * [Recharts](http://recharts.org/en-US/)
+
+## Features
