@@ -418,7 +418,7 @@ class StockChart extends React.Component {
             <Tooltip
               offset={-25}
               isAnimationActive={false}
-              position={{ y: -40 }}
+              position={{ y: -19 }}
               content={this.customTooltip} />
             <Line
               type="linear"

@@ -8,6 +8,7 @@ import SidebarContainer from './sidebar_container';
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { active: "1d" };
     
     this.priceRef = React.createRef();
     this.hoverPriceRef = React.createRef();
@@ -83,27 +84,18 @@ class Dashboard extends React.Component {
     let endValue;
     let balanceChange;
 
-    if (this.props.currentUser.intraday_data) {
+    if (this.props.currentUser.intraday_data && this.state.active == '1d') {
       graphData = this.props.currentUser.intraday_data;
-      const times = Object.keys(graphData);
-      for (let i = 0; i < times.length; i++) {
-        if (i === 0) {
-          startValue = graphData[times[0]];
-        }
-        if (i === times.length - 1) {
-          endValue = graphData[times[i]];
-        }
-        let dataPoint = {};
-        dataPoint["time"] = times[i];
-        dataPoint["balance"] = graphData[times[i]];
-        if (dataPoint["balance"] < min) {
-          min = dataPoint["balance"];
-        } else if (dataPoint["balance"] > max) {
-          max = dataPoint["balance"];
-        }
-        data.push(dataPoint);
-      }
-      balanceChange = this.calcChangeInPrice(startValue, endValue);
+    } else if (this.props.currentUser.weekly_data && this.state.active == '1w') {
+      graphData = this.props.currentUser.weekly_data;
+    } else if (this.props.currentUser.monthly_data && this.state.active == '1m') {
+      graphData = this.props.currentUser.monthly_data;
+    } else if (this.props.currentUser.three_month_data && this.state.active == '3m') {
+      graphData = this.props.currentUser.three_month_data;
+    } else if (this.props.currentUser.yearly_data && this.state.active == '1y') {
+      graphData = this.props.currentUser.yearly_data;
+    } else if (this.props.currentUser.five_year_data && this.state.active == 'all') {
+      graphData = this.props.currentUser.five_year_data;
     } else {
       return (
         <div className='loading'>
@@ -116,6 +108,26 @@ class Dashboard extends React.Component {
         </div>
       );
     }
+
+    const times = Object.keys(graphData);
+    for (let i = 0; i < times.length; i++) {
+      if (i === 0) {
+        startValue = graphData[times[0]];
+      }
+      if (i === times.length - 1) {
+        endValue = graphData[times[i]];
+      }
+      let dataPoint = {};
+      dataPoint["time"] = times[i];
+      dataPoint["balance"] = graphData[times[i]];
+      if (dataPoint["balance"] < min) {
+        min = dataPoint["balance"];
+      } else if (dataPoint["balance"] > max) {
+        max = dataPoint["balance"];
+      }
+      data.push(dataPoint);
+    }
+    balanceChange = this.calcChangeInPrice(startValue, endValue);
 
     const content = this.props.currentUser ? (
       <div className="dashboard-container">
@@ -149,12 +161,12 @@ class Dashboard extends React.Component {
           </LineChart>
           <ul className="portfolio-chart-tabs-container">
             <div className="chart-tabs">
-              <li><a>1D</a></li>
-              <li><a>1W</a></li>
-              <li><a>1M</a></li>
-              <li><a>3M</a></li>
-              <li><a>1Y</a></li>
-              <li><a>ALL</a></li>
+              <li><a onClick={() => this.setState({ active: "1d" }) }>1D</a></li>
+              <li><a onClick={() => this.setState({ active: "1w" }) }>1W</a></li>
+              <li><a onClick={() => this.setState({ active: "1m" }) } >1M</a></li>
+              <li><a onClick={() => this.setState({ active: "3m" }) }>3M</a></li>
+              <li><a onClick={() => this.setState({ active: "1y" }) }>1Y</a></li>
+              <li><a onClick={() => this.setState({ active: "all" }) }>ALL</a></li>
             </div>
           </ul>
 

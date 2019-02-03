@@ -189,6 +189,124 @@ class User < ApplicationRecord
     balance_at_times
   end
 
-  def 
+  def weekly_data
+    open_balance = opening_balance(Time.now)
+    stocks = shares_owned
+
+    url = 'https://api.iextrading.com/1.0/stock/market/batch?types=chart&range=1m&symbols='
+    stocks.each do |ticker, _|
+      url += "#{ticker},"
+    end
+    uri = Net::HTTP.get(URI(url))
+    response = JSON.parse(uri)
+
+    balance_at_times = Hash.new(open_balance)
+    stocks.each do |ticker, num_shares|
+      charts = response[ticker]['chart'].last(7)
+      charts.each do |chart|
+        if chart['open'] && chart['label'] != '09:30 AM'
+          balance_at_times[chart['date']] += chart['open'] * num_shares
+        end
+      end
+    end
+
+    balance_at_times
+  end
+
+  def monthly_data
+    open_balance = opening_balance(Time.now)
+    stocks = shares_owned
+
+    url = 'https://api.iextrading.com/1.0/stock/market/batch?types=chart&range=1m&symbols='
+    stocks.each do |ticker, _|
+      url += "#{ticker},"
+    end
+    uri = Net::HTTP.get(URI(url))
+    response = JSON.parse(uri)
+
+    balance_at_times = Hash.new(open_balance)
+    stocks.each do |ticker, num_shares|
+      charts = response[ticker]['chart']
+      charts.each do |chart|
+        if chart['open'] && chart['label'] != '09:30 AM'
+          balance_at_times[chart['date']] += chart['open'] * num_shares
+        end
+      end
+    end
+
+    balance_at_times
+  end
+
+  def three_month_data
+    open_balance = opening_balance(Time.now)
+    stocks = shares_owned
+
+    url = 'https://api.iextrading.com/1.0/stock/market/batch?types=chart&range=3m&symbols='
+    stocks.each do |ticker, _|
+      url += "#{ticker},"
+    end
+    uri = Net::HTTP.get(URI(url))
+    response = JSON.parse(uri)
+
+    balance_at_times = Hash.new(open_balance)
+    stocks.each do |ticker, num_shares|
+      charts = response[ticker]['chart']
+      charts.each do |chart|
+        if chart['open'] && chart['label'] != '09:30 AM'
+          balance_at_times[chart['date']] += chart['open'] * num_shares
+        end
+      end
+    end
+
+    balance_at_times
+  end
+
+  def yearly_data
+    open_balance = opening_balance(Time.now)
+    stocks = shares_owned
+
+    url = 'https://api.iextrading.com/1.0/stock/market/batch?types=chart&range=1y&symbols='
+    stocks.each do |ticker, _|
+      url += "#{ticker},"
+    end
+    uri = Net::HTTP.get(URI(url))
+    response = JSON.parse(uri)
+
+    balance_at_times = Hash.new(open_balance)
+    stocks.each do |ticker, num_shares|
+      charts = response[ticker]['chart']
+      charts.each do |chart|
+        if chart['open'] && chart['label'] != '09:30 AM'
+          balance_at_times[chart['date']] += chart['open'] * num_shares
+        end
+      end
+    end
+
+    balance_at_times
+  end
+
+  def five_year_data
+    open_balance = opening_balance(Time.now)
+    stocks = shares_owned
+
+    url = 'https://api.iextrading.com/1.0/stock/market/batch?types=chart&range=5y&symbols='
+    stocks.each do |ticker, _|
+      url += "#{ticker},"
+    end
+    uri = Net::HTTP.get(URI(url))
+    response = JSON.parse(uri)
+
+    balance_at_times = Hash.new(open_balance)
+    stocks.each do |ticker, num_shares|
+      charts = response[ticker]['chart']
+      charts.each do |chart|
+        if chart['open'] && chart['label'] != '09:30 AM'
+          balance_at_times[chart['date']] += chart['open'] * num_shares
+        end
+      end
+    end
+
+    balance_at_times
+  end
 
 end
