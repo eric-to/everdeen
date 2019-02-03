@@ -5,12 +5,12 @@
 * Backend: PostgreSQL, Ruby on Rails
 * Frontend: React/Redux
 * [IEX API](https://iextrading.com) (used to fetch intraday, weekly, monthly, and yearly stock price data)
-* [News API](https://newsapi.org/) (used to fetch live news articles about stocks)
+* [News API](https://newsapi.org/) (used to fetch current news about stocks)
 * [Recharts](http://recharts.org/en-US/) (used to help draw candlestick charts)
 
 ## Features
 * Secure frontend/backend user authentication using BCrypt
-* Portfolio graph showing the user's overall portfolio value based on stocks they own
+* Portfolio chart showing the user's overall portfolio value based on stocks they own
 * Sidebar showing the user's number of shares owned alongside their respective name, price, and intraday chart
 * Real-time and historical price data for most stocks exchanged on the NYSE and Nasdaq exchanges
 * Ability to buy and sell shares at the latest price
