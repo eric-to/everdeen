@@ -18,7 +18,11 @@
 * Real-time newsfeed showing general and stock-specific business news articles
 
 ### Dashboard/Portfolio Page
+<br />
 <img src="./app/assets/images/dashboard.gif" align="center" />
 
 ### Stock Show Page
 <img src="./app/assets/images/stock_show.png" align="center" />
+
+### Search
+<img src="./app/assets/images/search.png" align="center" />
