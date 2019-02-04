@@ -53,4 +53,5 @@ end
 <img src="./app/assets/images/stock_show.png" align="center" />
 
 ### Search
+Users can lookup most stocks on the NYSE and Nasdaq exchanges by the company name or stock symbol/ticker via the searchbar.
 <img src="./app/assets/images/search.gif" align="center" />
