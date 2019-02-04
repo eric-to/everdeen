@@ -17,4 +17,5 @@
 * Searchable stocks (either by company name or stock symbol)
 * Real-time newsfeed showing general and stock-specific business news articles
 
-### Highlights
+### Dashboard/Portfolio Page
+
