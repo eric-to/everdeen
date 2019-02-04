@@ -18,7 +18,8 @@
 * Real-time newsfeed showing general and stock-specific business news articles
 
 ### Dashboard/Portfolio Page
-After logging in successfully, the user is redirected to their dashboard, which shows a portfolio value chart.
+After logging in successfully, the user is redirected to their dashboard, which shows a portfolio value chart.<br/>
+The challenging part about making a portfolio chart is fetching all the required data. Users can view their portfolio value changes on the same day, over a week, or even a few years. Intraday changes are fairly easy. The portfolio chart shows the portfolio value at intervals of 5 minutes between 9:30 AM ET and 4:00 PM ET, which is when the stock market opens and closes. A portfolio's value is calculated by: user_balance (money the user may have deposited) + total_value_of_owned_stocks (the sum total worth of the user's owned stocks based on the current time or date). When the user requests data from one week ago or later, a request to the backend is made to fetch the user's balance, owned stocks, and the prices of those stocks from that time period.
 <img src="./app/assets/images/dashboard.gif" align="center" />
 
 ### Stock Show Page
