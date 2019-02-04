@@ -44,7 +44,7 @@ def intraday_data
     end
 
     balance_at_times
-  end
+end
 ```
 
 <img src="./app/assets/images/dashboard.gif" align="center" />
