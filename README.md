@@ -53,7 +53,8 @@ end
 <img src="./app/assets/images/stock_show.png" align="center" />
 
 ### Search
-Users can lookup most stocks on the NYSE and Nasdaq exchanges by the company name or stock symbol/ticker via the searchbar.
+Users can lookup most stocks on the NYSE and Nasdaq exchanges by the company name or stock symbol/ticker via the searchbar.<br/>
+To create a dynamic search function, I used a stateful React component. The query (what the user types into the searchbar) belongs in the component's state. When the query changes, so does the state, causing the component to re-render and display new matching search results.
 ```javascript
   updateQuery(e) {
     const query = e.target.value;
