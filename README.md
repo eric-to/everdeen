@@ -25,4 +25,4 @@
 <img src="./app/assets/images/stock_show.png" align="center" />
 
 ### Search
-<img src="./app/assets/images/search.png" align="center" />
+<img src="./app/assets/images/search.gif" align="center" />
