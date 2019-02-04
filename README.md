@@ -50,11 +50,37 @@ end
 <img src="./app/assets/images/dashboard.gif" align="center" />
 
 ### Stock Show Page
+Similar to the portfolio chart. Except, the user's balance is not needed to calculate the chart values. Hovering over the chart allows you to see how the stock price has changed (in dollars and percent) relative to the its opening value for that day.<br/>
+How the stock price fluctuation is calculated:
+```javascript
+  calcChangeInPrice(openPrice, latestPrice) {
+    // let delta = latestPrice - openPrice;
+    let changeInPrice = latestPrice - openPrice;
+    changeInPrice = (Math.round(changeInPrice * 100) / 100).toFixed(2);
+    let changeInPricePercent;
+    if (changeInPrice < 0) {
+      changeInPrice = changeInPrice * -1;
+      changeInPricePercent = ((changeInPrice / openPrice) * 100).toFixed(2);
+      changeInPricePercent = `${changeInPricePercent}%`;
+      changeInPrice = `-$${changeInPrice}`;
+    } else {
+      changeInPricePercent = ((changeInPrice / openPrice) * 100).toFixed(2);
+      changeInPricePercent = `${changeInPricePercent}%`;
+      changeInPrice = `+$${changeInPrice}`;
+    }
+
+    return {
+      priceChange: changeInPrice,
+      percentChange: changeInPricePercent
+    };
+  }
+```
+
 <img src="./app/assets/images/stock_show.png" align="center" />
 
 ### Search
 Users can lookup most stocks on the NYSE and Nasdaq exchanges by the company name or stock symbol/ticker via the searchbar.<br/>
-To create a dynamic search function, I used a stateful React component. The query (what the user types into the searchbar) belongs in the component's state. When the query changes, so does the state, causing the component to re-render and display new matching search results.
+To create a dynamic search function, I used a stateful React component. The query (what the user types into the searchbar) belongs in the component's state. When the query changes, so does the state, causing the component to re-render and display new matching search results. As a neat little feature, pressing 'enter' takes you to the first available search result.
 ```javascript
   updateQuery(e) {
     const query = e.target.value;
