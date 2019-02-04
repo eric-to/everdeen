@@ -54,7 +54,6 @@ Similar to the portfolio chart. Except, the user's balance is not needed to calc
 How the stock price fluctuation is calculated:
 ```javascript
   calcChangeInPrice(openPrice, latestPrice) {
-    // let delta = latestPrice - openPrice;
     let changeInPrice = latestPrice - openPrice;
     changeInPrice = (Math.round(changeInPrice * 100) / 100).toFixed(2);
     let changeInPricePercent;
