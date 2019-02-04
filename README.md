@@ -54,4 +54,28 @@ end
 
 ### Search
 Users can lookup most stocks on the NYSE and Nasdaq exchanges by the company name or stock symbol/ticker via the searchbar.
+```javascript
+  updateQuery(e) {
+    const query = e.target.value;
+    const queryExp = RegExp("^" + query, 'i');
+    let results = [];
+    results = symbols.filter(stock => {
+      if (stock.symbol.match(queryExp) || stock.name.match(queryExp)) {
+        return stock;
+      }
+    });
+    this.setState({ query: query, results: results });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const results = this.state.results;
+    // If the user presses enter, go to the first result
+    if (results.length > 0) {
+      const firstResult = this.state.results[0].symbol;
+      this.props.history.push(`stocks/${firstResult}`);
+    }
+  }
+```
+
 <img src="./app/assets/images/search.gif" align="center" />
