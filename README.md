@@ -18,7 +18,7 @@
 * Real-time newsfeed showing general and stock-specific business news articles
 
 ### Dashboard/Portfolio Page
-<br />
+Upon successful login, the user is redirected to their portfolio page. The portfolio chart shows the user's overall portfolio value, past and present.
 <img src="./app/assets/images/dashboard.gif" align="center" />
 
 ### Stock Show Page
