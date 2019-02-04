@@ -14,7 +14,7 @@
 * Sidebar showing the user's number of shares owned alongside their respective name, price, and intraday chart
 * Real-time and historical price data for most stocks exchanged on the NYSE and Nasdaq exchanges
 * Ability to buy and sell shares at the latest price
-* Searchable stocks by their company name and symbol
+* Searchable stocks (either by company name or stock symbol)
 * Real-time newsfeed showing general and stock-specific business news articles
 
 ### Highlights
