@@ -70,6 +70,7 @@ class Dashboard extends React.Component {
   }
 
   formatMoney(amount, showPlus = false) {
+    if (!amount) return;
     let sign = showPlus ? '+' : '';
     if (amount < 0) {
       amount *= -1;
